@@ -1,0 +1,22 @@
+<div *ngIf="user" class="profile-section">
+  <div (click)="toggle('userProfile')" class="profile-picture"
+       [ngStyle]="{'background-image': 'url(' + baseUrl + user.user_profile.profile_picture_thumbnail + ')'}"></div>
+  <div *ngIf="show.userProfile" (click)="toggle('userProfile')" class="notefication-cover">
+    <div (click)="$event.stopPropagation()" class="notefication-dropdown p-l-20-10">
+      <div class="layout-row layout-center">
+        <div class="user-picture user-picture-lg" [ngStyle]="{'background-image': 'url(' + baseUrl + user.user_profile.profile_picture_thumbnail + ')'}">
+          <div class="edit-filter font-size-18 t-upper t-thin t-center" [ng-file-drop]="options">
+            <span>Endre bilde</span>
+            <input class="file-input" type="file" [ng-file-select]="options" (onUpload)="handleDropUpload($event)">
+          </div>
+        </div>
+      </div>
+      <div class="layout-row layout-center">
+        <h2>{{user.first_name}} {{ user.last_name }}</h2>
+        <button (click)="navigate('applications')" class="button-md button-positive w-100-p m-l-10-0">Mine søknader</button>
+        <button (click)="logout()" class="button-md button-action w-100-p m-l-10-0">Logg ut</button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

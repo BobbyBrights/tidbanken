@@ -1,0 +1,63 @@
+@import "../../lib/mimas/variables";
+@import "../../lib/mimas/mixins";
+@import "../../lib/mimas/placeholders";
+
+// Profile pictures
+.picture {
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+  background-color: $light;
+  display: inline-block;
+
+  &:hover .edit-filter {
+    opacity: 1;
+  }
+
+  .edit-filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+
+    opacity: 0;
+    cursor: pointer;
+
+    line-height: 150px;
+    color: $light;
+
+    background: rgba(0,0,0,0.4);
+
+    @include trans(opacity, 300ms);
+
+    .file-input {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1337;
+      font-size: 50px;
+      cursor: pointer;
+      opacity: 0;
+      -moz-opacity: 0;
+      filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
+    }
+  }
+}
+
+.picture-sm {
+  @include circle(40px);
+}
+
+.picture-md {
+  @include circle(80px);
+}
+
+.picture-lg {
+  border: 5px solid $stable;
+  @include circle(150px);
+}
+

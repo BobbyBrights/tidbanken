@@ -1,0 +1,72 @@
+<div class="register bg-stable overflow-scroll">
+    <div class="layout-row register-container layout-center layout-center-v">
+        <div class="w-600 bg-light c-center p-l-20-40 p-s-100-20 center-shadow">
+            <form [ngFormModel]="registerForm" (ngSubmit)="registerCompany()">
+                <h2>Registrer bedrift</h2>
+                <p class="color-stable_dark">
+                    Vennligst fyll inn generell informasjon om ditt selskap. Du vil få mulighet til å endre og legge til
+                    mer informasjon senere.
+                </p>
+                <input ngControl="name" type="text" class="plain-input bg-light m-l-10-0"
+                       placeholder="Bedriften sitt navn" [(ngModel)]="newCompany.name" #name="ngForm">
+                <div class="border-b-2 border-stable"
+                     [ngClass]="{'border-decline': !(name.valid || name.pristine), 'border-accept': name.valid}"></div>
+                <textarea ngControl="description" class="plain-textarea h-100 m-l-10-0"
+                          placeholder="Skriv en kort beskrivelse ..." [(ngModel)]="newCompany.description"
+                          #description="ngForm"></textarea>
+                <div class="border-b-2 border-stable"
+                     [ngClass]="{'border-decline': !(description.valid || description.pristine), 'border-accept': description.valid}"></div>
+                <div class="h-20"></div>
+                <h2>Administrator</h2>
+                <p class="color-stable_dark">
+                    Vennligst fyll inn din personlige informasjon. Du vil bli registrert som administrator til den
+                    aktuelle bedriften.
+                </p>
+                <div class="layout-row">
+                    <div class="c-m-6 p-l-0-10 p-right">
+                        <input ngControl="first_name" type="text" class="plain-input bg-light m-l-10-0"
+                               placeholder="Fornavn"
+                               [(ngModel)]="newUser.first_name" #first_name="ngForm">
+                        <div class="border-b-2 border-stable"
+                             [ngClass]="{'border-decline': !(first_name.valid || first_name.pristine), 'border-accept': first_name.valid}"></div>
+                    </div>
+                    <div class="c-m-6">
+                        <input ngControl="last_name" type="text" class="plain-input bg-light m-l-10-0"
+                               placeholder="Etternavn"
+                               [(ngModel)]="newUser.last_name" #last_name="ngForm">
+                        <div class="border-b-2 border-stable"
+                             [ngClass]="{'border-decline': !(last_name.valid || last_name.pristine), 'border-accept': last_name.valid}"></div>
+                    </div>
+                </div>
+                <input ngControl="username" type="text" class="plain-input bg-light m-l-10-0" placeholder="Epost"
+                       [(ngModel)]="newUser.username" #username="ngForm">
+                <div class="border-b-2 border-stable"
+                     [ngClass]="{'border-decline': !(username.valid || username.pristine), 'border-accept': username.valid}">
+                    <p *ngIf="serverErrors.username" *ngFor="let error of serverErrors.username"
+                       class="color-decline m-l-10-0 t-right">{{ error }}</p>
+                </div>
+                <div class="layout-row">
+                    <div class="c-l-6 p-l-0-10 p-right">
+                        <input ngControl="password" type="password" class="plain-input bg-light m-l-10-0"
+                               placeholder="Passord"
+                               [(ngModel)]="newUser.password" #password="ngForm">
+                        <div class="border-b-2 border-stable"
+                             [ngClass]="{'border-decline': !(password.valid || password.pristine), 'border-accept': password.valid}"></div>
+                    </div>
+                    <div class="c-l-6 p-l-0-10 p-left">
+                        <input ngControl="passwordCheck" type="password" class="plain-input bg-light m-l-10-0"
+                               placeholder="Gjenta passord"
+                               [(ngModel)]="newUser.passwordCheck" #passwordCheck="ngForm">
+                        <div class="border-b-2 border-stable"
+                             [ngClass]="{'border-decline': !(passwordCheck.valid && registerForm.valid) && !passwordCheck.pristine, 'border-accept': passwordCheck.valid && registerForm.valid}"></div>
+                    </div>
+                </div>
+                <div class="m-l-10-0 m-top t-center">
+                    <button [disabled]="!registerForm.valid" type="submit" class="button-md button-action m-l-10-0">
+                        Register bedrift
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

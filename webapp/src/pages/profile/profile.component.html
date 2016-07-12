@@ -1,0 +1,13 @@
+<nav class="nav-side nav-side-blue nav-side-lg nav-left nav-fixed">
+    <div class="logo-container t-center">
+        <div class="picture picture-lg" [ngStyle]="{'background-image':'url(http://kingofwallpapers.com/happy/happy-007.jpg)'}"></div>
+        <p class="big">Valdemar Rolfsen</p>
+    </div>
+    <div (click)="navigate('')" class="nav-item"><span class="fa fa-user"></span><span class="item-text">Generelt</span></div>
+    <div (click)="navigate('payment')" class="nav-item active"><span class="fa fa-credit-card"></span><span class="item-text">Betalingsinformasjon</span>
+    </div>
+    <div (click)="navigate('time')" class="nav-item"><span class="fa fa-clock-o"></span><span class="item-text">Timer</span></div>
+    <div (click)="navigate('invite')" class="nav-item"><span class="fa fa-share-alt"></span><span class="item-text">Inviter venner</span></div>
+    <div (click)="navigate('')" class="nav-item"><span class="fa fa-sign-out"></span><span class="item-text">Logg ut</span></div>
+</nav>
+<router-outlet></router-outlet>

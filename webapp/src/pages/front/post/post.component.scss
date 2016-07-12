@@ -1,0 +1,66 @@
+@import "../../../lib/mimas/variables";
+
+// Local variables
+// ------------------------
+
+$bulletpointSize: 4em;
+$borderWidth: 0.1em;
+
+.prog-list {
+  width: 100%;
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  z-index: 1;
+
+  ul {
+    text-align: center;
+    padding: 0;
+  }
+
+  li {
+    width: $bulletpointSize;
+    height: $bulletpointSize;
+    text-align: center;
+    line-height: $bulletpointSize - $borderWidth/2;
+    border-radius: $bulletpointSize/2;
+    border: $borderWidth solid $primary;
+    background: $primary;
+    margin: 0 $bulletpointSize/2;
+    display: inline-block;
+    color: $light;
+    position: relative;
+    cursor: pointer;
+  }
+
+  li::before {
+    content: '';
+    position: absolute;
+    top: $bulletpointSize/2 - $borderWidth;
+    left: -$bulletpointSize - $borderWidth*3;
+    width: $bulletpointSize + $borderWidth*3;
+    height: $borderWidth;
+    background: $primary;
+    z-index: -1;
+  }
+
+
+  li:first-child::before {
+    display: none;
+  }
+
+  .active {
+    background: transparent;
+    color: $primary;
+  }
+
+  .active ~ li {
+    border-color: $stable-dark;
+    background: transparent;
+    color: $stable-dark;
+  }
+
+  .active ~ li::before {
+    background: $stable-dark;
+  }
+}

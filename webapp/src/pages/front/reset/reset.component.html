@@ -1,0 +1,17 @@
+<div class="reset">
+    <div class="layout-row layout-center-v layout-center h-100-p">
+        <div class="w-300 p-s-100-20">
+            <form [ngFormModel]="resetForm" (ngSubmit)="reset()">
+                <h2 class="t-upper t-very-thick">Tilbakestill passord</h2>
+                <input ngControl="password" type="password" class="plain-input bg-stable-light m-l-10-0 m-top" placeholder="Nytt passord" [(ngModel)]="user.password" #password="ngForm">
+                <div class="border-b-2 border-stable_dark"
+                     [ngClass]="{'border-decline': !(password.valid || password.pristine), 'border-accept': password.valid}"></div>
+                <input ngControl="passwordCheck" type="password" class="plain-input bg-stable-light m-l-10-0 m-top" placeholder="Gjenta passord" [(ngModel)]="user.passwordCheck" #passwordCheck="ngForm">
+                <div class="border-b-2 border-stable_dark"
+                     [ngClass]="{'border-decline': !(passwordCheck.valid && resetForm.valid) && !passwordCheck.pristine, 'border-accept': passwordCheck.valid && resetForm.valid}"></div>
+                <button type="submit" class="button-md button-dark w-100-p m-l-20-0 m-top" [disabled]="!resetForm.valid">Tilbakestill</button>
+            </form>
+        </div>
+    </div>
+</div>
+<popup-alert [alert]="show.alert" [alertText]="'Oppdatert'"></popup-alert>

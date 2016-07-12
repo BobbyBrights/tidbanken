@@ -1,0 +1,24 @@
+<popup-alert [alert]="show.alert" [alertText]="alertText"></popup-alert>
+<div class="layout-row layout-center bg-dark p-l-50-20">
+    <div class="c-l-12 t-center m-l-50-0 m-top">
+        <h1>Bekreft epostadressen din</h1>
+        <p class="big">For å bekrefte epostadressen din trykk på knappen under</p>
+    </div>
+    <div class="c-l-12 t-center m-l-30-0 m-top">
+        <button (click)="validataAuthToken()" class="button-lg button-action button-rounded">Bekreft epostadresse
+        </button>
+    </div>
+</div>
+<div class="layout-row layout-center p-l-50-20">
+    <div class="w-600">
+        <h1>Bekreft epostadressen din</h1>
+        <p class="big">
+            Ved å bekrefte epostadressen din vil du ha mulighet til å logge inn på din konto. Skulle noen problemer
+            oppstå ber vi deg ta kontakt med vår tekniske support.
+        </p>
+        <p class="big">
+            Har du kommet feil? Ta meg til hjemmesiden!
+        </p>
+        <button class="button-md button-dark button-rounded">Ta meg vekk</button>
+    </div>
+</div>

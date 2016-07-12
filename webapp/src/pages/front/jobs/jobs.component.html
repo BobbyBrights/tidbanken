@@ -1,0 +1,18 @@
+<nav class="nav-side nav-side-lg nav-left nav-fixed nav-side-dark">
+    <div class="nav-item"><span class="fa fa-home"></span><span class="item-text">HJEM</span></div>
+    <div class="nav-item active"><span class="fa fa-question-circle"></span><span class="item-text">OM OSS</span></div>
+    <div class="nav-item"><span class="fa fa-phone"></span><span class="item-text">KONTAKT OSS</span></div>
+</nav>
+<div class="row h-full bg-stable-light has-nav-side-lg">
+    <div class="row row-center p-l-20-20">
+        <div class="w-1000">
+            <div class="row row-center-v bg-light center-shadow hover-light" *ngFor="let job of jobs">
+              <div class="picture picture-lg m-l-20-20" [ngStyle]="{'background-image':'url(' + job.thumbnail + ')'}"></div>
+                <div class="c-m-8">
+                    <h3>{{ job.title }}</h3>
+                    <p class="big">{{ job.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

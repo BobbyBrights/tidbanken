@@ -1,0 +1,61 @@
+<div class="row row-center row-center-v h-full bg-stable-light fs-14 p-l-0-20">
+    <form [ngFormModel]="jobForm" (ngSubmit)="postJob()">
+        <div *ngIf="checkStep(0)" class="w-700">
+            <h4>Tittel</h4>
+            <input ngControl="title" [(ngModel)]="newJob.title" type="text" class="input h-60"
+                   placeholder="Skriv inn en passende tittel" #title="ngForm">
+            <div class="m-l-10-0 t-right">
+                <button (click)="next()" class="btn-lg btn-primary" [disabled]="!title.valid">Neste</button>
+            </div>
+        </div>
+        <div *ngIf="checkStep(1)" class="w-700">
+            <h4>Beskrivelse</h4>
+            <textarea ngControl="description" [(ngModel)]="newJob.description" class="textarea h-300"
+                      placeholder="Skriv en kort beskrivelse" #description="ngForm"></textarea>
+            <div class="m-l-10-0 t-right">
+                <button (click)="next()" class="btn-lg btn-primary" [disabled]="!description.valid">Neste</button>
+            </div>
+        </div>
+        <div *ngIf="checkStep(2)" class="w-1100">
+            <h4 class="w-100-p">Hvor lang tid tar det?</h4>
+            <div class="row row-center-v row-center">
+                <div class="border-1 border-stable-dark p-l-10-10 bg-light w-200 t-center m-l-10-10 hover-light">
+                    <p class="m-l-0-0">Omtrent</p>
+                    <h3 class="m-l-0-0">1</h3>
+                    <p class="m-l-0-0">time</p>
+                </div>
+                <div class="border-1 border-stable-dark p-l-10-10 bg-light w-200 t-center m-l-10-10 hover-light">
+                    <p class="m-l-0-0">Omtrent</p>
+                    <h3 class="m-l-0-0">2</h3>
+                    <p class="m-l-0-0">timer</p>
+                </div>
+                <div class="border-1 border-stable-dark p-l-10-10 bg-light w-200 t-center m-l-10-10 hover-light">
+                    <p class="m-l-0-0">Omtrent</p>
+                    <h3 class="m-l-0-0">4</h3>
+                    <p class="m-l-0-0">timer</p>
+                </div>
+                <div class="border-1 border-stable-dark p-l-10-10 bg-light w-200 t-center m-l-10-10 hover-light">
+                    <p class="m-l-0-0">Omtrent</p>
+                    <h3 class="m-l-0-0">8</h3>
+                    <p class="m-l-0-0">timer</p>
+                </div>
+                <div class="p-l-10-10 w-200 t-center m-l-10-10">
+                    <p class="m-l-10-0">Omtrent</p>
+                    <input type="number" class="input h-50 t-center">
+                    <p class="m-l-10-0">timer</p>
+                </div>
+                <div class="m-l-10-0 w-100-p t-right">
+                    <button (click)="next()" class="btn-lg btn-primary m-l-20-20">Neste</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="prog-list">
+        <ul>
+            <li (click)="setStep(0)" [ngClass]="{'active': checkStep(0)}">1</li>
+            <li (click)="setStep(1)" [ngClass]="{'active': checkStep(1)}">2</li>
+            <li (click)="setStep(2)" [ngClass]="{'active': checkStep(2)}">3</li>
+            <li (click)="setStep(3)" [ngClass]="{'active': checkStep(3)}">4</li>
+        </ul>
+    </div>
+</div>

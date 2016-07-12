@@ -1,0 +1,30 @@
+<div class="login">
+    <div class="layout-row layout-center-v layout-center h-100-p">
+        <div class="w-400 hide-mobile">
+            <img src="img/screenshots/db.png" class="w-100-p fade-up-image"
+                 alt="">
+        </div>
+        <div class="w-300 p-s-100-20">
+            <form *ngIf="show.login" [ngFormModel]="loginForm" (ngSubmit)="login()">
+                <h2 class="t-upper t-very-thick">Logg inn</h2>
+                <input ngControl="username" type="text" class="plain-input bg-stable-light m-l-10-0 m-top" placeholder="Brukernavn" [(ngModel)]="user.username" #username="ngForm">
+                <div class="border-b-2 border-stable_dark"
+                     [ngClass]="{'border-decline': !(username.valid || username.pristine), 'border-accept': username.valid}"></div>
+                <input ngControl="password" type="password" class="plain-input bg-stable-light m-l-10-0 m-top" placeholder="Passord" [(ngModel)]="user.password" #password="ngForm">
+                <div class="border-b-2 border-stable_dark"
+                     [ngClass]="{'border-decline': !(password.valid || password.pristine), 'border-accept': password.valid}"></div>
+                <p *ngFor="let error of serverErrors | mapToIterable" class="color-decline">{{ error }}</p>
+                <button type="submit" class="button-md button-dark w-100-p m-l-20-0 m-top" [disabled]="!loginForm.valid">Logg inn</button>
+                <p (click)="toggle('login'); toggle('forgot')" class="forgot-password-link"><small>Glemt passord?</small></p>
+            </form>
+            <form *ngIf="show.forgot" (ngSubmit)="sendMail()">
+                <h2 class="t-upper t-very-thick">Tilbakestill passord</h2>
+                <input type="text" class="plain-input bg-stable-light m-l-10-0 m-top" placeholder="Brukernavn" [(ngModel)]="user.username">
+                <div class="border-b-2 border-stable_dark"></div>
+                <button type="submit" class="button-md button-dark w-100-p m-l-20-0 m-top">Send mail</button>
+                <p (click)="toggle('login'); toggle('forgot')" class="forgot-password-link"><small>Logg inn?</small></p>
+            </form>
+        </div>
+    </div>
+</div>
+<popup-alert [alert]="show.alert" [alertText]="'Mail sendt'"></popup-alert>

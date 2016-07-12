@@ -1,0 +1,11 @@
+@import "../../../lib/mimas/variables";
+
+.login {
+  height: 100%;
+  background: $stable-light;
+  color: #444;
+}
+
+.forgot-password-link {
+  cursor: pointer;
+}
