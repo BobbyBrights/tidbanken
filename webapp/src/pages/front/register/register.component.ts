@@ -27,6 +27,9 @@ export class RegisterComponent {
         private _formBuilder:FormBuilder,
         private _router:Router
     ) {
+
+        // Registration form
+        // --------------------------------------
         this.registerForm = this._formBuilder.group({
             'first_name':['', Validators.required],
             'last_name':['', Validators.required],
