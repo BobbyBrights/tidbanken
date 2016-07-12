@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAMA,eAAgB;EACd,QAAQ,EAAE,KAAK;EACf,GAAG,EAAE,CAAC;EAAE,MAAM,EAAE,CAAC;EAAE,IAAI,EAAE,CAAC;EAC1B,OAAO,EAAE,CAAC;EACV,KAAK,EANI,KAAK;EAQd,OAAO,EAAE,IAAI;;AAGf,eAAgB;EACd,YAAY,EAZH,KAAK;;AAehB,QAAS;EACP,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,MAAM;EAEd,mCAA2B;IACzB,KAAK,EAAE,IAAI;IACX,MAAM,EAAE,IAAI",
+"sources": ["../pages/front/jobs/jobs.component.scss"],
 "names": [],
 "file": "jobs.component.css"
 }

@@ -1,3 +1,20 @@
+.job-filter-bar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: 400px;
+  padding: 20px; }
 
+.jobs-container {
+  padding-left: 400px; }
+
+.job-map {
+  width: 100%;
+  height: 1000px; }
+  .job-map .sebm-google-map-container {
+    width: 100%;
+    height: 100%; }
 
 /*# sourceMappingURL=jobs.component.css.map */

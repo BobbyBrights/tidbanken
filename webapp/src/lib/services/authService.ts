@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {User}           from '../classes/user';
 import {AuthHttp} from 'angular2-jwt/angular2-jwt';
 import myGlobals = require('globals');
+import {RequestService} from "./requestService";
 
 @Injectable()
 export class AuthService {
@@ -14,13 +15,16 @@ export class AuthService {
 
     constructor(private http:Http,
                 private authHttp:AuthHttp,
+                private _requestService:RequestService,
                 private _router:Router) {
     }
 
     public getCurrentUser() {
 
-        return this.authHttp.get(this._apiEndpoint + 'current-user/')
-            .map(res => <User> res.json());
+        var key = 'currentUsers';
+
+        return this._requestService.request('GET', this._apiEndpoint + 'current-user/', key)
+            .map(res => <User[]> res.json());
     }
 
     public login(username:String, password:String) {

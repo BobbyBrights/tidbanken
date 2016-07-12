@@ -1,18 +1,92 @@
-<nav class="nav-side nav-side-lg nav-left nav-fixed nav-side-dark">
-    <div class="nav-item"><span class="fa fa-home"></span><span class="item-text">HJEM</span></div>
-    <div class="nav-item active"><span class="fa fa-question-circle"></span><span class="item-text">OM OSS</span></div>
-    <div class="nav-item"><span class="fa fa-phone"></span><span class="item-text">KONTAKT OSS</span></div>
+<nav class="job-filter-bar bg-light border-r-1 border-stable">
+    <div class="row">
+        <div class="c-l-12 t-center">
+            <h3>Filter</h3>
+        </div>
+    </div>
+    <div class="row fs-14 p-l-20-0">
+        <div class="c-l-12 t-center">
+            <input type="text" class="input input-bottom-dark" placeholder="Søk etter jobb ...">
+        </div>
+    </div>
+    <div class="row">
+        <div class="c-l-12 border-b-1 border-stable-light">
+            <h4 class="t-300 t-upper">Område</h4>
+        </div>
+        <div class="c-l-12 p-l-20-0">
+            <div class="p-l-10-10">
+                <input class="checkbox checkbox-blue" id="allPlaces" type="checkbox" value="place">
+                <label for="allPlaces">Alle områder</label>
+            </div>
+            <div *ngFor="let place of places; let i = index" class="p-l-10-10">
+                <input class="checkbox checkbox-blue" [attr.id]="'Place' + i" type="checkbox" value="place">
+                <label [attr.for]="'Place' + i">{{place.name}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="c-l-12 border-b-1 border-stable-light">
+            <h4 class="t-300 t-upper">Kategori</h4>
+        </div>
+        <div class="c-l-12 p-l-20-0">
+            <div class="p-l-10-10">
+                <input class="checkbox checkbox-blue" id="allCats" type="checkbox" value="place">
+                <label for="allCats">Alle områder</label>
+            </div>
+            <div *ngFor="let cat of categories; let j = index" class="p-l-10-10">
+                <input class="checkbox checkbox-blue" [attr.id]="'Category' + j" type="checkbox" value="place">
+                <label [attr.for]="'Category' + j">{{ cat.name }}</label>
+            </div>
+        </div>
+    </div>
 </nav>
-<div class="row h-full bg-stable-light has-nav-side-lg">
+<div class="jobs-container row h-full bg-stable-light">
+    <div class="row row-center bg-primary border-b-1 border-stable p-l-20-20">
+        <button (click)="hideObject('map')" class="btn-lg btn-light rounded-3 m-l-20-20" [ngClass]="{'btn-border-light': show.map}">Liste</button>
+        <button (click)="showObject('map')" class="btn-lg btn-light rounded-3 m-l-20-20" [ngClass]="{'btn-border-light': !show.map}">Kart</button>
+    </div>
     <div class="row row-center p-l-20-20">
-        <div class="w-1000">
-            <div class="row row-center-v bg-light center-shadow hover-light" *ngFor="let job of jobs">
+
+        <!-- List view -->
+        <div *ngIf="!show.map" class="w-1000">
+            <div (click)="openJob(job.id)" class="row row-center-v bg-light center-shadow hover-light" *ngFor="let job of jobs">
               <div class="picture picture-lg m-l-20-20" [ngStyle]="{'background-image':'url(' + job.thumbnail + ')'}"></div>
                 <div class="c-m-8">
-                    <h3>{{ job.title }}</h3>
-                    <p class="big">{{ job.description}}</p>
+                    <h3 class="t-300 m-l-0-0">{{ job.title }}</h3>
+                    <p class="big m-l-0-10">{{ job.description}}</p>
+                    <div class="row p-l-20-0 p-top">
+                        <div class="c-m-4 fs-14">
+                            <div class="row row-center-v">
+                                <span class="fa fa-map-marker color-primary fs-14 m-l-0-10"></span>
+                                <span class="color-stable-dark">Skansagata 2a</span>
+                            </div>
+                        </div>
+                        <div class="c-m-4 fs-14">
+                            <div class="row row-center-v">
+                                <span class="fa fa-clock-o color-primary fs-14 m-l-0-10"></span>
+                                <span class="color-stable-dark">Skansagata 2a</span>
+                            </div>
+                        </div>
+                        <div class="c-m-4 fs-14">
+                            <div class="row row-center-v">
+                                <span class="fa fa-user color-primary fs-14 m-l-0-10"></span>
+                                <span class="color-stable-dark">Valdemar Rolfsen</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Map view -->
+        <div *ngIf="show.map" class="job-map">
+            <sebm-google-map
+                    [latitude]="lat"
+                    [longitude]="lng"
+                    [zoom]="zoom"
+                    [disableDefaultUI]="true"
+                    [zoomControl]="'false'">
+            </sebm-google-map>
         </div>
     </div>
 </div>

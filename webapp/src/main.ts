@@ -29,7 +29,8 @@ import {AuthHttp, AuthConfig} from 'angular2-jwt/angular2-jwt';
 import {HTTP_PROVIDERS, Http} from '@angular/http';
 import {ROUTER_PROVIDERS} from "@angular/router";
 import {RequestService} from "./lib/services/requestService";
-
+import {provideLazyMapsAPILoaderConfig, GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core';
+import {AuthService} from "./lib/services/authService";
 /*
  * Bootstrap our Angular app with a top level component `AppComponent` and inject
  * our Services and Providers into Angular's dependency injection
@@ -44,7 +45,10 @@ export function main(initialHmrState?: any): Promise<any> {
     ...PIPES,
     ...HTTP_PROVIDERS,
     ...ROUTER_PROVIDERS,
+    ...GOOGLE_MAPS_PROVIDERS,
     RequestService,
+    AuthService,
+    provideLazyMapsAPILoaderConfig({ apiKey: 'AIzaSyDL7rTTuURd4I5jNb7YPoETRAqH6PZt_00'}),
     provide(AuthHttp, {
       useFactory: (http) => {
         return new AuthHttp(new AuthConfig({

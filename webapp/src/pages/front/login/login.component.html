@@ -1,29 +1,32 @@
-<div class="login">
-    <div class="layout-row layout-center-v layout-center h-100-p">
-        <div class="w-400 hide-mobile">
-            <img src="img/screenshots/db.png" class="w-100-p fade-up-image"
-                 alt="">
+<div class="row">
+    <div class="c-l-6 bg-blue">
+        <div class="row row-center-v row-center h-full p-l-40-60">
+            <form [ngFormModel]="loginForm" (submit)="login()" class="fs-20 w-600">
+                <h4>Logg inn</h4>
+
+                <!-- User name -->
+                <input [(ngModel)]="user.username" type="phone" class="input input-bottom-blue m-l-20-0"
+                       placeholder="Telefon" #username="ngForm">
+
+                <!-- Password -->
+                <input [(ngModel)]="user.password" type="password" class="input input-bottom-blue m-l-20-0"
+                       placeholder="passord" #password="ngForm">
+
+                <!-- Submit button -->
+                <div class="t-right m-l-20-0">
+                    <button class="btn-lg btn-border-light btn-round">Logg inn</button>
+                </div>
+            </form>
         </div>
-        <div class="w-300 p-s-100-20">
-            <form *ngIf="show.login" [ngFormModel]="loginForm" (ngSubmit)="login()">
-                <h2 class="t-upper t-very-thick">Logg inn</h2>
-                <input ngControl="username" type="text" class="plain-input bg-stable-light m-l-10-0 m-top" placeholder="Brukernavn" [(ngModel)]="user.username" #username="ngForm">
-                <div class="border-b-2 border-stable_dark"
-                     [ngClass]="{'border-decline': !(username.valid || username.pristine), 'border-accept': username.valid}"></div>
-                <input ngControl="password" type="password" class="plain-input bg-stable-light m-l-10-0 m-top" placeholder="Passord" [(ngModel)]="user.password" #password="ngForm">
-                <div class="border-b-2 border-stable_dark"
-                     [ngClass]="{'border-decline': !(password.valid || password.pristine), 'border-accept': password.valid}"></div>
-                <p *ngFor="let error of serverErrors | mapToIterable" class="color-decline">{{ error }}</p>
-                <button type="submit" class="button-md button-dark w-100-p m-l-20-0 m-top" [disabled]="!loginForm.valid">Logg inn</button>
-                <p (click)="toggle('login'); toggle('forgot')" class="forgot-password-link"><small>Glemt passord?</small></p>
-            </form>
-            <form *ngIf="show.forgot" (ngSubmit)="sendMail()">
-                <h2 class="t-upper t-very-thick">Tilbakestill passord</h2>
-                <input type="text" class="plain-input bg-stable-light m-l-10-0 m-top" placeholder="Brukernavn" [(ngModel)]="user.username">
-                <div class="border-b-2 border-stable_dark"></div>
-                <button type="submit" class="button-md button-dark w-100-p m-l-20-0 m-top">Send mail</button>
-                <p (click)="toggle('login'); toggle('forgot')" class="forgot-password-link"><small>Logg inn?</small></p>
-            </form>
+    </div>
+    <div class="c-l-6 bg-image cover-9 cover-light"
+         [ngStyle]="{'background-image':'url(http://memorymontage.homestead.com/files/MMgraphics/shape-collage-1.jpg)'}">
+        <div class="row row-center row-center-v cover-content h-full p-l-20-20">
+            <div class="w-600">
+                <h2 class="color-blue">
+                    20 000 nordmenn er allerede med. <span class="color-primary">Bli en tidsparer i dag!</span>
+                </h2>
+            </div>
         </div>
     </div>
 </div>
