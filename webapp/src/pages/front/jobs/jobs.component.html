@@ -49,7 +49,7 @@
 
         <!-- List view -->
         <div *ngIf="!show.map" class="w-1000">
-            <div (click)="openJob(job.id)" class="row row-center-v bg-light center-shadow hover-light" *ngFor="let job of jobs">
+            <div (click)="openJob(job.id)" class="row row-center-v bg-light center-shadow hover-light m-l-20-0 m-bottom" *ngFor="let job of jobs">
               <div class="picture picture-lg m-l-20-20" [ngStyle]="{'background-image':'url(' + baseUrl + job.picture + ')'}"></div>
                 <div class="c-m-8">
                     <h3 class="t-300 m-l-0-0">{{ job.title }}</h3>

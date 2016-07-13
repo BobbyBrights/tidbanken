@@ -9,10 +9,10 @@
                 <span class="fa fa-clock-o fs-16 m-l-0-10"></span>
                 <span>{{job.duration}} time<span *ngIf="job.duration > 1">r</span></span>
             </div>
-            <div class="content p-l-40-60 fs-16">
+            <div class="content p-l-40-60 fs-16 t-center">
                 <p class="color-stable-dark">Interessert?</p>
-                <button class="btn-md btn-green rounded-5 w-100-p m-l-10-0">Meld interesse</button>
-                <p class="color-stable-dark t-center">eller</p>
+                <button (click)="toggle('appointment')"  class="btn-md btn-green rounded-5 w-100-p m-l-10-0">Meld interesse</button>
+                <p class="color-stable-dark">eller</p>
                 <button class="btn-md btn-blue rounded-5 w-100-p m-l-10-0">Del jobben</button>
             </div>
         </div>
@@ -52,5 +52,12 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div *ngIf="show.appointment" (click)="toggle('appointment')" class="dialog-cover row row-center row-center-v cover-6 cover-black">
+    <div (click)="$event.stopPropagation()" class="popup-dialog w-600 bg-light p-l-20-20 rounded-5">
+        <datepicker class="color-dark h-400" [date]="soknadsfrist"
+                    (valueChange)="dateChanged($event)" [height]="350"></datepicker>
     </div>
 </div>
