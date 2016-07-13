@@ -24,14 +24,14 @@ export class AuthService {
         var key = 'currentUsers';
 
         return this._requestService.request('GET', this._apiEndpoint + 'current-user/', key)
-            .map(res => <User[]> res.json());
+            .map(res => <User> res.json());
     }
 
-    public login(username:String, password:String) {
+    public login(phone:String, password:String) {
 
         let myHeader = new Headers();
         myHeader.append('Content-Type', 'application/json');
-        let body = JSON.stringify({phone: username, password: password});
+        let body = JSON.stringify({phone: phone, password: password});
 
         return this.http.post(this._apiEndpoint + 'api-token-auth/', body, {headers: myHeader})
             .map(res => <User> res.json())
@@ -51,9 +51,6 @@ export class AuthService {
 
         let myHeader = new Headers();
         myHeader.append('Content-Type', 'application/json');
-
-        user.user_profile = {};
-
         let body = JSON.stringify(user);
 
         return this.http.post(this._apiEndpoint, body, {headers: myHeader})
@@ -62,13 +59,9 @@ export class AuthService {
 
     public update(user:User) {
 
-        // Need to delete logo string in order to update other info
-        var copy = Object.assign({}, user);
-        delete copy.user_profile.profile_picture;
-
         let myHeader = new Headers();
         myHeader.append('Content-Type', 'application/json');
-        let body = JSON.stringify(copy);
+        let body = JSON.stringify(user);
 
         return this.authHttp.put(this._apiEndpoint + user.id + '/', body, {headers: myHeader})
             .map(res => <User> res.json());

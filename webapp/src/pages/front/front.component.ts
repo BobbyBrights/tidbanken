@@ -27,7 +27,7 @@ import {PostComponent} from "./post/post.component";
 @Routes([
   {path: '', component: HomeComponent},
   {path: 'jobs', component: JobsComponent},
-  {path: 'job', component: JobComponent},
+  {path: 'job/:id', component: JobComponent},
   {path: 'post', component: PostComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},

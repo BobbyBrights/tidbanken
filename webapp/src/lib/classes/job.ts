@@ -7,9 +7,12 @@ export class Job extends ServerResponse {
 
     public title: string;
     public description: string;
-    public thumbnail: string;
+    public picture: string;
+    public duration: number;
+    public street_address: string;
+    public user_id:number;
 
-    constructor(title: string, description: string, thumbnail: string) {
+    constructor(title: string, description: string) {
 
         // Needs to call super before accessing 'this' in the constructor of a derived class
         super();
@@ -20,6 +23,5 @@ export class Job extends ServerResponse {
 
         this.title = title;
         this.description = description;
-        this.thumbnail = thumbnail;
     }
 }

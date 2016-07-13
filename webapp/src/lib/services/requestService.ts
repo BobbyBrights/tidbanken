@@ -47,7 +47,7 @@ export class RequestService {
   private header:Headers;
 
   constructor(
-    private http: Http,
+    private http:Http,
     private authHttp:AuthHttp
   ) {
 
@@ -115,6 +115,8 @@ export class RequestService {
     else
       // There are no token present, so we assume that the user is not logged in
       http = this.http;
+
+    console.log(http);
 
     /*
      * If the method continues to this point, it means that no cached values was found

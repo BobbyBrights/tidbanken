@@ -13,50 +13,50 @@
   font-weight: 800;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Black.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Black.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Black.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Black.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Black.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Black.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Black.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Black.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: 600;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: bold;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: 400;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: normal;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: 300;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Light.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Light.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Light.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Light.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Light.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Light.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: 100;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 /*----------------------------------------
 
   KORDE - MIXINS
@@ -392,52 +392,52 @@
     border-color: #caccce; }
 
 .btn-stable-dark {
-  background: #adafb3;
+  background: #898b8f;
   color: #fff;
-  border: 1px solid #adafb3; }
+  border: 1px solid #898b8f; }
   .btn-stable-dark:hover {
-    background: #c7c9cc;
-    border-color: #c7c9cc; }
+    background: #a3a5a8;
+    border-color: #a3a5a8; }
   .btn-stable-dark:active {
-    background: #a0a2a7;
-    border-color: #a0a2a7; }
+    background: #7c7e83;
+    border-color: #7c7e83; }
 
 .btn-grad-stable-dark {
   color: #fff;
   border-left: 1px solid transparent;
   border-right: 1px solid transparent;
-  background: #adafb3;
+  background: #898b8f;
   /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#adafb3, #93959a);
+  background: -webkit-linear-gradient(#898b8f, #707275);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#adafb3, #93959a);
+  background: -o-linear-gradient(#898b8f, #707275);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#adafb3, #93959a);
+  background: -moz-linear-gradient(#898b8f, #707275);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#adafb3, #93959a);
+  background: linear-gradient(#898b8f, #707275);
   /* Standard syntax */ }
   .btn-grad-stable-dark:active {
-    background: #93959a;
+    background: #707275;
     /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#93959a, #adafb3);
+    background: -webkit-linear-gradient(#707275, #898b8f);
     /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#93959a, #adafb3);
+    background: -o-linear-gradient(#707275, #898b8f);
     /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#93959a, #adafb3);
+    background: -moz-linear-gradient(#707275, #898b8f);
     /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#93959a, #adafb3);
+    background: linear-gradient(#707275, #898b8f);
     /* Standard syntax */ }
 
 .btn-border-stable-dark {
   background: none;
-  border: 1px solid #adafb3;
-  color: #adafb3; }
+  border: 1px solid #898b8f;
+  color: #898b8f; }
   .btn-border-stable-dark:hover {
-    background: #adafb3;
+    background: #898b8f;
     color: #fff; }
   .btn-border-stable-dark:active {
-    background: #a0a2a7;
-    border-color: #a0a2a7; }
+    background: #7c7e83;
+    border-color: #7c7e83; }
 
 .btn-primary {
   background: #fc797c;
@@ -1004,36 +1004,36 @@ form {
     border-bottom-color: #d7d9da; }
 
 .input-b-stable-dark, .select-b-stable-dark {
-  border: 1px solid #e2e3e4; }
+  border: 1px solid #bdbec1; }
   .input-b-stable-dark::-webkit-input-placeholder, .select-b-stable-dark::-webkit-input-placeholder {
-    color: #e2e3e4;
+    color: #bdbec1;
     font-weight: 300; }
   .input-b-stable-dark:-moz-placeholder, .select-b-stable-dark:-moz-placeholder {
-    color: #e2e3e4;
+    color: #bdbec1;
     font-weight: 300; }
   .input-b-stable-dark::-moz-placeholder, .select-b-stable-dark::-moz-placeholder {
-    color: #e2e3e4;
+    color: #bdbec1;
     font-weight: 300; }
   .input-b-stable-dark:-ms-input-placeholder, .select-b-stable-dark:-ms-input-placeholder {
-    color: #e2e3e4;
+    color: #bdbec1;
     font-weight: 300; }
 
 .input-bottom-stable-dark {
-  border-bottom: 2px solid #e2e3e4; }
+  border-bottom: 2px solid #bdbec1; }
   .input-bottom-stable-dark::-webkit-input-placeholder {
-    color: #e2e3e4;
+    color: #bdbec1;
     font-weight: 300; }
   .input-bottom-stable-dark:-moz-placeholder {
-    color: #e2e3e4;
+    color: #bdbec1;
     font-weight: 300; }
   .input-bottom-stable-dark::-moz-placeholder {
-    color: #e2e3e4;
+    color: #bdbec1;
     font-weight: 300; }
   .input-bottom-stable-dark:-ms-input-placeholder {
-    color: #e2e3e4;
+    color: #bdbec1;
     font-weight: 300; }
   .input-bottom-stable-dark:focus {
-    border-bottom-color: #adafb3; }
+    border-bottom-color: #898b8f; }
 
 .input-b-primary, .select-b-primary {
   border: 1px solid #feddde; }
@@ -1308,7 +1308,7 @@ form {
     display: inline-block;
     vertical-align: text-top;
     background: #fff;
-    border: 1px solid #adafb3;
+    border: 1px solid #898b8f;
     width: 20px;
     height: 20px;
     -webkit-transition: all 300ms ease;
@@ -1354,9 +1354,9 @@ form {
   background: #d7d9da; }
 
 .checkbox-stable-dark:hover + label:before {
-  background: #adafb3; }
+  background: #898b8f; }
 .checkbox-stable-dark:checked + label:before {
-  background: #adafb3; }
+  background: #898b8f; }
 
 .checkbox-primary:hover + label:before {
   background: #fc797c; }
@@ -1415,50 +1415,50 @@ Created by Valdemar Rolfsen 2016
   font-weight: 800;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Black.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Black.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Black.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Black.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Black.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Black.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Black.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Black.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: 600;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: bold;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Bold.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: 400;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: normal;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Regular.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: 300;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Light.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Light.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Light.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Light.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Light.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Light.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 @font-face {
   font-family: 'GTWalsheim';
   font-weight: 100;
   src: url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.eot");
   /* IE9 Compat Modes */
-  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.ttf") format("truetype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.svg#svgFontName") format("svg");
-  /* Legacy iOS */ }
+  src: url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.woff") format("woff"), url("../../fonts/GT_Walsheim/GT-Walsheim-Ultra-Light.ttf") format("truetype");
+  /* Safari, Android, iOS */ }
 h1 {
   font-size: 5em; }
 
@@ -1477,8 +1477,11 @@ h5 {
 h6 {
   font-size: 0.5em; }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 0.3em 0; }
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0.1em 0; }
+
+p {
+  white-space: pre-line; }
 
 p.big {
   font-size: 1.5em; }
@@ -6312,12 +6315,12 @@ Created by Valdemar Rolfsen 2016
   background: #bdc0c1; }
 
 .color-stable-dark {
-  color: #adafb3; }
+  color: #898b8f; }
   .color-stable-dark a {
-    color: #adafb3; }
+    color: #898b8f; }
 
 .bg-stable-dark {
-  background: #adafb3;
+  background: #898b8f;
   color: #fff; }
   .bg-stable-dark a {
     color: #fff; }
@@ -6327,13 +6330,13 @@ Created by Valdemar Rolfsen 2016
       border-bottom-color: #fff; }
 
 .border-stable-dark {
-  border-color: #adafb3; }
+  border-color: #898b8f; }
 
 .cover-stable-dark:before {
-  background: #adafb3; }
+  background: #898b8f; }
 
 .hover-stable-dark:hover {
-  background: #c7c9cc; }
+  background: #a3a5a8; }
 
 .color-primary {
   color: #fc797c; }
@@ -6809,10 +6812,10 @@ Created by Valdemar Rolfsen 2016
     color: #433e36; }
 
 .i-box-stable-dark {
-  border-bottom: 5px solid #e2e3e4;
+  border-bottom: 5px solid #bdbec1;
   background: #fff; }
   .i-box-stable-dark .icon-circle {
-    background: #adafb3;
+    background: #898b8f;
     color: #fff; }
 
 .i-box-primary {
@@ -7035,7 +7038,7 @@ Created by Valdemar Rolfsen 2016
     background: #bdc0c1; }
 
 .nav-stable-dark {
-  background: #adafb3;
+  background: #898b8f;
   color: #fff; }
   .nav-stable-dark a {
     color: #fff; }
@@ -7047,14 +7050,14 @@ Created by Valdemar Rolfsen 2016
       border-bottom-color: #fff; }
   @media (max-width: 768px) {
     .nav-stable-dark ul {
-      border-top: 1px solid #c7c9cc;
-      background: #adafb3; } }
+      border-top: 1px solid #a3a5a8;
+      background: #898b8f; } }
 
 .nav-side-stable-dark {
-  background: #adafb3;
+  background: #898b8f;
   color: #fff; }
   .nav-side-stable-dark .nav-item:hover {
-    background: #c7c9cc; }
+    background: #a3a5a8; }
 
 .nav-primary {
   background: #fc797c;
@@ -7786,26 +7789,26 @@ Created by Valdemar Rolfsen 2016
     color: #433e36; } }
 
 .table-stable-dark {
-  background-color: #adafb3;
+  background-color: #898b8f;
   color: #fff; }
   .table-stable-dark > thead > tr > th {
-    border-bottom: 1px solid #c7c9cc; }
+    border-bottom: 1px solid #a3a5a8; }
   .table-stable-dark > tbody + tbody {
-    border-top: 1px solid #c7c9cc; }
+    border-top: 1px solid #a3a5a8; }
   .table-stable-dark > thead > tr > th,
   .table-stable-dark > thead > tr > td,
   .table-stable-dark > tbody > tr > th,
   .table-stable-dark > tbody > tr > td,
   .table-stable-dark > tfoot > tr > th,
   .table-stable-dark > tfoot > tr > td {
-    border-bottom-color: #c7c9cc; }
+    border-bottom-color: #a3a5a8; }
   .table-stable-dark > tbody > tr:hover > td,
   .table-stable-dark > tbody > tr:hover > th {
-    background-color: #c7c9cc; }
+    background-color: #a3a5a8; }
 
 @media (max-width: 768px) {
   .table-responsive-vertical .table-stable-dark > tbody > tr > td {
-    background-color: #adafb3; }
+    background-color: #898b8f; }
   .table-responsive-vertical .table-stable-dark > tbody > tr > td[data-title]:before {
     color: #fff; } }
 
@@ -8031,7 +8034,7 @@ Created by Valdemar Rolfsen 2016
   color: #433e36; }
 
 .list-stable-dark li {
-  background: #adafb3;
+  background: #898b8f;
   color: #fff; }
 
 .list-primary li {
@@ -8069,7 +8072,7 @@ Created by Valdemar Rolfsen 2016
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "GTWalsheim", sans-serif;
+  font-family: "Muli", sans-serif;
   font-size: 14px;
   color: #333; }
   @media (max-width: 768px) {

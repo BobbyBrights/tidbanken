@@ -5,7 +5,7 @@
                 <h4>Logg inn</h4>
 
                 <!-- User name -->
-                <input [(ngModel)]="user.username" type="phone" class="input input-bottom-blue m-l-20-0"
+                <input [(ngModel)]="user.phone" type="phone" class="input input-bottom-blue m-l-20-0"
                        placeholder="Telefon" #username="ngForm">
 
                 <!-- Password -->
@@ -30,4 +30,10 @@
         </div>
     </div>
 </div>
-<popup-alert [alert]="show.alert" [alertText]="'Mail sendt'"></popup-alert>
+
+<!-- SMOOTH ALERT -->
+<smooth-alert [collapse]="show.alert"
+              [alertType]="alertType"
+              [alertText]="alertText"
+              (onButtonClick)="toggle($event)">
+</smooth-alert>

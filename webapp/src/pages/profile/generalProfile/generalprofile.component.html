@@ -1,15 +1,15 @@
 <div class="row row-center row-center-v h-full has-nav-side-lg">
     <div class="w-800 p-l-20-20">
         <h2>Generell informasjon</h2>
-        <form class="fs-16" action="">
-            <input type="text" class="input input-bottom-dark m-l-20-0" placeholder="Fornavn">
-            <input type="text" class="input input-bottom-dark m-l-20-0" placeholder="Etternavn">
-            <input type="text" class="input input-bottom-dark m-l-20-0" placeholder="Telefon">
-            <input type="text" class="input input-bottom-dark m-l-20-0" placeholder="Skriv inn ditt navn">
-            <input type="text" class="input input-bottom-dark m-l-20-0" placeholder="Skriv inn ditt navn">
-            <input type="text" class="input input-bottom-dark m-l-20-0" placeholder="Skriv inn ditt navn">
+        <form *ngIf="user" class="fs-16" (ngSubmit)="update()">
+            <input [(ngModel)]="user.first_name" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Fornavn">
+            <input [(ngModel)]="user.last_name" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Etternavn">
+            <input [(ngModel)]="user.phone" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Telefon">
+            <input [(ngModel)]="user.first_name" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Skriv inn ditt navn">
+            <input [(ngModel)]="user.first_name" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Skriv inn ditt navn">
+            <input [(ngModel)]="user.first_name" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Skriv inn ditt navn">
             <div class="t-right">
-                <button class="btn-lg btn-green">Send inn</button>
+                <button type="submit" class="btn-lg btn-green">Send inn</button>
             </div>
         </form>
     </div>

@@ -11,14 +11,16 @@ import {
 } from 'angular2-google-maps/core';
 
 import {JwtHelper} from 'angular2-jwt/angular2-jwt';
-
+import {JobService} from "../../../lib/services/jobService";
+import myGlobals = require('globals');
 
 @Component({
     selector: 'jobs',
     template: require('pages/front/jobs/jobs.component.html'),
     directives: [GOOGLE_MAPS_DIRECTIVES],
     providers: [
-        HTTP_PROVIDERS
+        HTTP_PROVIDERS,
+        JobService
     ],
     styles: [require('css/jobs.component.css'), require('css/front.component.css')]
 })
@@ -32,6 +34,8 @@ export class JobsComponent {
 
     private _jwtHelper:JwtHelper = new JwtHelper();
 
+    public baseUrl: string;
+
     // Google maps
     // ------------------------
 
@@ -42,16 +46,8 @@ export class JobsComponent {
     lat: number = 51.673858;
     lng: number = 7.815982;
 
-    constructor(private _router:Router) {
-
-        this.jobs = [
-            new Job("Vaske hus og plen", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "http://kingofwallpapers.com/happy/happy-007.jpg"),
-            new Job("Gå en tur i mørket", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "http://kingofwallpapers.com/happy/happy-007.jpg"),
-            new Job("Spille sjakk", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "http://kingofwallpapers.com/happy/happy-007.jpg"),
-            new Job("Snakke japansk", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "http://kingofwallpapers.com/happy/happy-007.jpg"),
-            new Job("Høre på historier", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "http://kingofwallpapers.com/happy/happy-007.jpg"),
-            new Job("Være min venn", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "http://kingofwallpapers.com/happy/happy-007.jpg"),
-        ];
+    constructor(private _router:Router,
+                private _jobService:JobService) {
 
         this.places = [
             {name: "Trondheim"},
@@ -71,9 +67,19 @@ export class JobsComponent {
             {name: "Matlaging"},
         ];
 
+        this.baseUrl = myGlobals.baseURL;
+
         this.show = {
             map: false
-        }
+        };
+
+        this.jobs = [];
+
+        this._jobService.getJobs()
+            .subscribe(success =>{
+                this.jobs = success;
+                console.log(this.jobs);
+            });
     };
 
     public openJob(jobId:number) {
@@ -84,7 +90,7 @@ export class JobsComponent {
             return;
         }
 
-        this._router.navigate(['job', jobId]);
+        this._router.navigate(['front', 'job', jobId]);
     }
 
     // Show attribute

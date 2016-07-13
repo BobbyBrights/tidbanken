@@ -1,9 +1,9 @@
 import {ServerResponse} from "./serverResponse";
 
 export class User extends ServerResponse{
-    username: string;
+    phone: string;
     password: string;
-    
-    user_profile: {};
+
+    profile_picture: string;
     token: string;
 }

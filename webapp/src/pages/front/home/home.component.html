@@ -2,7 +2,7 @@
     <div class="cover-content">
         <h1>Gi tid i dag - få tid i <span class="color-primary">morgen</span></h1>
         <div class="row row-center p-l-40-20 fs-16">
-            <button class="btn-lg btn-border-primary btn-round m-l-0-20 t-600">Finn hjelp</button>
+            <button (click)="toggle('alert')" class="btn-lg btn-border-primary btn-round m-l-0-20 t-600">Finn hjelp</button>
             <button class="btn-lg btn-border-primary btn-round m-l-0-20 t-600">Tilby hjelp</button>
         </div>
     </div>
@@ -15,3 +15,8 @@
         </p>
     </div>
 </div>
+<smooth-alert [collapse]="show.alert"
+              [alertType]="'warning'"
+              [alertText]="'Mail sendt'"
+              (onButtonClick)="toggle($event)">
+</smooth-alert>

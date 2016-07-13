@@ -1,0 +1,30 @@
+<div *ngIf="collapse" class="smooth-cover row row-center row-center-v cover-6 cover-black">
+    <div class="smooth-dialog">
+        <div class="row row-center p-l-20-20 p-top fs-30"
+             [ngClass] = "{
+                  'color-primary': checkType('error'),
+                  'color-green': checkType('success'),
+                  'color-blue': checkType('warning')}">
+            <span class="fa fs-40"
+                  [ngClass] = "{
+                  'fa-times-circle': checkType('error'),
+                  'fa-check-circle': checkType('success'),
+                  'fa-exclamation-circle': checkType('warning')}"></span>
+        </div>
+        <div class="row row-center p-l-20-40 p-bottom color-dark t-center">
+            <p class="fs-16 t-300">
+                {{ alertText }}
+            </p>
+        </div>
+        <div class="row row-center p-l-40-20 p-bottom fs-16 color-dark">
+            <button class="btn-lg btn-round"
+                    (click)="buttonClick('alert')"
+                    [ngClass] = "{
+                      'btn-primary': checkType('error'),
+                      'btn-green': checkType('success'),
+                      'btn-blue': checkType('warning')}">
+                Lukk
+            </button>
+        </div>
+    </div>
+</div>

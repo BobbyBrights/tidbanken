@@ -41,7 +41,7 @@
     </div>
 </nav>
 <div class="jobs-container row h-full bg-stable-light">
-    <div class="row row-center bg-primary border-b-1 border-stable p-l-20-20">
+    <div class="row row-center row-center-v h-100 bg-primary border-b-1 border-stable fs-14">
         <button (click)="hideObject('map')" class="btn-lg btn-light rounded-3 m-l-20-20" [ngClass]="{'btn-border-light': show.map}">Liste</button>
         <button (click)="showObject('map')" class="btn-lg btn-light rounded-3 m-l-20-20" [ngClass]="{'btn-border-light': !show.map}">Kart</button>
     </div>
@@ -50,10 +50,10 @@
         <!-- List view -->
         <div *ngIf="!show.map" class="w-1000">
             <div (click)="openJob(job.id)" class="row row-center-v bg-light center-shadow hover-light" *ngFor="let job of jobs">
-              <div class="picture picture-lg m-l-20-20" [ngStyle]="{'background-image':'url(' + job.thumbnail + ')'}"></div>
+              <div class="picture picture-lg m-l-20-20" [ngStyle]="{'background-image':'url(' + baseUrl + job.picture + ')'}"></div>
                 <div class="c-m-8">
                     <h3 class="t-300 m-l-0-0">{{ job.title }}</h3>
-                    <p class="big m-l-0-10">{{ job.description}}</p>
+                    <p class="big m-l-0-10">Lagt ut for 2 timer siden</p>
                     <div class="row p-l-20-0 p-top">
                         <div class="c-m-4 fs-14">
                             <div class="row row-center-v">

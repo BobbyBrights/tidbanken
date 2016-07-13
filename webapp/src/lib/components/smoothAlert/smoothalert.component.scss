@@ -1,0 +1,41 @@
+@import "../../mimas/variables";
+
+.smooth-cover {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1337;
+
+  cursor: pointer;
+}
+
+.smooth-dialog {
+  width: 700px;
+
+  background: $light;
+  border-radius: 5px;
+
+  cursor: default;
+}
+
+.collapse {
+  display: none;
+}
+
+.collapse.in {
+  display: block;
+}
+
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-duration: .35s;
+  -o-transition-duration: .35s;
+  transition-duration: .35s;
+  -webkit-transition-property: height, visibility;
+  -o-transition-property: height, visibility;
+  transition-property: height, visibility;
+}

@@ -5,7 +5,7 @@
             <input ngControl="title" [(ngModel)]="newJob.title" type="text" class="input h-60"
                    placeholder="Skriv inn en passende tittel" #title="ngForm">
             <div class="m-l-10-0 t-right">
-                <button (click)="next()" class="btn-lg btn-primary" [disabled]="!title.valid">Neste</button>
+                <button (click)="next()" [disabled]="!title.valid" type="button" class="btn-lg btn-primary">Neste</button>
             </div>
         </div>
         <div *ngIf="checkStep(1)" class="w-700">
@@ -13,40 +13,35 @@
             <textarea ngControl="description" [(ngModel)]="newJob.description" class="textarea h-300"
                       placeholder="Skriv en kort beskrivelse" #description="ngForm"></textarea>
             <div class="m-l-10-0 t-right">
-                <button (click)="next()" class="btn-lg btn-primary" [disabled]="!description.valid">Neste</button>
+                <button (click)="next()" [disabled]="!description.valid" type="button" class="btn-lg btn-primary">Neste</button>
             </div>
         </div>
         <div *ngIf="checkStep(2)" class="w-1100">
             <h4 class="w-100-p">Hvor lang tid tar det?</h4>
             <div class="row row-center-v row-center">
-                <div class="border-1 border-stable-dark p-l-10-10 bg-light w-200 t-center m-l-10-10 hover-light">
+                <div *ngFor="let hour of hours" (click)="setDuration(hour)" class="border-1 border-stable-dark p-l-10-10 bg-light w-200 t-center m-l-10-10 hover-light">
                     <p class="m-l-0-0">Omtrent</p>
-                    <h3 class="m-l-0-0">1</h3>
-                    <p class="m-l-0-0">time</p>
-                </div>
-                <div class="border-1 border-stable-dark p-l-10-10 bg-light w-200 t-center m-l-10-10 hover-light">
-                    <p class="m-l-0-0">Omtrent</p>
-                    <h3 class="m-l-0-0">2</h3>
-                    <p class="m-l-0-0">timer</p>
-                </div>
-                <div class="border-1 border-stable-dark p-l-10-10 bg-light w-200 t-center m-l-10-10 hover-light">
-                    <p class="m-l-0-0">Omtrent</p>
-                    <h3 class="m-l-0-0">4</h3>
-                    <p class="m-l-0-0">timer</p>
-                </div>
-                <div class="border-1 border-stable-dark p-l-10-10 bg-light w-200 t-center m-l-10-10 hover-light">
-                    <p class="m-l-0-0">Omtrent</p>
-                    <h3 class="m-l-0-0">8</h3>
-                    <p class="m-l-0-0">timer</p>
+                    <h3 class="m-l-0-0">{{hour}}</h3>
+                    <p *ngIf="hour == 1" class="m-l-0-0">time</p>
+                    <p *ngIf="hour != 1" class="m-l-0-0">timer</p>
                 </div>
                 <div class="p-l-10-10 w-200 t-center m-l-10-10">
                     <p class="m-l-10-0">Omtrent</p>
-                    <input type="number" class="input h-50 t-center">
+                    <input ngControl="duration" [(ngModel)]="newJob.duration" type="number" class="input h-50 t-center"
+                           #duration="ngForm">
                     <p class="m-l-10-0">timer</p>
                 </div>
                 <div class="m-l-10-0 w-100-p t-right">
-                    <button (click)="next()" class="btn-lg btn-primary m-l-20-20">Neste</button>
+                    <button (click)="next()" [disabled]="!duration.valid" type="button" class="btn-lg btn-primary m-l-20-20">Neste</button>
                 </div>
+            </div>
+        </div>
+        <div *ngIf="checkStep(3)" class="w-700">
+            <h4>Adresse</h4>
+            <input ngControl="street_address" [(ngModel)]="newJob.street_address" (setAddress) = "getAddress($event)" class="input h-60"
+                   placeholder="Skriv inn din adresse" #street_address="ngForm" googleplace>
+            <div class="m-l-10-0 t-right">
+                <button [disabled]="!street_address.valid" type="submit" class="btn-lg btn-primary">Neste</button>
             </div>
         </div>
     </form>
