@@ -6,6 +6,10 @@ import {JobService}                 from "lib/services/jobService";
 import {AuthService}                from "lib/services/authService";
 import {User}                       from "lib/classes/user";
 import {Datepicker}                 from "lib/components/datepicker/datepicker";
+import {Appointment}                from "lib/classes/appointment";
+import {Validators, FormBuilder}    from "@angular/common";
+import {ValidationService}          from "lib/services/validationService";
+
 import myGlobals = require('globals');
 
 @Component({
@@ -22,9 +26,18 @@ import myGlobals = require('globals');
 export class JobComponent {
 
     public job: Job;
+    public appointment: Appointment = <Appointment>{};
+    public newDate: Date;
+    public newHour: number;
+    public newMin: number;
+
     public author: User;
+    public hours: number[];
+    public quarters: number[];
 
     public baseUrl: string;
+
+    public timeForm:any;
 
     public show: {};
     public soknadsfrist = "";
@@ -32,13 +45,23 @@ export class JobComponent {
     constructor(private _router:Router,
                 private _jobService:JobService,
                 private _routeSegment:RouteSegment,
+                private _formBuilder:FormBuilder,
                 private _authService:AuthService) {
 
         this.baseUrl = myGlobals.baseURL;
-
+        this.hours = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+        this.quarters = [0,15,30,45];
         this.show = {
             appointment: false
         };
+
+        this.newHour = -1;
+        this.newMin = -1;
+
+        this.timeForm = this._formBuilder.group({
+            'hour':['', Validators.compose([Validators.required, ValidationService.positiveNumberValidator])],
+            'minute':['', Validators.compose([Validators.required, ValidationService.positiveNumberValidator])],
+        });
 
         let job_id = this._routeSegment.getParam('id');
 
@@ -58,10 +81,23 @@ export class JobComponent {
     }
 
     public dateChanged(event) {
-        var d = event.value;
-        d.setHours(23, 59, 59);
-        d.setTime(d.getTime() - d.getTimezoneOffset() * 60 * 1000);
 
-        this.job.title = d.toISOString();
+        this.newDate = event.value;
+
+        this.newDate.setHours(12, 0, 0);
+    }
+
+    public createAppointment() {
+
+        this.newDate.setHours(this.newHour, this.newMin, 0);
+        this.newDate.setTime(this.newDate.getTime() - this.newDate.getTimezoneOffset() * 60 * 1000);
+
+        this.appointment.date = this.newDate.toISOString();
+        this.appointment.job = this.job.id;
+
+        this._jobService.createAppointment(this.appointment)
+            .subscribe(success => {
+
+            }, error => {});
     }
 }

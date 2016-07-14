@@ -11,7 +11,9 @@
             </div>
             <div class="content p-l-40-60 fs-16 t-center">
                 <p class="color-stable-dark">Interessert?</p>
-                <button (click)="toggle('appointment')"  class="btn-md btn-green rounded-5 w-100-p m-l-10-0">Meld interesse</button>
+                <button (click)="toggle('appointment')" class="btn-md btn-green rounded-5 w-100-p m-l-10-0">Meld
+                    interesse
+                </button>
                 <p class="color-stable-dark">eller</p>
                 <button class="btn-md btn-blue rounded-5 w-100-p m-l-10-0">Del jobben</button>
             </div>
@@ -55,9 +57,38 @@
     </div>
 </div>
 
-<div *ngIf="show.appointment" (click)="toggle('appointment')" class="dialog-cover row row-center row-center-v cover-6 cover-black">
+<div *ngIf="show.appointment" (click)="toggle('appointment')"
+     class="dialog-cover row row-center row-center-v cover-6 cover-black">
     <div (click)="$event.stopPropagation()" class="popup-dialog w-600 bg-light p-l-20-20 rounded-5">
+        <div class="row p-l-5-0">
+            <div class="c-l-12 t-center">
+                <h4 class="t-upper t-300 color-stable-dark">Dato</h4>
+            </div>
+        </div>
         <datepicker class="color-dark h-400" [date]="soknadsfrist"
                     (valueChange)="dateChanged($event)" [height]="350"></datepicker>
+        <form [ngFormModel]="timeForm" (ngSubmit)="createAppointment()">
+            <div class="row p-l-40-20 p-top">
+                <div class="c-l-12 t-center">
+                    <h4 class="t-upper t-300 color-stable-dark">Klokkeslett</h4>
+                </div>
+                <div class="c-l-3 color-light p-l-10-0 fs-12">
+                    <select ngControl="hour" [(ngModel)]="newHour" class="select bg-blue rounded-5" #hour="ngForm">
+                        <option value="-1" disabled selected>Time</option>
+                        <option *ngFor="let hour of hours" value="{{hour}}">{{hour}}</option>
+                    </select>
+                </div>
+                <div class="c-l-3 color-light p-l-10-5 fs-12">
+                    <select ngControl="minute" [(ngModel)]="newMin" class="select bg-blue rounded-5 t-center"
+                            #minute="ngForm">
+                        <option value="-1" disabled selected>Minutt</option>
+                        <option *ngFor="let q of quarters" value="{{q}}">{{q}}</option>
+                    </select>
+                </div>
+                <div class="c-l-6 p-l-10-0 fs-11">
+                    <button [disabled]="!timeForm.valid" type="submit" class="btn-md btn-green rounded-5 w-100-p">Meld interesse</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

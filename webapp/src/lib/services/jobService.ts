@@ -8,6 +8,7 @@ import {AuthHttp} from 'angular2-jwt/angular2-jwt';
 import myGlobals = require('globals');
 import {RequestService} from "./requestService";
 import {Job} from "../classes/job";
+import {Appointment} from "../classes/appointment";
 
 @Injectable()
 export class JobService {
@@ -34,11 +35,8 @@ export class JobService {
             .map(res => <Job> res.json());
     }
 
-    public getCurrentUser() {
-
-        var key = 'currentUsers';
-
-        return this._requestService.request('GET', this._apiEndpoint + 'current-user/', key)
-            .map(res => <User> res.json());
+    public createAppointment(appointment:Appointment) {
+        return this._requestService.request('POST', this._apiEndpoint + 'appointments/', null, appointment)
+            .map(res => <Appointment> res.json());
     }
 }
