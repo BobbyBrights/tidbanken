@@ -1,19 +1,20 @@
-import {Component, NgZone}       from '@angular/core';
-import {Router, Routes, ROUTER_DIRECTIVES} from '@angular/router';
-import {UPLOAD_DIRECTIVES} from 'ng2-uploader/ng2-uploader';
+import {Component, NgZone}                      from '@angular/core';
+import {Router, Routes, ROUTER_DIRECTIVES}      from '@angular/router';
+import {UPLOAD_DIRECTIVES}                      from 'ng2-uploader/ng2-uploader';
 
-import {User} from "../../lib/classes/user";
-import {AuthService} from "../../lib/services/authService";
+import {User}                                   from "lib/classes/user";
+import {AuthService}                            from "lib/services/authService";
+import {LoginComponent}                         from "./login/login.component";
+import {RegisterComponent}                      from "./register/register.component";
+import {CompleteComponent}                      from "./complete/complete.component";
+import {ResetComponent}                         from "./reset/reset.component";
+import {AuthComponent}                          from "./auth/auth.component";
+import {HomeComponent}                          from "./home/home.component";
+import {JobsComponent}                          from "./jobs/jobs.component";
+import {JobComponent}                           from "./job/job.component";
+import {PostComponent}                          from "./post/post.component";
+import {MyAppointments}                         from "./myappointments/myappointments.component";
 import myGlobals = require('globals');
-import {LoginComponent} from "./login/login.component";
-import {RegisterComponent} from "./register/register.component";
-import {CompleteComponent} from "./complete/complete.component";
-import {ResetComponent} from "./reset/reset.component";
-import {AuthComponent} from "./auth/auth.component";
-import {HomeComponent} from "./home/home.component";
-import {JobsComponent} from "./jobs/jobs.component";
-import {JobComponent} from "./job/job.component";
-import {PostComponent} from "./post/post.component";
 
 @Component({
   selector: 'front',
@@ -28,6 +29,7 @@ import {PostComponent} from "./post/post.component";
   {path: '', component: HomeComponent},
   {path: 'jobs', component: JobsComponent},
   {path: 'job/:id', component: JobComponent},
+  {path: 'myappointments', component: MyAppointments},
   {path: 'post', component: PostComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},

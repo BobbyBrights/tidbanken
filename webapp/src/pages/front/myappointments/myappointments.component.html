@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="c-m-4 bg-stable-light center-shadow">
+        <div class="row row-end-v h-full">
+            <datepicker class="color-dark" [date]="soknadsfrist"
+                        (valueChange)="dateChanged($event)" [height]="350"></datepicker>
+        </div>
+    </div>
+    <div class="c-m-8">
+        <div class="row row-center-v row-center h-100 bg-primary">
+            <h4>Mine avtaler</h4>
+        </div>
+        <div class="row row-center p-l-20-20">
+            <div class="w-1000">
+                <div class="row border-b-1 border-stable p-l-5-10">
+                    <h4>August 2016</h4>
+                </div>
+                <div class="m-l-20-0 center-shadow">
+                    <div class="bg-blue p-l-15-15 fs-14">24. August</div>
+                    <div class="row row-center-v p-l-20-20 bg-stable-light hover-stable-light">
+                        <div class="c-l-10 m-l-0-20">
+                            <h4>Valdemar Rolfsen</h4>
+                            <p>Tester dette fint da</p>
+                            <div class="row p-l-20-0 p-top">
+                                <div class="c-m-4 fs-14">
+                                    <div class="row row-center-v">
+                                        <span class="fa fa-map-marker color-primary fs-14 m-l-0-10"></span>
+                                        <span class="color-stable-dark">Skansagata 2a</span>
+                                    </div>
+                                </div>
+                                <div class="c-m-4 fs-14">
+                                    <div class="row row-center-v">
+                                        <span class="fa fa-clock-o color-primary fs-14 m-l-0-10"></span>
+                                        <span class="color-stable-dark">3 timer</span>
+                                    </div>
+                                </div>
+                                <div class="c-m-4 fs-14">
+                                    <div class="row row-center-v">
+                                        <span class="fa fa-user color-primary fs-14 m-l-0-10"></span>
+                                        <span class="color-stable-dark">Valdemar Rolfsen</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
