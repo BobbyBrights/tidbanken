@@ -21,7 +21,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="job.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="job.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/front/job/job.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="735">
@@ -53,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="datepicker.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="datepicker.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/lib/components/datepicker/datepicker.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
@@ -533,12 +533,12 @@
       <option name="presentableId" value="Default" />
       <updated>1468228490012</updated>
       <workItem from="1468228491675" duration="3154000" />
-      <workItem from="1468236495952" duration="70604000" />
+      <workItem from="1468236495952" duration="70734000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73758000" />
+    <option name="totallyTimeSpent" value="73888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1680" height="1023" extended-state="6" />
@@ -1012,14 +1012,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib/components/datepicker/datepicker.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="35" column="58" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/components/datepicker/template.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1034,6 +1026,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
           <caret line="58" column="100" selection-start-line="58" selection-start-column="100" selection-end-line="58" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib/components/datepicker/datepicker.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="35" column="58" selection-start-line="35" selection-start-column="58" selection-end-line="35" selection-end-column="58" />
           <folding />
         </state>
       </provider>
