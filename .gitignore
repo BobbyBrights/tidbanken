@@ -1,0 +1,5 @@
+# General
+.DS_store
+
+# Pycharm and IDEA
+/.idea
