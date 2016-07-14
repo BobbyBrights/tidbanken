@@ -5,7 +5,7 @@ import {AnimationBuilder}                                           from "@angul
 
 @Component({
     selector: 'smooth-alert',
-    template: require('lib/components/smoothalert/smoothalert.component.html'),
+    template: require('lib/components/smoothAlert/smoothalert.component.html'),
     directives: [],
     providers: [
         HTTP_PROVIDERS
