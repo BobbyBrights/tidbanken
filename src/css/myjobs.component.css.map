@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAW;EACT,IAAI,EAAE,CAAC",
+"sources": ["../pages/front/myjobs/myjobs.component.scss"],
+"names": [],
+"file": "myjobs.component.css"
+}

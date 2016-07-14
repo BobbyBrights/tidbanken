@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="w-500 h-full bg-stable-light center-shadow">
+    <div class="row row-center-v row-center h-100 bg-blue">
+      <h4>Mine jobber</h4>
+    </div>
+    <div class="row row-center-v p-l-10-15 border-b-1 border-stable hover-stable-light">
+      <div class="picture picture-md" [ngStyle]="{'background-image':'url(http://www.metalsucks.net/wp-content/uploads/2015/07/sheep-redorbit.jpg)'}"></div>
+      <div class="p-l-0-15">
+        <h5>Valdemar Rolfsen</h5>
+        <span class="fs-11">Lagt ut for 3 timer siden</span>
+      </div>
+    </div>
+  </div>
+  <appointment-list class="fill-rest" *ngIf="appointments.length" [appointments]="appointments"></appointment-list>
+</div>

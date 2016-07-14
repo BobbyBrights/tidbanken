@@ -1,24 +1,23 @@
 import {Component}                  from '@angular/core';
 import {HTTP_PROVIDERS}             from '@angular/http';
 import {SmoothAlert}                from "lib/components/smoothAlert/smoothalert.component";
-import {Datepicker}                 from "lib/components/datepicker/datepicker";
-import {JobService}                 from "lib/services/jobService";
 import {Appointment}                from "lib/classes/appointment";
 import {AppointmentList}            from "lib/components/appointmentlist/appointmentlist.component";
+import {JobService}                 from "lib/services/jobService";
 
 @Component({
-  selector: 'home',
-  template: require('pages/front/myappointments/myappointments.component.html'),
-  directives: [SmoothAlert, Datepicker, AppointmentList],
+  selector: 'myjobs',
+  template: require('pages/front/myjobs/myjobs.component.html'),
+  directives: [SmoothAlert, AppointmentList],
   providers: [
     HTTP_PROVIDERS,
     JobService
   ],
-  styles: [require('css/myappointments.component.css'), require('css/front.component.css')]
+  styles: [require('css/myjobs.component.css'), require('css/front.component.css')]
 })
 
-export class MyAppointments {
-  public show:{};
+export class MyJobsComponent {
+  public show: {};
   public appointments: Appointment[] = [];
 
   constructor(private _jobService:JobService) {
