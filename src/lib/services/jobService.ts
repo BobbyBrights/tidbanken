@@ -41,7 +41,7 @@ export class JobService {
     }
 
     public createAppointment(appointment:Appointment) {
-        return this._requestService.request('POST', this._apiEndpoint + 'appointments/', null, appointment)
+        return this._requestService.request('POST', this._apiEndpoint + appointment.job + '/appointments/', null, appointment)
             .map(res => <Appointment> res.json());
     }
 }
