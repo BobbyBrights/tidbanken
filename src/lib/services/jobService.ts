@@ -35,6 +35,11 @@ export class JobService {
             .map(res => <Job> res.json());
     }
 
+    public getUserAppointments() {
+      return this._requestService.request('GET', myGlobals.apiUrl + 'users/current/appointments/', 'appointments')
+            .map(res => <Appointment[]> res.json());
+    }
+
     public createAppointment(appointment:Appointment) {
         return this._requestService.request('POST', this._apiEndpoint + 'appointments/', null, appointment)
             .map(res => <Appointment> res.json());

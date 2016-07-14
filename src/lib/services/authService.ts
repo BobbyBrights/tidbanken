@@ -23,7 +23,7 @@ export class AuthService {
 
         var key = 'currentUsers';
 
-        return this._requestService.request('GET', this._apiEndpoint + 'current-user/', key)
+        return this._requestService.request('GET', this._apiEndpoint + 'current/', key)
             .map(res => <User> res.json());
     }
 
