@@ -55,6 +55,11 @@ export class JobService {
       .map(res => <Appointment> res.json());
   }
 
+  public updateAppointment(appointment:Appointment) {
+    return this._requestService.request('PUT', this._apiEndpoint + 'appointments/' + appointment.id + '/', null, appointment)
+      .map(res => <Appointment> res.json());
+  }
+
   public getAppointment(appointment_id:string) {
     return this._requestService.request('GET', this._apiEndpoint + 'appointments/' + appointment_id + '/')
       .map(res => <Appointment> res.json());

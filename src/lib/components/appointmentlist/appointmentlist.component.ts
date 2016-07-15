@@ -13,6 +13,7 @@ import {Appointment}                                from "../../classes/appointm
   ],
   styles: [require('css/appointmentlist.component.css'), require('css/app.component.css')]
 })
+
 export class AppointmentList implements OnInit {
   @Input() appointments: Appointment[];
 
@@ -41,6 +42,19 @@ export class AppointmentList implements OnInit {
   // ---------------------------
   public checkStatus(status:number, check:number) {
     return status == check
+  }
+
+  public checkMonth(appointment:Appointment) {
+
+    var index = this.filteredAppointments.indexOf(appointment);
+
+    if (this.filteredAppointments.indexOf(appointment) == 0)
+      return true;
+
+    var date = new Date(appointment.date);
+    var check = new Date(this.filteredAppointments[index - 1].date);
+
+    return date.getMonth() != check.getMonth();
   }
 
   public covertDate(date) {

@@ -42,10 +42,31 @@
         </div>
       </div>
     </div>
+    <div *ngIf="checkStatus(appointment.status, 1)" class="row row-center row-center-v p-l-60-20 fs-14">
+      <div class="t-center p-l-20-20">
+        <p>Ble avtalen gjennomført? Ikke glem å marker avtalen som gjennomført, slik at {{appointment.user.first_name}} får timene sine.</p>
+      </div>
+      <button class="btn-lg btn-green rounded-3">Avtalen ble gjennomført</button>
+    </div>
   </div>
   <div class="chat-room fs-14">
-    <div *ngIf="chatRoom?.messages?.length" class="messages" #chatScroll>
-      <div *ngFor="let msg of chatRoom.messages" class="message layout-row layout-center-v"
+    <div class="messages" #chatScroll>
+      <div *ngIf="checkStatus(appointment.status, 0)" class="row row-center row-center-v h-100-p p-l-40-20 t-center">
+        <div class="w-600">
+          <h3>Gi et svar</h3>
+          <p class="fs-14 color-stable-dark">Du har ikke gitt svar til {{appointment.user.first_name}} om denne tiden passer for deg. Dette kan du gjøre ved å trykke på knappene under</p>
+          <!--<div class="picture picture-lg" [ngStyle]="{'background-image':'url(' + baseUrl + appointment.user.profile_picture + ')'}"></div>-->
+          <button (click)="decline()" class="btn-lg btn-primary btn-round m-l-40-20">Avslå</button>
+          <button (click)="accept()" class="btn-lg btn-green btn-round m-l-40-20">Godta</button>
+        </div>
+      </div>
+      <div *ngIf="!checkStatus(appointment.status, 0) && !chatRoom?.messages?.length" class="row row-center row-center-v h-100-p p-l-40-20 t-center">
+        <div class="w-600">
+          <h4>Ingen meldinger</h4>
+          <p class="fs-14 color-stable-dark">Du og {{appointment.user.first_name}} har ingen meldinger sammen enda. For å skrive en melding vennligst benytt feltet under.</p>
+        </div>
+      </div>
+      <div *ngFor="let msg of chatRoom?.messages" class="message layout-row layout-center-v"
            [ngClass]="{'layout-end': !msg.company}">
         <div *ngIf="msg.company" class="message-picture message-picture-sm m-l-0-20"
              [ngStyle]="{'background-image': 'url(' + baseUrl + chatRoom.company.logo + ')'}"></div>

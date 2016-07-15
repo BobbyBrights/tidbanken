@@ -1,9 +1,19 @@
 <div class="row">
   <div class="c-m-4 bg-stable-light center-shadow">
-    <div class="row row-end-v h-full">
-      <datepicker class="color-dark" [date]="soknadsfrist"
-                  (valueChange)="dateChanged($event)" [height]="350"></datepicker>
+    <div class="row h-full">
+      <div class="p-l-20-20">
+        <div class="row p-l-10-10 bg-blue">Den kommende uken</div>
+      </div>
+      <datepicker class="color-dark appointments-calendar w-100-p" [date]="soknadsfrist"
+                  (valueChange)="addDate($event)" [height]="350"></datepicker>
     </div>
   </div>
-  <appointment-list class="c-l-8" *ngIf="appointments.length" [appointments]="appointments"></appointment-list>
+  <div class="c-l-8">
+    <div class="appointment-header row row-center-v row-center h-100 bg-primary">
+      <h4>Kommende avtaler</h4>
+    </div>
+    <div class="appointment-list">
+      <appointment-list *ngIf="filteredAppointments" [appointments]="filteredAppointments"></appointment-list>
+    </div>
+  </div>
 </div>

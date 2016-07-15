@@ -3,7 +3,8 @@
     <div class="row row-center-v row-center h-100 bg-blue">
       <h4>Mine jobber</h4>
     </div>
-    <div *ngFor="let job of jobs" (click)="setSelectedJob(job)" class="row row-center-v p-l-10-15 border-b-1 border-stable hover-stable-light">
+    <div *ngFor="let job of jobs" (click)="setSelectedJob(job)"
+         class="row row-center-v p-l-10-15 border-b-1 border-stable hover-stable-light" [ngClass]="{'bg-stable':checkSelected(job)}">
       <div class="picture picture-md" [ngStyle]="{'background-image':'url(' + baseUrl + job.picture + ')'}"></div>
       <div class="p-l-0-15">
         <h5>{{job.title}}</h5>

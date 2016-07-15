@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,sBAAuB;EACrB,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,CAAC;EAAE,IAAI,EAAE,CAAC;;AAGpB,mBAAoB;EAClB,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,CAAC;EAAE,IAAI,EAAE,CAAC;;AAGjB,iBAAkB;EAChB,WAAW,EAAE,KAAK;EAClB,MAAM,EAAE,KAAK",
+"sources": ["../pages/front/myappointments/myappointments.component.scss"],
 "names": [],
 "file": "myappointments.component.css"
 }

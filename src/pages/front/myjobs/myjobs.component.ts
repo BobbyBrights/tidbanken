@@ -54,10 +54,14 @@ export class MyJobsComponent {
   }
 
   public setSelectedJob(job) {
-    if (this.selectedJob != job) {
+    if (!this.checkSelected(job)) {
       this.selectedJob = job;
       this.setAppointments();
     }
+  }
+
+  public checkSelected(job) {
+    return this.selectedJob == job;
   }
 
   public toggle(key) {

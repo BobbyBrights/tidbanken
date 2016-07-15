@@ -6,6 +6,8 @@ import {SmoothAlert}                from "lib/components/smoothAlert/smoothalert
 import {JobService}                 from "lib/services/jobService";
 import {Appointment}                from "lib/classes/appointment";
 
+import myGlobals = require('globals');
+
 @Component({
   selector: 'appointment',
   template: require('pages/front/appointment/appointment.component.html'),
@@ -14,12 +16,14 @@ import {Appointment}                from "lib/classes/appointment";
     HTTP_PROVIDERS,
     JobService
   ],
-  styles: [require('css/appointment.component.css')]
+  styles: [require('css/appointment.component.css'), require('css/front.component.css')]
 })
 
 export class AppointmentComponent {
   public show: {};
   public appointment:Appointment;
+
+  public baseUrl:string;
 
   constructor(
     private _routeSegment:RouteSegment,
@@ -27,6 +31,8 @@ export class AppointmentComponent {
     this.show = {
       alert: false
     };
+
+    this.baseUrl = myGlobals.baseURL;
 
     let appointment_id = this._routeSegment.getParam('id');
 
@@ -49,5 +55,20 @@ export class AppointmentComponent {
 
   public covertDate(date) {
     return new Date(date);
+  }
+
+  public accept() {
+    this.appointment.status = 1;
+    this.update();
+  }
+
+  public decline() {
+    this.appointment.status = 2;
+    this.update();
+  }
+
+  public update() {
+    this._jobService.updateAppointment(this.appointment)
+      .subscribe(success => {}, error => {});
   }
 }
