@@ -16,6 +16,7 @@ import {PostComponent}                          from "./post/post.component";
 import {MyAppointments}                         from "./myappointments/myappointments.component";
 import {MyJobsComponent}                        from "./myjobs/myjobs.component";
 import myGlobals = require('globals');
+import {AppointmentComponent} from "./appointment/appointment.component";
 
 @Component({
   selector: 'front',
@@ -31,6 +32,7 @@ import myGlobals = require('globals');
   {path: 'jobs', component: JobsComponent},
   {path: 'job/:id', component: JobComponent},
   {path: 'myappointments', component: MyAppointments},
+  {path: 'appointment/:id', component: AppointmentComponent},
   {path: 'myjobs', component: MyJobsComponent},
   {path: 'post', component: PostComponent},
   {path: 'login', component: LoginComponent},

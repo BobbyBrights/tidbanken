@@ -1,0 +1,61 @@
+<div *ngIf="appointment" class="row">
+  <div class="w-600 h-full bg-stable-light">
+    <div class="row row-center row-center-v h-400" [ngClass]="{
+              'bg-blue': checkStatus(appointment.status, 0),
+              'bg-green': checkStatus(appointment.status, 1),
+              'bg-decline': checkStatus(appointment.status, 2)}">
+      <div>
+        <div class="p-l-20-20 t-center">
+              <span class="fa fs-40" [ngClass]="{
+                  'fa-hourglass-o': checkStatus(appointment.status, 0),
+                  'fa-calendar-check-o': checkStatus(appointment.status, 1),
+                  'fa-calendar-times-o': checkStatus(appointment.status, 2)}">
+              </span>
+          <p *ngIf="checkStatus(appointment.status, 0)" class="t-upper fs-12 m-l-10-0 m-top">Venter</p>
+          <p *ngIf="checkStatus(appointment.status, 1)" class="t-upper fs-12 m-l-10-0 m-top">Godkjent</p>
+          <p *ngIf="checkStatus(appointment.status, 2)" class="t-upper fs-12 m-l-10-0 m-top">Avslått</p>
+        </div>
+      </div>
+    </div>
+    <div class="center-shadow">
+      <div class="p-l-15-15 fs-16 t-center" [ngClass]="{
+              'bg-blue': checkStatus(appointment.status, 0),
+              'bg-green': checkStatus(appointment.status, 1),
+              'bg-decline': checkStatus(appointment.status, 2)}"><strong>{{appointment.job.title}}</strong> den {{
+        covertDate(appointment.date) | date:'longDate' }}
+      </div>
+      <div class="row bg-stable-light">
+        <div class="c-l-12 fs-14">
+          <div class="row row-center-v border-b-1 border-stable p-l-20-20">
+            <span class="fa fa-map-marker color-primary fs-14 m-l-0-10"></span>
+            <span class="color-stable-dark">Skansagata 2a</span>
+          </div>
+          <div class="row row-center-v border-b-1 border-stable p-l-20-20">
+            <span class="fa fa-clock-o color-primary fs-14 m-l-0-10"></span>
+            <span class="color-stable-dark">{{appointment.job.duration}} time<span
+              *ngIf="appointment.job.duration > 1">r</span></span>
+          </div>
+          <div class="row row-center-v border-b-1 border-stable p-l-20-20">
+            <span class="fa fa-user color-primary fs-14 m-l-0-10"></span>
+            <span class="color-stable-dark">{{appointment.user.first_name}} {{appointment.user.last_name}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chat-room fs-14">
+    <div *ngIf="chatRoom?.messages?.length" class="messages" #chatScroll>
+      <div *ngFor="let msg of chatRoom.messages" class="message layout-row layout-center-v"
+           [ngClass]="{'layout-end': !msg.company}">
+        <div *ngIf="msg.company" class="message-picture message-picture-sm m-l-0-20"
+             [ngStyle]="{'background-image': 'url(' + baseUrl + chatRoom.company.logo + ')'}"></div>
+        <div *ngIf="!msg.company" class="message-picture message-picture-sm m-l-0-20 reverse"
+             [ngStyle]="{'background-image': 'url(' + baseUrl + chatRoom.applicant.user_profile.profile_picture_thumbnail + ')'}"></div>
+        <div class="message-text not-author"
+             [ngClass]="{'author': !msg.company, 'not-author': msg.company, 'waiting': msg.is_waiting}"
+             [innerHtml]="msg.text"></div>
+      </div>
+    </div>
+    <textarea class="textarea" placeholder="Skriv din melding her ..."></textarea>
+  </div>
+</div>

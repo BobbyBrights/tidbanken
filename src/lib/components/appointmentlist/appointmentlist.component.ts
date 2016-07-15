@@ -1,7 +1,7 @@
-import {Component, Input, OnInit}     from '@angular/core';
-import {HTTP_PROVIDERS}               from '@angular/http';
-import {Router}                       from "@angular/router";
-import {Appointment}                  from "../../classes/appointment";
+import {Component, Input, OnInit, SimpleChange}     from '@angular/core';
+import {HTTP_PROVIDERS}                             from '@angular/http';
+import {Router}                                     from "@angular/router";
+import {Appointment}                                from "../../classes/appointment";
 
 
 @Component({
@@ -27,8 +27,14 @@ export class AppointmentList implements OnInit {
     this.filteredAppointments = this.appointments;
   }
 
-  public navigate(job_id:number) {
-    this._router.navigate(['front', 'job', job_id]);
+  ngOnChanges(changes: {[propertyName: string]: SimpleChange}) {
+    if (changes['appointments']) {
+      this.filterAppointments();
+    }
+  }
+
+  public navigate(appointment_id:number) {
+    this._router.navigate(['front', 'appointment', appointment_id]);
   }
 
   // Appointments related

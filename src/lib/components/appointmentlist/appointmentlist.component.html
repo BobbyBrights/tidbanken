@@ -29,7 +29,7 @@
               'bg-green': checkStatus(appointment.status, 1),
               'bg-decline': checkStatus(appointment.status, 2)}">{{ covertDate(appointment.date) | date:'MMM dd' }}
       </div>
-      <div (click)="navigate(appointment.job.id)" class="row row-center-v p-l-20-0 bg-stable-light hover-stable-light">
+      <div (click)="navigate(appointment.id)" class="row row-center-v p-l-20-0 bg-stable-light hover-stable-light">
         <div class="c-m-2 t-center"
              [ngClass]="{
                  'color-blue': checkStatus(appointment.status, 0),
@@ -62,13 +62,19 @@
               </div>
             </div>
             <div class="c-m-4 fs-14">
-              <div class="row row-center row-center-v">
+              <div class="row row-center-v">
                 <span class="fa fa-user color-primary fs-14 m-l-0-10"></span>
                 <span class="color-stable-dark">{{appointment.user.first_name}} {{appointment.user.last_name}}</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div *ngIf="!filteredAppointments.length" class="row row-center p-l-60-20">
+      <div class="w-900">
+        <h3>Ingen avtaler å vise</h3>
+        <p class="color-stable-dark fs-16">Det er ingen avtaler å vise til. Dette kan være fordi du ikke har oppført noen, eller at du har filtrert bort alle samen.</p>
       </div>
     </div>
   </div>

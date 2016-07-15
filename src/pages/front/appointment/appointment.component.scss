@@ -1,0 +1,72 @@
+@import "../../../lib/mimas/variables";
+
+$textarea-height: 200px;
+
+.chat-room {
+  width: calc(100vw - 600px);
+  height: 100vh;
+
+  textarea {
+    // Position related
+    position: absolute;
+    bottom: 0;
+
+    // Dimensions
+    width: 100%;
+    height: $textarea-height;
+
+    // Other
+    border: 1px solid $stable;
+    padding: 20px;
+    resize: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .messages {
+    // Position
+    position: absolute;
+    top: 0;
+    bottom: $textarea-height;
+
+    // Flex box
+    flex: 1 1 auto;
+
+    // Dimensions
+    width: 100%;
+
+    // Other
+    overflow-y: scroll;
+
+    .message {
+      margin: 20px 0;
+      width: 100%;
+      .message-text {
+        max-width: 60%;
+        padding: 10px 20px;
+        border-radius: 3px;
+        color: $light;
+        font-size: 16px;
+        white-space: pre-line;
+      }
+    }
+
+    .not-author {
+      background: $stable_dark;
+    }
+
+    .author {
+      background: $blue;
+    }
+
+    .waiting {
+      opacity: 0.5;
+    }
+
+    .reverse {
+      order: 2;
+    }
+  }
+}

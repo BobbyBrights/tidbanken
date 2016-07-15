@@ -1,0 +1,45 @@
+/*----------------------------------------
+
+  KORDE - VARIABLES
+
+-----------------------------------------*/
+.chat-room {
+  width: calc(100vw - 600px);
+  height: 100vh; }
+  .chat-room textarea {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    border: 1px solid #d7d9da;
+    padding: 20px;
+    resize: none; }
+    .chat-room textarea:focus {
+      outline: none; }
+  .chat-room .messages {
+    position: absolute;
+    top: 0;
+    bottom: 200px;
+    flex: 1 1 auto;
+    width: 100%;
+    overflow-y: scroll; }
+    .chat-room .messages .message {
+      margin: 20px 0;
+      width: 100%; }
+      .chat-room .messages .message .message-text {
+        max-width: 60%;
+        padding: 10px 20px;
+        border-radius: 3px;
+        color: #fff;
+        font-size: 16px;
+        white-space: pre-line; }
+    .chat-room .messages .not-author {
+      background: #898b8f; }
+    .chat-room .messages .author {
+      background: #4c7c96; }
+    .chat-room .messages .waiting {
+      opacity: 0.5; }
+    .chat-room .messages .reverse {
+      order: 2; }
+
+/*# sourceMappingURL=appointment.component.css.map */
