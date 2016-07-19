@@ -43,10 +43,10 @@
       </div>
     </div>
     <div *ngIf="checkStatus(appointment.status, 1)" class="row row-center row-center-v p-l-60-20 fs-14">
-      <div class="t-center p-l-20-20">
+      <div class="t-center p-l-0-20">
         <p>Ble avtalen gjennomført? Ikke glem å marker avtalen som gjennomført, slik at {{appointment.user.first_name}} får timene sine.</p>
       </div>
-      <button class="btn-lg btn-green rounded-3">Avtalen ble gjennomført</button>
+      <button (click)="sendMessage('Halla')" class="btn-lg btn-green rounded-3 m-l-20-0 m-top">Avtalen ble gjennomført</button>
     </div>
   </div>
   <div class="chat-room fs-14">
@@ -60,23 +60,24 @@
           <button (click)="accept()" class="btn-lg btn-green btn-round m-l-40-20">Godta</button>
         </div>
       </div>
-      <div *ngIf="!checkStatus(appointment.status, 0) && !chatRoom?.messages?.length" class="row row-center row-center-v h-100-p p-l-40-20 t-center">
+      <div *ngIf="!checkStatus(appointment.status, 0) && !messages.length" class="row row-center row-center-v h-100-p p-l-40-20 t-center">
         <div class="w-600">
           <h4>Ingen meldinger</h4>
           <p class="fs-14 color-stable-dark">Du og {{appointment.user.first_name}} har ingen meldinger sammen enda. For å skrive en melding vennligst benytt feltet under.</p>
         </div>
       </div>
-      <div *ngFor="let msg of chatRoom?.messages" class="message layout-row layout-center-v"
-           [ngClass]="{'layout-end': !msg.company}">
-        <div *ngIf="msg.company" class="message-picture message-picture-sm m-l-0-20"
-             [ngStyle]="{'background-image': 'url(' + baseUrl + chatRoom.company.logo + ')'}"></div>
-        <div *ngIf="!msg.company" class="message-picture message-picture-sm m-l-0-20 reverse"
-             [ngStyle]="{'background-image': 'url(' + baseUrl + chatRoom.applicant.user_profile.profile_picture_thumbnail + ')'}"></div>
+      <div *ngFor="let msg of messages" class="message row row-center-v"
+           [ngClass]="{'row-end': checkOwner(msg.user_id)}">
+
+        <!-- Message picture -->
+        <div class="picture picture-sm m-l-0-20"
+             [ngClass]="{'reverse':checkOwner(msg.user_id)}"
+             [ngStyle]="{'background-image': 'url(' + baseUrl + getProfilePicture(msg) + ')'}"></div>
         <div class="message-text not-author"
-             [ngClass]="{'author': !msg.company, 'not-author': msg.company, 'waiting': msg.is_waiting}"
+             [ngClass]="{'author': checkOwner(msg.user_id), 'not-author': !checkOwner(msg.user_id), 'waiting': msg.is_waiting}"
              [innerHtml]="msg.text"></div>
       </div>
     </div>
-    <textarea class="textarea" placeholder="Skriv din melding her ..."></textarea>
+    <textarea [(ngModel)]="newMessage" (keypress)="checkPress($event, newMessage)" class="textarea" placeholder="Skriv din melding her ..."></textarea>
   </div>
 </div>

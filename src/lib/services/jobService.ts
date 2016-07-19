@@ -1,14 +1,14 @@
 import 'rxjs/Rx';
-import {Injectable}     from '@angular/core';
-import {Http, Headers} from '@angular/http';
-import {Router} from "@angular/router";
+import {Injectable}                         from '@angular/core';
+import {Router}                             from "@angular/router";
 
-import {User}           from '../classes/user';
-import {AuthHttp} from 'angular2-jwt/angular2-jwt';
+import {RequestService}                     from "./requestService";
+import {Job}                                from "../classes/job";
+import {Appointment}                        from "../classes/appointment";
+import {Message}                            from "../classes/message";
+import {Room}                               from "../classes/room";
+
 import myGlobals = require('globals');
-import {RequestService} from "./requestService";
-import {Job} from "../classes/job";
-import {Appointment} from "../classes/appointment";
 
 @Injectable()
 export class JobService {
@@ -63,5 +63,18 @@ export class JobService {
   public getAppointment(appointment_id:string) {
     return this._requestService.request('GET', this._apiEndpoint + 'appointments/' + appointment_id + '/')
       .map(res => <Appointment> res.json());
+  }
+
+  // Chat room
+  // ----------------------------
+
+  public getRoom(job_id:number, user_id:number) {
+    return this._requestService.request('GET', this._apiEndpoint + job_id + '/room/?user_id=' + user_id)
+      .map(res => <Room[]> res.json());
+  }
+
+  public getMessages(room_id:number) {
+    return this._requestService.request('GET', myGlobals.apiUrl + 'chat/rooms/' + room_id + '/messages/')
+      .map(res => <Message[]> res.json().results);
   }
 }
