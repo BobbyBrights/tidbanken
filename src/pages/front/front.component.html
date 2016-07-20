@@ -1,5 +1,8 @@
-<div *ngIf="user" class="profile-section">
-  <div class="row row-center-v">
+<div class="profile-section">
+  <div *ngIf="!user" class="row row-center-v">
+    <button (click)="navigate('login')" class=" btn-md btn-border-light rounded-3 fs-12 t-upper m-l-10-0">Logg inn</button>
+  </div>
+  <div *ngIf="user" class="row row-center-v">
     <button (click)="navigate('myjobs')" class=" btn-md btn-border-light rounded-3 fs-12 t-upper">Mine jobber</button>
     <div (click)="toggle('userProfile')" class="profile-picture m-l-0-20"
          [ngStyle]="{'background-image': 'url(' + baseUrl + user.profile_picture + ')'}"></div>

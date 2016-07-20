@@ -51,7 +51,10 @@ export class LoginComponent {
   login() {
     this._authService.login(this.user.phone, this.user.password)
       .subscribe(res => {
+        
         // The user is logged in!
+        this._router.navigate(['front']);
+
       }, error => {
         // Revieles the error to the user
         this.serverErrors = error.json();
