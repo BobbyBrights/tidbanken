@@ -2,6 +2,10 @@
 @import "../../lib/mimas/mixins";
 @import "../../lib/mimas/placeholders";
 
+.view-height {
+  height: calc(100vh - 80px);
+}
+
 // Profile pictures
 .picture {
   position: relative;
@@ -58,5 +62,108 @@
 
 .picture-lg {
   @include circle(150px);
+}
+
+.profile-section {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 10px 20px;
+  z-index: 1339;
+
+  .notefication-cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+
+    -webkit-animation: fade-in 1000ms 1; /* Chrome, Safari, Opera */
+    animation: fade-in 1000ms 1;
+
+    .notefication-dropdown {
+      position: absolute;
+      top: 20px;
+      right: 100px;
+      width: 300px;
+      max-height: 400px;
+      background: #fff;
+      margin: 0 20px;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+      overflow-y: scroll;
+
+      -webkit-animation: open-width 500ms 1; /* Chrome, Safari, Opera */
+      animation: open-width 500ms 1;
+
+      .notefication-header {
+        width: 300px;
+        background: $blue;
+        padding: 10px 20px;
+      }
+
+      .notefication-list {
+        width: 300px;
+        overflow: scroll;
+
+        .list-item {
+          width: 100%;
+          padding: 10px 15px;
+
+          border-bottom: 1px solid $stable;
+        }
+      }
+    }
+  }
+
+  .profile-picture {
+    position: relative;
+
+    background-position: center center;
+    background-size: cover;
+
+    border: 2px solid $light;
+    display: inline-block;
+
+    cursor: pointer;
+
+    text-align: center;
+
+    @include circle(60px);
+
+    span {
+      position: absolute;
+      top: 0;
+      left: -20px;
+      width: 20px;
+      height: 20px;
+      background: $decline;
+      border-radius: 100%;
+
+      line-height: 20px;
+      color: #fff;
+    }
+  }
+}
+
+@-webkit-keyframes open-width {
+  0% {
+    right: 0;
+    width: 0px;
+  }
+  100% {
+    right: 100px;
+    width: 300px;
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 

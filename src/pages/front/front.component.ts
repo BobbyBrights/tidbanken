@@ -17,6 +17,7 @@ import {MyAppointments}                         from "./myappointments/myappoint
 import {MyJobsComponent}                        from "./myjobs/myjobs.component";
 import myGlobals = require('globals');
 import {AppointmentComponent} from "./appointment/appointment.component";
+import {UserComponent} from "./user/user.component";
 
 @Component({
   selector: 'front',
@@ -37,9 +38,10 @@ import {AppointmentComponent} from "./appointment/appointment.component";
   {path: 'post', component: PostComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'complete/:email', component: CompleteComponent},
+  {path: 'complete/:phone', component: CompleteComponent},
   {path: 'auth/:token', component: AuthComponent},
-  {path: 'reset-password/:token', component: ResetComponent}
+  {path: 'reset-password/:token', component: ResetComponent},
+  {path: 'user/:id', component: UserComponent}
 ])
 
 export class FrontComponent {
@@ -82,7 +84,13 @@ export class FrontComponent {
     // Hide/show properties
     this.show = {
       userProfile:false
-    }
+    };
+
+    // Get current user
+    this._authService.getCurrentUser()
+      .subscribe(success => {
+        this.user = success;
+      }, error => {});
 
     // Sets the base url for static files
     this.baseUrl = myGlobals.baseURL;

@@ -1,10 +1,10 @@
 @import "../../../lib/mimas/variables";
+@import "../../../lib/mimas/mixins";
 
 $textarea-height: 200px;
 
 .chat-room {
   width: calc(100vw - 600px);
-  height: 100vh;
 
   textarea {
     // Position related
@@ -23,6 +23,14 @@ $textarea-height: 200px;
     &:focus {
       outline: none;
     }
+  }
+
+  .room-header {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 1;
+
+    width: 100%;
   }
 
   .messages {
@@ -67,6 +75,56 @@ $textarea-height: 200px;
 
     .reverse {
       order: 2;
+    }
+  }
+}
+
+.number-picker {
+
+  input {
+    line-height: 100px;
+    padding: 0 30px;
+    font-size: 3em;
+    text-align: center;
+    width: 100%;
+  }
+
+  .select-buttons {
+
+  }
+}
+
+$bulletpointSize: 1.2em;
+
+.rating-stars {
+  text-align: center;
+  padding: 0;
+  margin: 20px 0px;
+
+  &:hover {
+    li {
+      color: $primary;
+    }
+  }
+
+  li {
+    width: $bulletpointSize;
+    height: $bulletpointSize;
+    text-align: center;
+    line-height: $bulletpointSize;
+    display: inline-block;
+    color: #aaa;
+    position: relative;
+    cursor: pointer;
+
+    @include trans(color, 500ms);
+
+    &:hover ~ li {
+      color: #aaa;
+    }
+
+    &:hover {
+      color: $primary;
     }
   }
 }

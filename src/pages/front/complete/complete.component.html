@@ -1,9 +1,9 @@
-<div class="layout-row layout-center-v layout-center h-100-p bg-positive">
-    <div class="w-400 t-center">
-        <h1 class="m-l-40-0">Takk for at du registrerte en bruker</h1>
-        <p class="big">
-            For å kunne logge inn må du bekrefte epost-adressen din. Dette gjør du ved å følge linken sendt til den epost-adressen du benyttet til å registere brukeren.
-        </p>
-        <button (click)="sendNewMail()" class="button-md button-action button-rounded">Send bekreftelse på nytt</button>
-    </div>
+<div class="row row-center-v row-center view-height bg-stable-light">
+  <div class="w-700 t-center">
+    <h3 class="m-l-20-0">Takk for at du registrerte en bruker</h3>
+    <p class="fs-16">For å kunne logge inn må du bekrefte telefonnummeret ditt. Dette gjør du ved å skrive inn koden sendt til nummeret du oppga i forrige steg, i feltet under.</p>
+    <input [(ngModel)]="code" type="text" class="input input-b-stable fs-16 h-60 rounded-5 t-center m-l-20-0" placeholder="Skriv inn sms-koden her">
+    <button (click)="sendNewSMS()" class="btn-md btn-stable-light btn-round m-l-15-10 fs-14">Send bekreftelse på nytt</button>
+    <button (click)="verifyCode(code)" class="btn-md btn-green btn-round m-l-15-10 fs-14">Bekreft sms-kode</button>
+  </div>
 </div>

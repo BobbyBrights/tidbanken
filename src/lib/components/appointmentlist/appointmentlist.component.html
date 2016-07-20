@@ -1,21 +1,24 @@
-<div class="row fs-18">
-  <div (click)="toggleStatus(0)" class="c-l-4 t-center p-l-20-0 border-blue hover-light"
-       [ngClass]="{'border-b-4': checkFilter(0)}">
-    <span class="fa fa-hourglass-o m-l-0-10"></span>
-    <span>Venter</span>
+<div class="row row-center-v h-100 bg-light border-b-1 border-stable t-center fs-18">
+  <div (click)="toggleStatus(0)" class="c-l-4 p-l-0-40">
+    <div class="border-blue hover-light p-l-10-0" [ngClass]="{'border-b-4': checkFilter(0)}">
+      <span class="fa fa-hourglass-o m-l-0-10 m-right color-blue"></span>
+      <span>Venter</span>
+    </div>
   </div>
-  <div (click)="toggleStatus(1)" class="c-l-4 t-center p-l-20-0 border-green hover-light"
-       [ngClass]="{'border-b-4': checkFilter(1)}">
-    <span class="fa fa-calendar-check-o m-l-0-10"></span>
-    <span>Godkjent</span>
+  <div (click)="toggleStatus(1)" class="c-l-4 p-l-0-40">
+    <div class="border-green hover-light p-l-10-0" [ngClass]="{'border-b-4': checkFilter(1)}">
+      <span class="fa fa-check m-l-0-10 m-right color-green"></span>
+      <span>Godkjent</span>
+    </div>
   </div>
-  <div (click)="toggleStatus(2)" class="c-l-4 t-center p-l-20-0 border-decline hover-light"
-       [ngClass]="{'border-b-4': checkFilter(2)}">
-    <span class="fa fa-calendar-times-o m-l-0-10"></span>
-    <span>Avslått</span>
+  <div (click)="toggleStatus(2)" class="c-l-4 p-l-0-40">
+    <div class="border-decline hover-light p-l-10-0" [ngClass]="{'border-b-4': checkFilter(2)}">
+      <span class="fa fa-times m-l-0-10 m-right color-decline"></span>
+      <span>Avslått</span>
+    </div>
   </div>
 </div>
-<div class="list-content">
+<div class="list-content bg-stable-light">
   <div class="row row-center p-l-20-20">
     <div class="w-1000">
       <div *ngFor="let appointment of filteredAppointments">
@@ -23,12 +26,12 @@
           <h4>{{ covertDate(appointment.date) | date:'MMMM' }}</h4>
         </div>
         <div class="m-l-20-0 center-shadow">
-          <div class="bg-blue p-l-15-15 fs-14" [ngClass]="{
+          <div *ngIf="false" class="bg-blue p-l-15-15 fs-14" [ngClass]="{
               'bg-blue': checkStatus(appointment.status, 0),
               'bg-green': checkStatus(appointment.status, 1),
               'bg-decline': checkStatus(appointment.status, 2)}">{{ covertDate(appointment.date) | date:'MMM dd' }}
           </div>
-          <div (click)="navigate(appointment.id)" class="row row-center-v p-l-20-0 bg-stable-light hover-stable-light">
+          <div (click)="navigate(appointment.id)" class="row row-center-v p-l-20-0 bg-light hover-light">
             <div class="c-m-2 t-center"
                  [ngClass]="{
                  'color-blue': checkStatus(appointment.status, 0),
@@ -36,8 +39,8 @@
                  'color-decline': checkStatus(appointment.status, 2)}">
               <span class="fa fs-30" [ngClass]="{
                   'fa-hourglass-o': checkStatus(appointment.status, 0),
-                  'fa-calendar-check-o': checkStatus(appointment.status, 1),
-                  'fa-calendar-times-o': checkStatus(appointment.status, 2)}">
+                  'fa-check': checkStatus(appointment.status, 1),
+                  'fa-times': checkStatus(appointment.status, 2)}">
               </span>
               <p *ngIf="checkStatus(appointment.status, 0)" class="t-upper fs-12 m-l-10-0 m-top">Venter</p>
               <p *ngIf="checkStatus(appointment.status, 1)" class="t-upper fs-12 m-l-10-0 m-top">Godkjent</p>
@@ -49,6 +52,13 @@
               <div class="row p-l-20-0 p-top t-center">
                 <div class="c-m-4 fs-14">
                   <div class="row row-center-v">
+                    <span class="fa fa-calendar-o color-primary fs-14 m-l-0-10"></span>
+                    <span
+                      class="color-stable-dark">{{ covertDate(appointment.date) | date:'MMM dd' }}</span>
+                  </div>
+                </div>
+                <div class="c-m-4 fs-14">
+                  <div class="row row-center-v">
                     <span class="fa fa-map-marker color-primary fs-14 m-l-0-10"></span>
                     <span class="color-stable-dark">Skansagata 2a</span>
                   </div>
@@ -58,13 +68,6 @@
                     <span class="fa fa-clock-o color-primary fs-14 m-l-0-10"></span>
                 <span class="color-stable-dark">{{appointment.job.duration}} time<span
                   *ngIf="appointment.job.duration > 1">r</span></span>
-                  </div>
-                </div>
-                <div class="c-m-4 fs-14">
-                  <div class="row row-center-v">
-                    <span class="fa fa-user color-primary fs-14 m-l-0-10"></span>
-                    <span
-                      class="color-stable-dark">{{appointment.user.first_name}} {{appointment.user.last_name}}</span>
                   </div>
                 </div>
               </div>

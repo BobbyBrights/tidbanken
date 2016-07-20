@@ -3,9 +3,13 @@
   KORDE - VARIABLES
 
 -----------------------------------------*/
+/*----------------------------------------
+
+  KORDE - MIXINS
+
+-----------------------------------------*/
 .chat-room {
-  width: calc(100vw - 600px);
-  height: 100vh; }
+  width: calc(100vw - 600px); }
   .chat-room textarea {
     position: absolute;
     bottom: 0;
@@ -16,6 +20,12 @@
     resize: none; }
     .chat-room textarea:focus {
       outline: none; }
+  .chat-room .room-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%; }
   .chat-room .messages {
     position: absolute;
     top: 0;
@@ -41,5 +51,37 @@
       opacity: 0.5; }
     .chat-room .messages .reverse {
       order: 2; }
+
+.number-picker input {
+  line-height: 100px;
+  padding: 0 30px;
+  font-size: 3em;
+  text-align: center;
+  width: 100%; }
+
+.rating-stars {
+  text-align: center;
+  padding: 0;
+  margin: 20px 0px; }
+  .rating-stars:hover li {
+    color: #fc797c; }
+  .rating-stars li {
+    width: 1.2em;
+    height: 1.2em;
+    text-align: center;
+    line-height: 1.2em;
+    display: inline-block;
+    color: #aaa;
+    position: relative;
+    cursor: pointer;
+    -webkit-transition: color 500ms ease;
+    -moz-transition: color 500ms ease;
+    -ms-transition: color 500ms ease;
+    -o-transition: color 500ms ease;
+    transition: color 500ms ease; }
+    .rating-stars li:hover ~ li {
+      color: #aaa; }
+    .rating-stars li:hover {
+      color: #fc797c; }
 
 /*# sourceMappingURL=appointment.component.css.map */

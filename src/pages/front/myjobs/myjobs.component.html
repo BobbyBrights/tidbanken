@@ -1,6 +1,6 @@
-<div class="row">
-  <div class="w-500 h-full bg-stable-light center-shadow">
-    <div class="row row-center-v row-center h-100 bg-blue">
+<div class="row view-height">
+  <div class="w-500 view-height bg-light center-shadow border-r-1 border-stable">
+    <div class="row row-center-v row-center h-100 border-b-1 border-stable">
       <h4>Mine jobber</h4>
     </div>
     <div *ngFor="let job of jobs" (click)="setSelectedJob(job)"
@@ -12,5 +12,5 @@
       </div>
     </div>
   </div>
-  <appointment-list class="fill-rest" *ngIf="appointments.length" [appointments]="appointments"></appointment-list>
+  <appointment-list class="fill-rest" [appointments]="appointments"></appointment-list>
 </div>

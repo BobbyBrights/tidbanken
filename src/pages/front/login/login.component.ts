@@ -19,7 +19,7 @@ import {SmoothAlert} from "../../../lib/components/smoothAlert/smoothalert.compo
     AuthService
   ],
   pipes: [mapToIterablePipe],
-  styles: [require('css/login.component.css')]
+  styles: [require('css/login.component.css'), require('css/front.component.css')]
 })
 
 export class LoginComponent {

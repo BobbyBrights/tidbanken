@@ -1,4 +1,4 @@
-
+@import "../mimas/mixins";
 
 .dialog-cover {
   position: fixed;
@@ -8,5 +8,7 @@
 
   .popup-dialog {
     cursor: default;
+
+    @include trans(all, 500ms);
   }
 }

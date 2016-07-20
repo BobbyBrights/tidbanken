@@ -40,12 +40,18 @@
         </div>
     </div>
 </nav>
-<div class="jobs-container row h-full bg-stable-light">
-    <div class="row row-center row-center-v h-100 bg-primary border-b-1 border-stable fs-14">
-        <button (click)="hideObject('map')" class="btn-lg btn-light rounded-3 m-l-20-20" [ngClass]="{'btn-border-light': show.map}">Liste</button>
-        <button (click)="showObject('map')" class="btn-lg btn-light rounded-3 m-l-20-20" [ngClass]="{'btn-border-light': !show.map}">Kart</button>
+<div class="jobs-container row view-height bg-stable-light overflow-scroll">
+    <div class="row row-center row-center-v h-100 fs-14">
+        <button (click)="hideObject('map')" class="btn-md btn-dark rounded-3 m-l-20-20" [ngClass]="{'btn-border-dark': show.map}">
+          <span class="fa fa-th-list m-l-0-10"></span>
+          <span>Liste</span>
+        </button>
+        <button (click)="showObject('map')" class="btn-md btn-dark rounded-3 m-l-20-20" [ngClass]="{'btn-border-dark': !show.map}">
+          <span class="fa fa-map-o m-l-0-10"></span>
+          <span>Kart</span>
+        </button>
     </div>
-    <div class="row row-center p-l-20-20">
+    <div class="row row-center p-l-20-20 p-bottom">
 
         <!-- List view -->
         <div *ngIf="!show.map" class="w-1000">

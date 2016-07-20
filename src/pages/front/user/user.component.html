@@ -1,0 +1,22 @@
+<div class="row row-center-v row-center view-height">
+  <div class="w-1100 user-container-shadow">
+    <div class="row">
+      <div class="c-m-4 bg-stable-light t-center p-l-40-0">
+        <div class="picture picture-lg border-6 border-light center-shadow"
+             [ngStyle]="{'background-image':'url(' + baseUrl + user.profile_picture + ')'}"></div>
+        <div class="p-l-20-0">
+          <h5>{{ user.first_name}} {{ user.last_name}}</h5>
+          <div class="row row-center row-center-v p-l-40-0">
+            <span class="fa fa-map-marker color-primary fs-26 m-l-0-20 m-right"></span>
+            <span class="color-stable-dark fs-14">Skansegata 2a</span>
+          </div>
+          <button class="btn-md btn-primary btn-round fs-14 m-l-20-0 t-upper">Legg i kontakter</button>
+        </div>
+      </div>
+      <div class="c-m-8 p-l-40-40">
+        <h3>Om {{ user.first_name}}</h3>
+        <p class="fs-14">{{ user.about }}</p>
+      </div>
+    </div>
+  </div>
+</div>

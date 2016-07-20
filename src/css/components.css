@@ -1,3 +1,8 @@
+/*----------------------------------------
+
+  KORDE - MIXINS
+
+-----------------------------------------*/
 .dialog-cover {
   position: fixed;
   top: 0;
@@ -7,6 +12,11 @@
   z-index: 1337;
   cursor: pointer; }
   .dialog-cover .popup-dialog {
-    cursor: default; }
+    cursor: default;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease; }
 
 /*# sourceMappingURL=components.css.map */

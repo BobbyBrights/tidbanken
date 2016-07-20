@@ -1,6 +1,6 @@
 import {Component, ViewChild, ElementRef}                 from '@angular/core';
 import {HTTP_PROVIDERS}                                   from '@angular/http';
-import {RouteSegment}                                     from "@angular/router";
+import {Router, RouteSegment}                             from "@angular/router";
 
 import {SmoothAlert}                                      from "lib/components/smoothAlert/smoothalert.component";
 
@@ -10,6 +10,7 @@ import {Appointment}                                      from "lib/classes/appo
 import {Message}                                          from "lib/classes/message";
 import {Room}                                             from "lib/classes/room";
 import {User}                                             from "lib/classes/user";
+import {Rating}                                           from "lib/classes/rating";
 import {Observable}                                       from "rxjs/Rx";
 
 import myGlobals = require('globals');
@@ -23,20 +24,27 @@ import myGlobals = require('globals');
     JobService,
     AuthService
   ],
-  styles: [require('css/appointment.component.css'), require('css/front.component.css')]
+  styles: [require('css/appointment.component.css'), require('css/front.component.css'), require('css/components.css')]
 })
 
 export class AppointmentComponent {
 
   @ViewChild('chatScroll') private myScrollContainer:ElementRef;
 
-  public show:{};
   public appointment:Appointment;
   public user:User = <User>{};
 
   public baseUrl:string;
 
   public socket:any;
+
+  // Show and hide
+  // -------------------
+  public show:{};
+
+  // Rating
+  // -------------------
+  public rating:Rating = <Rating>{};
 
 
   // Chat related
@@ -45,11 +53,18 @@ export class AppointmentComponent {
   public messages: Message[] = [];
   public newMessage: string;
 
-  constructor(private _routeSegment:RouteSegment,
+
+  // Other
+  // -------------------
+  public hours: number;
+
+  constructor(private _router:Router,
+    private _routeSegment:RouteSegment,
               private _jobService:JobService,
               private _authService:AuthService) {
     this.show = {
-      alert: false
+      alert: false,
+      payment: false
     };
 
     this.baseUrl = myGlobals.baseURL;
@@ -65,6 +80,9 @@ export class AppointmentComponent {
     this._jobService.getAppointment(appointment_id)
       .subscribe(success => {
         this.appointment = success;
+
+        // Set the number of hours to be edited later
+        this.hours = success.job.duration;
 
         this._jobService.getRoom(success.job.id, success.user.id)
           .subscribe(success => {
@@ -120,6 +138,12 @@ export class AppointmentComponent {
       });
   }
 
+  // Rating
+  // ---------------------
+  public setRating(star:number) {
+    this.rating.stars = star;
+  }
+
   // Web socket & chat
   // ---------------------
 
@@ -130,14 +154,27 @@ export class AppointmentComponent {
     // This function returns an observable that is triggered by the websockets onMessage
     this.getInstanceStatus()
       .subscribe(success => {
+
+        var data = JSON.parse(<string>success);
+
         this.setMessageAsRead();
+
+        if (this.user.id != data.user_id) {
+          var msg = new Message(data.text, data.user_id);
+          this.messages.push(msg);
+        }
+
+        setTimeout(() => {
+          this.scrollToBottom(true);
+        }, 200);
+
       }, error => {});
   }
 
   public getInstanceStatus(): Observable<Event>{
     return Observable.create(observer => {
       this.socket.onmessage = (evt) => {
-        observer.next(evt);
+        observer.next(evt.data);
       };
     })
       .share();
@@ -145,8 +182,6 @@ export class AppointmentComponent {
 
   public setMessageAsRead() {
     // Sets the latest message sent to server to read
-
-    this.scrollToBottom(true);
 
     if (this.messages.length)
       this.messages[this.messages.length-1].is_waiting = false;
@@ -165,6 +200,10 @@ export class AppointmentComponent {
   }
 
   public sendMessage(text:string) {
+
+    if (!/\S/.test(text))
+      return;
+
     var msg = {
       "token": localStorage.getItem('id_token'),
       "text": text,
@@ -232,5 +271,15 @@ export class AppointmentComponent {
       description: '2 widgets',
       amount: 2000
     });
+  }
+
+  // Other
+  // ---------------------
+  public changeHour(up:boolean) {
+    this.hours += (up) ? 1 : -1;
+  }
+
+  public toUser(id:number) {
+    this._router.navigate(['front', 'user', id]);
   }
 }

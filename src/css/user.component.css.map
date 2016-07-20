@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,sBAAuB;EACrB,UAAU,EAAE,4BAAyB",
+"sources": ["../pages/front/user/user.component.scss"],
+"names": [],
+"file": "user.component.css"
+}

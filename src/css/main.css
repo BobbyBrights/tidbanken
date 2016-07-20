@@ -105,7 +105,8 @@
     position: absolute;
     top: 10px;
     left: 20px;
-    bottom: 10px; }
+    bottom: 10px;
+    cursor: pointer; }
     .nav-sm .nav-logo img, .nav-md .nav-logo img, .nav-lg .nav-logo img {
       height: 100%; }
   .nav-sm .list-container span, .nav-md .list-container span, .nav-lg .list-container span {
@@ -1377,7 +1378,7 @@ h5 {
   font-size: 1.75em; }
 
 h6 {
-  font-size: 1.5em; }
+  font-size: 1.25em; }
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0.1em 0; }

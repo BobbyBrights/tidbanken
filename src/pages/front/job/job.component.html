@@ -1,94 +1,111 @@
 <div *ngIf="job && author">
-    <div class="row row-center-v row-center cover-6 cover-black h-600 bg-image border-b-1 border-stable"
-         [ngStyle]="{'background-image':'url(' + baseUrl + job.picture + ')'}">
-        <div class="cover-content">
-            <h1 class="color-light t-upper">{{job.title}}</h1>
-        </div>
-        <div class="job-header-info">
-            <div class="header row row-center-v row-center color-light fs-16">
-                <span class="fa fa-clock-o fs-16 m-l-0-10"></span>
-                <span>{{job.duration}} time<span *ngIf="job.duration > 1">r</span></span>
-            </div>
-            <div class="content p-l-40-60 fs-16 t-center">
-                <p class="color-stable-dark">Interessert?</p>
-                <button (click)="toggle('appointment')" class="btn-md btn-green rounded-5 w-100-p m-l-10-0">Meld
-                    interesse
-                </button>
-                <p class="color-stable-dark">eller</p>
-                <button class="btn-md btn-blue rounded-5 w-100-p m-l-10-0">Del jobben</button>
-            </div>
-        </div>
+  <div class="row row-center-v row-center cover-6 cover-black h-600 bg-image border-b-1 border-stable"
+       [ngStyle]="{'background-image':'url(' + baseUrl + job.picture + ')'}">
+    <div class="cover-content">
+      <h1 class="color-light t-upper t-center">{{job.title}}</h1>
+      <div class="row row-center row-center-v color-light fs-18 p-l-20-0">
+
+        <!-- Address-->
+        <span class="fa fa-map-marker fs-16 m-l-0-10"></span>
+        <span>Skansegata 2a</span>
+        <span class="w-40"></span>
+
+        <!-- Duration -->
+        <span class="fa fa-clock-o fs-16 m-l-0-10"></span>
+        <span>{{job.duration}} time<span *ngIf="job.duration > 1">r</span></span>
+        <span class="w-40"></span>
+
+        <!-- Authors name -->
+        <span class="fa fa-user fs-16 m-l-0-10"></span>
+        <span>{{author.first_name}} {{author.last_name}}</span>
+      </div>
     </div>
-    <div class="row row-center p-l-40-20 bg-stable-light border-b-1 border-stable">
-        <div class="c-l-10">
-            <div class="row row-center-v">
-                <div class="picture picture-lg border-4 border-dark"
-                     [ngStyle]="{'background-image':'url(' + baseUrl + author.profile_picture + ')'}"></div>
-                <div class="p-l-20-40">
-                    <h3 class="m-l-0-0">{{author.first_name}} {{author.last_name}}</h3>
-                    <p class="m-l-0-0 fs-16">Lorem ipsum</p>
-                </div>
-            </div>
-        </div>
+    <div class="job-header-info">
+      <div class="header row row-center-v row-center color-light fs-16">
+        <span class="fa fa-clock-o fs-16 m-l-0-10"></span>
+        <span>{{job.duration}} time<span *ngIf="job.duration > 1">r</span></span>
+      </div>
+      <div class="content p-l-40-60 fs-16 t-center">
+        <p class="color-stable-dark">Interessert?</p>
+        <button (click)="toggle('appointment')" class="btn-md btn-green rounded-5 w-100-p m-l-10-0">Meld
+          interesse
+        </button>
+        <p class="color-stable-dark">eller</p>
+        <button class="btn-md btn-blue rounded-5 w-100-p m-l-10-0">Del jobben</button>
+      </div>
     </div>
-    <div class="row row-center p-l-100-20">
-        <div class="c-l-10">
-            <div class="row row-center-v">
-                <div class="c-l-8 p-l-20-20">
-                    <h2 class="t-300">{{job.title}}</h2>
-                    <p class="fs-16">{{job.description}}</p>
-                </div>
-                <div class="c-l-4 t-center fs-20 color-stable-dark p-l-40-0 p-top">
-                    <div class="p-l-40-0 p-bottom">
-                        <span class="fa fa-map-marker color-primary fs-20 m-l-0-10"></span>
-                        <p>Skansegata 2a</p>
-                    </div>
-                    <div class="p-l-40-0">
-                        <span class="fa fa-clock-o color-primary fs-20 m-l-0-10"></span>
-                        <p>{{job.duration}} time<span *ngIf="job.duration > 1">r</span></p>
-                    </div>
-                    <div class="p-l-40-0 p-top">
-                        <span class="fa fa-user color-primary fs-20 m-l-0-10"></span>
-                        <p>{{author.first_name}} {{author.last_name}}</p>
-                    </div>
-                </div>
-            </div>
+  </div>
+  <div class="row row-center p-l-40-20 bg-stable-light border-b-1 border-stable">
+    <div class="c-l-10">
+      <div class="row row-center-v">
+        <div class="picture picture-lg border-4 border-dark"
+             [ngStyle]="{'background-image':'url(' + baseUrl + author.profile_picture + ')'}"></div>
+        <div class="p-l-20-40">
+          <h3 class="m-l-0-0">{{author.first_name}} {{author.last_name}}</h3>
+          <p class="m-l-0-0 fs-16">Lorem ipsum</p>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="row row-center p-l-100-20">
+    <div class="c-l-10">
+      <div class="row row-center-v">
+        <div class="c-l-8 p-l-20-20">
+          <h2 class="t-300">{{job.title}}</h2>
+          <p class="fs-16">{{job.description}}</p>
+        </div>
+        <div class="c-l-4 t-center fs-20 color-stable-dark p-l-40-0 p-top">
+          <div class="p-l-40-0 p-bottom">
+            <span class="fa fa-map-marker color-primary fs-20 m-l-0-10"></span>
+            <p>Skansegata 2a</p>
+          </div>
+          <div class="p-l-40-0">
+            <span class="fa fa-clock-o color-primary fs-20 m-l-0-10"></span>
+            <p>{{job.duration}} time<span *ngIf="job.duration > 1">r</span></p>
+          </div>
+          <div class="p-l-40-0 p-top">
+            <span class="fa fa-user color-primary fs-20 m-l-0-10"></span>
+            <p>{{author.first_name}} {{author.last_name}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div *ngIf="show.appointment" (click)="toggle('appointment')"
      class="dialog-cover row row-center row-center-v cover-6 cover-black">
-    <div (click)="$event.stopPropagation()" class="popup-dialog w-600 bg-light p-l-20-20 rounded-5">
-        <div class="row p-l-5-0">
-            <div class="c-l-12 t-center">
-                <h4 class="t-upper t-300 color-stable-dark">Dato</h4>
-            </div>
-        </div>
-        <datepicker class="color-dark h-400" [date]="soknadsfrist"
-                    (valueChange)="dateChanged($event)" [height]="350"></datepicker>
-        <form [ngFormModel]="timeForm" (ngSubmit)="createAppointment()">
-            <div class="row p-l-40-20 p-top">
-                <div class="c-l-12 t-center">
-                    <h4 class="t-upper t-300 color-stable-dark">Klokkeslett</h4>
-                </div>
-                <div class="c-l-3 color-light p-l-10-0 fs-12">
-                    <select ngControl="hour" [(ngModel)]="newHour" class="select bg-blue rounded-5" #hour="ngForm">
-                        <option value="-1" disabled selected>Time</option>
-                        <option *ngFor="let hour of hours" value="{{hour}}">{{hour}}</option>
-                    </select>
-                </div>
-                <div class="c-l-3 color-light p-l-10-5 fs-12">
-                    <select ngControl="minute" [(ngModel)]="newMin" class="select bg-blue rounded-5 t-center"
-                            #minute="ngForm">
-                        <option value="-1" disabled selected>Minutt</option>
-                        <option *ngFor="let q of quarters" value="{{q}}">{{q}}</option>
-                    </select>
-                </div>
-                <div class="c-l-6 p-l-10-0 fs-11">
-                    <button [disabled]="!timeForm.valid" type="submit" class="btn-md btn-green rounded-5 w-100-p">Meld interesse</button>
-                </div>
-            </div>
-        </form>
+  <div (click)="$event.stopPropagation()" class="popup-dialog w-600 bg-light p-l-20-20 rounded-5">
+    <div class="row p-l-5-0">
+      <div class="c-l-12 t-center">
+        <h4 class="t-upper t-300 color-stable-dark">Dato</h4>
+      </div>
     </div>
+    <datepicker class="color-dark h-400" [date]="soknadsfrist"
+                (valueChange)="dateChanged($event)" [height]="350"></datepicker>
+    <form [ngFormModel]="timeForm" (ngSubmit)="createAppointment()">
+      <div class="row p-l-40-20 p-top">
+        <div class="c-l-12 t-center">
+          <h4 class="t-upper t-300 color-stable-dark">Klokkeslett</h4>
+        </div>
+        <div class="c-l-3 color-light p-l-10-0 fs-12">
+          <select ngControl="hour" [(ngModel)]="newHour" class="select bg-blue rounded-5" #hour="ngForm">
+            <option value="-1" disabled selected>Time</option>
+            <option *ngFor="let hour of hours" value="{{hour}}">{{hour}}</option>
+          </select>
+        </div>
+        <div class="c-l-3 color-light p-l-10-5 fs-12">
+          <select ngControl="minute" [(ngModel)]="newMin" class="select bg-blue rounded-5 t-center"
+                  #minute="ngForm">
+            <option value="-1" disabled selected>Minutt</option>
+            <option *ngFor="let q of quarters" value="{{q}}">{{q}}</option>
+          </select>
+        </div>
+        <div class="c-l-6 p-l-10-0 fs-11">
+          <button [disabled]="!timeForm.valid" type="submit" class="btn-md btn-green rounded-5 w-100-p">Meld interesse
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
