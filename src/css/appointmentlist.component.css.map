@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,aAAc;EACZ,MAAM,EAAE,kBAAkB;EAC1B,UAAU,EAAE,MAAM",
+"mappings": "AAAA,aAAc;EACZ,MAAM,EAAE,kBAAkB;EAC1B,UAAU,EAAE,MAAM;;AAGpB,WAAY;EACV,OAAO,EAAE,GAAG",
 "sources": ["../lib/components/appointmentlist/appointmentlist.component.scss"],
 "names": [],
 "file": "appointmentlist.component.css"

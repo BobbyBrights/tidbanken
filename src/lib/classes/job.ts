@@ -9,7 +9,10 @@ export class Job extends ServerResponse {
   public description:string;
   public picture:string;
   public duration:number;
+  public is_published:boolean;
   public street_address:string;
+  public lat:number;
+  public lng:number;
   public user_id:number;
   public tags:string[] = [];
 

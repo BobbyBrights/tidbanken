@@ -1,0 +1,24 @@
+<!-- Map view -->
+<div class="map-container">
+  <sebm-google-map
+    [latitude]="options.lat"
+    [longitude]="options.lng"
+    [zoom]="options.zoom"
+    [disableDefaultUI]="true"
+    [zoomControl]="false"
+    [scrollwheel]="false">
+
+    <sebm-google-map-marker
+      *ngFor="let m of markers; let i = index"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]="m.label"
+      [markerDraggable]="m.draggable">
+
+      <sebm-google-map-info-window>
+        <strong>InfoWindow content</strong>
+      </sebm-google-map-info-window>
+
+    </sebm-google-map-marker>
+  </sebm-google-map>
+</div>

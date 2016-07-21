@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,sBAAuB;EACrB,UAAU,EAAE,4BAAyB",
+"sources": ["../lib/components/userInfo/userinfo.component.scss"],
+"names": [],
+"file": "userinfo.component.css"
+}

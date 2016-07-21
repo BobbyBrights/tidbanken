@@ -12,13 +12,14 @@ import {Room}                                             from "lib/classes/room
 import {User}                                             from "lib/classes/user";
 import {Rating}                                           from "lib/classes/rating";
 import {Observable}                                       from "rxjs/Rx";
+import {UserInfo}                                         from "lib/components/userInfo/userinfo.component";
 
 import myGlobals = require('globals');
 
 @Component({
   selector: 'appointment',
   template: require('pages/front/appointment/appointment.component.html'),
-  directives: [SmoothAlert],
+  directives: [SmoothAlert, UserInfo],
   providers: [
     HTTP_PROVIDERS,
     JobService,
@@ -53,13 +54,12 @@ export class AppointmentComponent {
   public messages: Message[] = [];
   public newMessage: string;
 
-
-  // Other
-  // -------------------
-  public hours: number;
+  // Alert
+  // --------------------------
+  public alertOptions:any;
 
   constructor(private _router:Router,
-    private _routeSegment:RouteSegment,
+              private _routeSegment:RouteSegment,
               private _jobService:JobService,
               private _authService:AuthService) {
     this.show = {
@@ -80,9 +80,6 @@ export class AppointmentComponent {
     this._jobService.getAppointment(appointment_id)
       .subscribe(success => {
         this.appointment = success;
-
-        // Set the number of hours to be edited later
-        this.hours = success.job.duration;
 
         this._jobService.getRoom(success.job.id, success.user.id)
           .subscribe(success => {
@@ -121,6 +118,42 @@ export class AppointmentComponent {
     return new Date(date);
   }
 
+  public showAlert(accept:boolean):void {
+
+    this.alertOptions = {
+      type: 'warning',
+      title: 'Er du sikker?',
+      showDecline:true,
+      showAccept: true,
+      declineText: 'Tilbake',
+      acceptText: 'Fortsett',
+      data: {accept: true}
+    };
+
+    if (accept) {
+      this.alertOptions.text = 'Du er i ferd med å godkjenne avtalen. Vil du fortsette?';
+      this.alertOptions.data = {accept: true};
+    } else {
+      this.alertOptions.text = 'Du er i ferd med å avslå avtalen. Vil du fortsette?';
+      this.alertOptions.data = {accept: false};
+    }
+
+    this.toggle('alert');
+  }
+
+  public handleAlertResponse(data) {
+
+    this.toggle('alert');
+
+    if (!data)
+      return
+
+    if (data.accept)
+      this.accept();
+    else
+      this.decline();
+  }
+
   public accept() {
     this.appointment.status = 1;
     this.update();
@@ -134,6 +167,14 @@ export class AppointmentComponent {
   public update() {
     this._jobService.updateAppointment(this.appointment)
       .subscribe(success => {
+        this.alertOptions = {
+          type: 'success',
+          title: 'Oppdatert',
+          showAccept: true,
+          acceptText: 'Lukk'
+        };
+
+        this.toggle('alert');
       }, error => {
       });
   }
@@ -260,23 +301,48 @@ export class AppointmentComponent {
       locale: 'auto',
       image: 'http://design.ubuntu.com/wp-content/uploads/ubuntu-logo32.png',
       currency: 'NOK',
+      email: 'hei@tidbanken.no',
       token: function (token:any) {
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
+
+        console.log("This happens");
+
+        // Finish the appointment
+        this.finishAppointment();
+
       }
     });
 
     handler.open({
       name: 'Tidbanken',
-      description: '2 widgets',
-      amount: 2000
+      description: 'Du skal betale for ' + this.appointment.time_amount + ' timer',
+      amount: this.appointment.time_amount*5000
     });
+  }
+
+  // Appointment related
+  // --------------------------
+  public finishAppointment() {
+    console.log("This happens too");
+
+    this._jobService.registerTimePayment(this.appointment.time_amount, this.appointment.id, this.appointment.job.id)
+      .subscribe(success => {
+
+        // Sets the status of the appointment to finished
+        this.appointment.status = 3;
+
+        this._jobService.updateAppointment(this.appointment)
+          .subscribe(success => {
+            this.appointment = success;
+          }, error => {});
+      }, error => {});
   }
 
   // Other
   // ---------------------
   public changeHour(up:boolean) {
-    this.hours += (up) ? 1 : -1;
+    this.appointment.time_amount += (up) ? 1 : -1;
   }
 
   public toUser(id:number) {

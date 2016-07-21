@@ -64,7 +64,7 @@
                         <div class="c-m-4 fs-14">
                             <div class="row row-center-v">
                                 <span class="fa fa-map-marker color-primary fs-14 m-l-0-10"></span>
-                                <span class="color-stable-dark">Skansagata 2a</span>
+                                <span class="color-stable-dark">{{job.street_address}}</span>
                             </div>
                         </div>
                         <div class="c-m-4 fs-14">
@@ -86,13 +86,7 @@
 
         <!-- Map view -->
         <div *ngIf="show.map" class="job-map">
-            <sebm-google-map
-                    [latitude]="lat"
-                    [longitude]="lng"
-                    [zoom]="zoom"
-                    [disableDefaultUI]="true"
-                    [zoomControl]="'false'">
-            </sebm-google-map>
+            <korde-map *ngIf="mapMarkers && mapOptions" [markers]="mapMarkers" [options]="mapOptions"></korde-map>
         </div>
     </div>
 </div>

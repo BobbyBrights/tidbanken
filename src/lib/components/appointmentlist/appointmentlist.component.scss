@@ -2,3 +2,7 @@
   height: calc(100% - 100px);
   overflow-y: scroll;
 }
+
+.deselected {
+  opacity: 0.5;
+}

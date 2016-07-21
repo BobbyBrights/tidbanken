@@ -3,17 +3,20 @@
     <div class="row row-center row-center-v h-300" [ngClass]="{
               'bg-blue': checkStatus(appointment.status, 0),
               'bg-green': checkStatus(appointment.status, 1),
-              'bg-decline': checkStatus(appointment.status, 2)}">
+              'bg-decline': checkStatus(appointment.status, 2),
+              'bg-accept': checkStatus(appointment.status, 3)}">
       <div>
         <div class="p-l-20-20 t-center">
               <span class="fa fs-40" [ngClass]="{
                   'fa-hourglass-o': checkStatus(appointment.status, 0),
                   'fa-check': checkStatus(appointment.status, 1),
-                  'fa-times': checkStatus(appointment.status, 2)}">
+                  'fa-times': checkStatus(appointment.status, 2),
+                  'fa-thumbs-up': checkStatus(appointment.status, 3)}">
               </span>
           <p *ngIf="checkStatus(appointment.status, 0)" class="t-upper fs-12 m-l-10-0 m-top">Venter</p>
           <p *ngIf="checkStatus(appointment.status, 1)" class="t-upper fs-12 m-l-10-0 m-top">Godkjent</p>
           <p *ngIf="checkStatus(appointment.status, 2)" class="t-upper fs-12 m-l-10-0 m-top">Avslått</p>
+          <p *ngIf="checkStatus(appointment.status, 3)" class="t-upper fs-12 m-l-10-0 m-top">Ferdig</p>
         </div>
       </div>
     </div>
@@ -21,7 +24,8 @@
       <div class="p-l-15-15 fs-16 t-center" [ngClass]="{
               'bg-blue': checkStatus(appointment.status, 0),
               'bg-green': checkStatus(appointment.status, 1),
-              'bg-decline': checkStatus(appointment.status, 2)}">
+              'bg-decline': checkStatus(appointment.status, 2),
+              'bg-accept': checkStatus(appointment.status, 3)}">
         <h5>{{appointment.job.title}}</h5>
         {{ covertDate(appointment.date) | date:'longDate' }}
       </div>
@@ -29,14 +33,14 @@
         <div class="c-l-12 fs-14">
           <div class="row row-center-v hover-stable-light border-b-1 border-stable p-l-20-20">
             <span class="fa fa-map-marker color-primary fs-14 m-l-0-10"></span>
-            <span class="color-stable-dark">Skansagata 2a</span>
+            <span class="color-stable-dark">{{appointment.job.street_address}}</span>
           </div>
           <div class="row row-center-v hover-stable-light border-b-1 border-stable p-l-20-20">
             <span class="fa fa-clock-o color-primary fs-14 m-l-0-10"></span>
-            <span class="color-stable-dark">{{appointment.job.duration}} time<span
-              *ngIf="appointment.job.duration > 1">r</span></span>
+            <span class="color-stable-dark">{{appointment.time_amount}} time<span
+              *ngIf="appointment.time_amount > 1">r</span></span>
           </div>
-          <div (click)="toUser(appointment.user.id)" class="row row-center-v hover-stable-light border-b-1 border-stable p-l-20-20">
+          <div (click)="toggle('userInfo')" class="row row-center-v hover-stable-light border-b-1 border-stable p-l-20-20">
             <div class="picture picture-md m-l-0-10"
                  [ngStyle]="{'background-image':'url(' + baseUrl + appointment.user.profile_picture + ')'}"></div>
             <div class="m-l-0-10 fs-12">
@@ -55,22 +59,22 @@
         <p>Ble avtalen gjennomført? Ikke glem å marker avtalen som gjennomført, slik at {{appointment.user.first_name}}
           får timene sine.</p>
       </div>
-      <button (click)="toggle('rating')" class="btn-lg btn-green rounded-3 m-l-20-0 m-top">Avtalen ble gjennomført
+      <button (click)="toggle('payment')" class="btn-lg btn-green rounded-3 m-l-20-0 m-top">Avtalen ble gjennomført
       </button>
     </div>
     <div *ngIf="messages.length && checkStatus(appointment.status, 0)" class="p-l-20-20 bg-stable-light fs-12">
       <h6>Gi et svar</h6>
       <p class="color-stable-dark">Du har ikke gitt svar til {{appointment.user.first_name}} om denne tiden passer for deg. Dette kan du gjøre ved å trykke på knappene under</p>
       <div class="t-center">
-        <button (click)="decline()" class="btn-md btn-primary btn-round m-l-15-10 m-top">Avslå</button>
-        <button (click)="accept()" class="btn-md btn-green btn-round m-l-15-10 m-top">Godta</button>
+        <button (click)="showAlert(false)" class="btn-md btn-primary btn-round m-l-15-10 m-top">Avslå</button>
+        <button (click)="showAlert(true)" class="btn-md btn-green btn-round m-l-15-10 m-top">Godta</button>
       </div>
     </div>
     <div *ngIf="checkStatus(appointment.status, 2)" class="p-l-20-20 bg-stable-light fs-12">
       <h6>Endret mening?</h6>
       <p class="color-stable-dark">Hvis du har endret mening angående denne avtalen kan du godkjenne den ved å trykke på knappen under.</p>
       <div class="t-center">
-        <button (click)="accept()" class="btn-md btn-green btn-round m-l-15-10 m-top">Godta avtale alikevel</button>
+        <button (click)="showAlert(true)" class="btn-md btn-green btn-round m-l-15-10 m-top">Godta avtale alikevel</button>
       </div>
     </div>
   </div>
@@ -80,8 +84,8 @@
         <div class="w-600">
           <h3>Gi et svar</h3>
           <p class="fs-14 color-stable-dark">Du har ikke gitt svar til {{appointment.user.first_name}} om denne tiden passer for deg. Dette kan du gjøre ved å trykke på knappene under</p>
-          <button (click)="decline()" class="btn-lg btn-primary btn-round m-l-40-20">Avslå</button>
-          <button (click)="accept()" class="btn-lg btn-green btn-round m-l-40-20">Godta</button>
+          <button (click)="showAlert(false)" class="btn-lg btn-primary btn-round m-l-40-20">Avslå</button>
+          <button (click)="showAlert(true)" class="btn-lg btn-green btn-round m-l-40-20">Godta</button>
         </div>
       </div>
       <div *ngIf="!checkStatus(appointment.status, 0) && !messages.length"
@@ -116,7 +120,7 @@
         <h4 class="t-upper t-300 color-stable-dark">Endre antall timer</h4>
         <div class="number-picker row row-center row-center-v p-l-20-0">
           <div class="c-m-4 c-s-6 p-l-0-10">
-            <input type="text" [(ngModel)]="hours">
+            <input type="text" [(ngModel)]="appointment.time_amount">
           </div>
           <div class="c-m-4 c-s-6 fs-24 p-l-0-10">
             <button (click)="changeHour(true)" class="btn-sm btn-border-primary w-100-p"><span
@@ -130,7 +134,7 @@
           jobben. Det koster 50kr per time.</p>
         <button (click)="toggle('payment')" class="btn-md btn-border-stable-dark btn-round fs-14 m-l-10-10">Tilbake
         </button>
-        <button (click)="openCheckout()" class="btn-md btn-green btn-round fs-14 m-l-10-10">Gå til betaling</button>
+        <button (click)="finishAppointment()" class="btn-md btn-green btn-round fs-14 m-l-10-10">Gå til betaling</button>
       </div>
     </div>
   </div>
@@ -160,3 +164,22 @@
     </div>
   </div>
 </div>
+
+<!--
+  ========================================
+    DIRECTIVES
+  ========================================
+-->
+
+<!-- User info -->
+<div *ngIf="show.userInfo" (click)="toggle('userInfo')"
+     class="dialog-cover row row-center row-center-v cover-6 cover-light p-l-20-20">
+  <user-info *ngIf="appointment.user" [user]="appointment.user"></user-info>
+</div>
+
+<!-- SMOOTH ALERT -->
+<smooth-alert [collapse]="show.alert"
+              [options]="alertOptions"
+              (onButtonClick)="handleAlertResponse($event)"
+              (onDeclineClick)="toggle('alert')">
+</smooth-alert>

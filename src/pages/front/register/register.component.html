@@ -54,7 +54,6 @@
 
 <!-- SMOOTH ALERT -->
 <smooth-alert [collapse]="show.alert"
-              [alertType]="alertType"
-              [alertText]="alertText"
-              (onButtonClick)="toggle($event)">
+              [options]="alertOptions"
+              (onButtonClick)="toggle('alert')">
 </smooth-alert>

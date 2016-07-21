@@ -35,20 +35,6 @@
     background: rgba(0,0,0,0.4);
 
     @include trans(opacity, 300ms);
-
-    .file-input {
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 1337;
-      font-size: 50px;
-      cursor: pointer;
-      opacity: 0;
-      -moz-opacity: 0;
-      filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
-    }
   }
 }
 
@@ -62,6 +48,20 @@
 
 .picture-lg {
   @include circle(150px);
+}
+
+.file-input {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1337;
+  font-size: 50px;
+  cursor: pointer;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)
 }
 
 .profile-section {

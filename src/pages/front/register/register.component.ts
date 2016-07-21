@@ -29,8 +29,7 @@ export class RegisterComponent {
 
   // Alert related
   // --------------------------------------
-  public alertText:string;
-  public alertType:string;
+  public alertOptions:any;
 
   constructor(private _authService:AuthService,
               private _formBuilder:FormBuilder,
@@ -67,9 +66,14 @@ export class RegisterComponent {
       }, error => {
         // Something unexpected happened
         this.serverErrors = error.json();
+        
+        this.alertOptions = {
+          type: 'error',
+          text: 'Din bruker ble ikke registrert. Følgende feil medførte dette: \n' + this.serverErrors,
+          showAccept: true,
+          acceptText: 'Lukk'
+        };
 
-        this.alertText = 'Din bruker ble ikke registrert. Følgende feil medførte dette: \n' + this.serverErrors;
-        this.alertType = 'error';
         this.toggle('alert');
       });
   }

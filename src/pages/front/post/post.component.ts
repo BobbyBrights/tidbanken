@@ -97,7 +97,8 @@ export class PostComponent {
   public postJob() {
     this._jobService.create(this.newJob)
       .subscribe(success => {
-
+        // The job was successfully saved to the data base
+        this._router.navigate(['front', 'job', success.id]);
       }, error => {
       });
   }

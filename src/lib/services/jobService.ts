@@ -24,6 +24,16 @@ export class JobService {
       .map(res => <Job> res.json());
   }
 
+  public update(job:Job) {
+
+    // Has to delete imge url for server to accept
+    var copy = Object.assign({}, job);
+    delete copy.picture;
+
+    return this._requestService.request('PUT', this._apiEndpoint + job.id + "/", null, copy)
+      .map(res => <Job> res.json());
+  }
+
   public getJobs() {
     return this._requestService.request('GET', this._apiEndpoint, 'allJobs')
       .map(res => <Job[]> res.json().results);
@@ -63,6 +73,11 @@ export class JobService {
   public getAppointment(appointment_id:string) {
     return this._requestService.request('GET', this._apiEndpoint + 'appointments/' + appointment_id + '/')
       .map(res => <Appointment> res.json());
+  }
+
+  public registerTimePayment(amount:number, appointment_id:number, user_id:number) {
+    var data = {amount:amount, appointment:appointment_id, user:user_id};
+    return this._requestService.request('POST', this._apiEndpoint + 'appointments/' + appointment_id + '/time-payments/', null, data);
   }
 
   // Chat room

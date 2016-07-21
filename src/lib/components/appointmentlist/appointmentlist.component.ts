@@ -20,8 +20,17 @@ export class AppointmentList implements OnInit {
   public filteredAppointments: Appointment[];
   private statuses: number[];
 
+  public statusInfo: any[];
+
   constructor(private _router:Router) {
-    this.statuses = [0, 1, 2];
+    this.statuses = [0, 1, 2, 3];
+
+    this.statusInfo = [
+      {text:'Venter', color:'color-blue', icon:'fa-hourglass-o', status: 0},
+      {text:'Godkjent', color:'color-green', icon:'fa-check', status: 1},
+      {text:'Avslått', color:'color-decline', icon:'fa-times', status: 2},
+      {text:'Ferdig', color:'color-accept', icon:'fa-thumbs-up', status: 3},
+    ]
   }
 
   public ngOnInit() {

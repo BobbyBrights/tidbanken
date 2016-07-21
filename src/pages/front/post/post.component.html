@@ -1,7 +1,7 @@
 <div class="row row-center row-center-v view-height bg-stable-light fs-14 p-l-0-20">
   <form [ngFormModel]="jobForm" (ngSubmit)="postJob()">
     <div *ngIf="checkStep(0)" class="w-700">
-      <h4>Tittel</h4>
+      <h4>Hva trenger du hjelp med?</h4>
       <input ngControl="title" [(ngModel)]="newJob.title" type="text" class="input h-60"
              placeholder="Skriv inn en passende tittel" #title="ngForm">
       <div class="m-l-10-0 t-right">
@@ -9,7 +9,7 @@
       </div>
     </div>
     <div *ngIf="checkStep(1)" class="w-700">
-      <h4>Beskrivelse</h4>
+      <h4>Beskriv jobben litt nærmere</h4>
             <textarea ngControl="description" [(ngModel)]="newJob.description" class="textarea h-300"
                       placeholder="Skriv en kort beskrivelse" #description="ngForm"></textarea>
       <div class="m-l-10-0 t-right">
@@ -40,7 +40,7 @@
       </div>
     </div>
     <div *ngIf="checkStep(3)" class="w-700">
-      <h4>Adresse</h4>
+      <h4>Hvor skal jobben utføres?</h4>
       <div class="row">
         <div class="c-m-6">
           <input ngControl="street_address" [(ngModel)]="newJob.street_address" class="input h-60"
@@ -59,7 +59,7 @@
       </div>
     </div>
     <div *ngIf="checkStep(4)" class="w-700">
-      <h4>Tags</h4>
+      <h4>Nøkkelord</h4>
       <input (keypress)="checkPress($event, tagString)" [(ngModel)]="tagString" class="input h-60"
              placeholder="Skriv inn tags">
       <div *ngFor="let tag of newJob.tags" class="tag hover-primary">

@@ -1,20 +1,8 @@
 <div class="row row-center-v h-100 bg-light border-b-1 border-stable t-center fs-18">
-  <div (click)="toggleStatus(0)" class="c-l-4 p-l-0-40">
-    <div class="border-blue hover-light p-l-10-0" [ngClass]="{'border-b-4': checkFilter(0)}">
-      <span class="fa fa-hourglass-o m-l-0-10 m-right color-blue"></span>
-      <span>Venter</span>
-    </div>
-  </div>
-  <div (click)="toggleStatus(1)" class="c-l-4 p-l-0-40">
-    <div class="border-green hover-light p-l-10-0" [ngClass]="{'border-b-4': checkFilter(1)}">
-      <span class="fa fa-check m-l-0-10 m-right color-green"></span>
-      <span>Godkjent</span>
-    </div>
-  </div>
-  <div (click)="toggleStatus(2)" class="c-l-4 p-l-0-40">
-    <div class="border-decline hover-light p-l-10-0" [ngClass]="{'border-b-4': checkFilter(2)}">
-      <span class="fa fa-times m-l-0-10 m-right color-decline"></span>
-      <span>Avslått</span>
+  <div (click)="toggleStatus(info.status)" *ngFor="let info of statusInfo" class="c-l-3 p-l-0-40">
+    <div class="hover-light p-l-10-0" [ngClass]="{'deselected': !checkFilter(info.status)}">
+      <span class="fa m-l-0-10 m-right {{info.icon}} {{info.color}}"></span>
+      <span>{{info.text}}</span>
     </div>
   </div>
 </div>
@@ -26,27 +14,25 @@
           <h4>{{ covertDate(appointment.date) | date:'MMMM' }}</h4>
         </div>
         <div class="m-l-20-0 center-shadow">
-          <div *ngIf="false" class="bg-blue p-l-15-15 fs-14" [ngClass]="{
-              'bg-blue': checkStatus(appointment.status, 0),
-              'bg-green': checkStatus(appointment.status, 1),
-              'bg-decline': checkStatus(appointment.status, 2)}">{{ covertDate(appointment.date) | date:'MMM dd' }}
-          </div>
           <div (click)="navigate(appointment.id)" class="row row-center-v p-l-20-0 bg-light hover-light">
             <div class="c-m-2 t-center"
                  [ngClass]="{
                  'color-blue': checkStatus(appointment.status, 0),
                  'color-green': checkStatus(appointment.status, 1),
-                 'color-decline': checkStatus(appointment.status, 2)}">
+                 'color-decline': checkStatus(appointment.status, 2),
+                 'color-accept': checkStatus(appointment.status, 3)}">
               <span class="fa fs-30" [ngClass]="{
                   'fa-hourglass-o': checkStatus(appointment.status, 0),
                   'fa-check': checkStatus(appointment.status, 1),
-                  'fa-times': checkStatus(appointment.status, 2)}">
+                  'fa-times': checkStatus(appointment.status, 2),
+                  'fa-thumbs-up': checkStatus(appointment.status, 3)}">
               </span>
               <p *ngIf="checkStatus(appointment.status, 0)" class="t-upper fs-12 m-l-10-0 m-top">Venter</p>
               <p *ngIf="checkStatus(appointment.status, 1)" class="t-upper fs-12 m-l-10-0 m-top">Godkjent</p>
               <p *ngIf="checkStatus(appointment.status, 2)" class="t-upper fs-12 m-l-10-0 m-top">Avslått</p>
+              <p *ngIf="checkStatus(appointment.status, 3)" class="t-upper fs-12 m-l-10-0 m-top">Ferdig</p>
             </div>
-            <div class="c-m-10">
+            <div class="c-m-10" [ngClass]="{'color-stable-dark':checkStatus(appointment.status, 3)}">
               <h4>{{appointment.job.title}} for {{appointment.user.first_name}}</h4>
               <p class="fs-12">Trykk for å se mer</p>
               <div class="row p-l-20-0 p-top t-center">
@@ -60,13 +46,13 @@
                 <div class="c-m-4 fs-14">
                   <div class="row row-center-v">
                     <span class="fa fa-map-marker color-primary fs-14 m-l-0-10"></span>
-                    <span class="color-stable-dark">Skansagata 2a</span>
+                    <span class="color-stable-dark">{{appointment.job.street_address}}</span>
                   </div>
                 </div>
                 <div class="c-m-4 fs-14">
                   <div class="row row-center-v">
                     <span class="fa fa-clock-o color-primary fs-14 m-l-0-10"></span>
-                <span class="color-stable-dark">{{appointment.job.duration}} time<span
+                <span class="color-stable-dark">{{appointment.time_amount}} time<span
                   *ngIf="appointment.job.duration > 1">r</span></span>
                   </div>
                 </div>

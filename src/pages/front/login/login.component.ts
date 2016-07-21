@@ -29,8 +29,7 @@ export class LoginComponent {
   public show:{};
 
   // Alert fields
-  public alertText: string;
-  public alertType: string;
+  public alertOptions: any;
 
   constructor(private _authService:AuthService,
               private _router:Router,
@@ -48,10 +47,10 @@ export class LoginComponent {
   };
 
   // Global functions
-  login() {
+  public login() {
     this._authService.login(this.user.phone, this.user.password)
       .subscribe(res => {
-        
+
         // The user is logged in!
         this._router.navigate(['front']);
 
@@ -59,8 +58,13 @@ export class LoginComponent {
         // Revieles the error to the user
         this.serverErrors = error.json();
 
-        this.alertText = 'Obs, noe gikk galt. Følgende feilmelding er sendt fra server: ' + this.serverErrors;
-        this.alertType = 'error';
+        this.alertOptions = {
+          type: 'error',
+          text: 'Obs, noe gikk galt. Følgende feilmelding er sendt fra server: ' + this.serverErrors,
+          showAccept: true,
+          acceptText: 'Lukk'
+        };
+
         this.toggle('alert');
       });
   }
