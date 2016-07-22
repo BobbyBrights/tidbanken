@@ -7,7 +7,7 @@
         </div>
     </div>
 </div>
-<div class="row p-l-100-100 p-s-20-20 bg-primary fs-14">
+<div class="row p-l-100-100 p-s-20-20 border-t-1 border-stable fs-14">
     <div class="c-m-6">
         <h3>Tidbanken</h3>
         <p class="big">
@@ -15,14 +15,26 @@
         </p>
     </div>
 </div>
-<div class="row">
-  <h2>Halla broooo</h2>
+<div class="row p-l-20-100">
+  <h4 class="t-upper t-400">Siste oppdateringer</h4>
 </div>
-<div class="row bg-stable-light border-t-1 border-stable p-l-20-60">
+<div class="row bg-stable-light border-t-1 h-400 border-stable p-l-20-60">
 
 </div>
-<smooth-alert [collapse]="show.alert"
-              [alertType]="'warning'"
-              [alertText]="'Mail sendt'"
-              (onButtonClick)="toggle($event)">
-</smooth-alert>
+<!-- Edit job -->
+<div *ngIf="show.alert" (click)="toggle('alert')"
+     class="dialog-cover row row-center row-center-v cover-6 cover-black p-l-20-20">
+  <div (click)="$event.stopPropagation()" class="popup-dialog w-800 bg-light p-l-40-40 rounded-5 overflow-scroll">
+    <div class="row p-l-20-20 border-b-1 border-stable">
+      <div class="c-l-12">
+        <h3>Kom i gang!</h3>
+        <p class="fs-14">Før du kan finne hjelp må du registrere en bruker eller logge inn med en eksisterende bruker. Dette gjør du ved å velge under.</p>
+      </div>
+    </div>
+    <div class="row row-center t-center fs-14 p-l-20-0">
+      <button (click)="navigate('login')" class="btn-lg btn-primary rounded-3 w-400">Logg inn</button>
+      <p class="w-100-p p-l-10-0 fs-14 t-300 color-stable-dark">eller</p>
+      <button (click)="navigate('register')" class="btn-lg btn-blue rounded-3 w-400">Registrer deg</button>
+    </div>
+  </div>
+</div>

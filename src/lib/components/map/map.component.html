@@ -12,7 +12,7 @@
       *ngFor="let m of markers; let i = index"
       [latitude]="m.lat"
       [longitude]="m.lng"
-      [label]="m.label"
+      [iconUrl]="'/img/other/map-marker-icon.png'"
       [markerDraggable]="m.draggable">
 
       <sebm-google-map-info-window>

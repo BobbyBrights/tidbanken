@@ -1,19 +1,19 @@
 <div class="row">
-    <div class="c-l-6 bg-primary">
+    <div class="c-l-6 bg-light border-r-1 border-stable">
         <div class="row row-center-v row-center view-height p-l-40-60">
             <form [ngFormModel]="registerForm" (submit)="register()" class="fs-20 w-600">
                 <h4>Registrer deg</h4>
 
                 <!-- First name -->
-                <input [(ngModel)]="newUser.first_name" type="text" class="input input-bottom-primary m-l-20-0"
+                <input [(ngModel)]="newUser.first_name" type="text" class="input input-bottom-black m-l-20-0"
                        placeholder="Fornavn" #first_name="ngForm">
 
                 <!-- Last name -->
-                <input [(ngModel)]="newUser.last_name" type="text" class="input input-bottom-primary m-l-20-0"
+                <input [(ngModel)]="newUser.last_name" type="text" class="input input-bottom-black m-l-20-0"
                        placeholder="Etternavn" #last_name="ngForm">
 
                 <!-- Telephone number -->
-                <input [(ngModel)]="newUser.phone" type="phone" class="input input-bottom-primary m-l-20-0"
+                <input [(ngModel)]="newUser.phone" type="phone" class="input input-bottom-black m-l-20-0"
                        placeholder="Telefon" #phone="ngForm">
 
                 <!-- Password -->
@@ -22,20 +22,20 @@
 
                         <!-- Password first time -->
                         <input [(ngModel)]="newUser.password" type="password"
-                               class="input input-bottom-primary m-l-20-0" placeholder="Passord" #password="ngForm">
+                               class="input input-bottom-black m-l-20-0" placeholder="Passord" #password="ngForm">
                     </div>
                     <div class="c-m-6 p-l-0-20 p-s-0-0 p-left">
 
                         <!-- Password second time -->
                         <input [(ngModel)]="newUser.passwordCheck" type="password"
-                               class="input input-bottom-primary m-l-20-0" placeholder="Gjenta passord"
+                               class="input input-bottom-black m-l-20-0" placeholder="Gjenta passord"
                                #passwordCheck="ngForm">
                     </div>
                 </div>
                 <div class="t-right m-l-20-0">
 
                     <!-- Submit button -->
-                    <button class="btn-lg btn-border-light btn-round">Registrer bruker</button>
+                    <button class="btn-lg btn-border-primary btn-round">Registrer bruker</button>
                 </div>
             </form>
         </div>

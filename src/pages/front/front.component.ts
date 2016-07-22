@@ -67,9 +67,8 @@ export class FrontComponent {
 
   options = {
     url: myGlobals.apiUrl + 'users/',
-    fieldName: 'user_profile.profile_picture',
+    fieldName: 'profile_picture',
     method: 'PUT',
-    withCredentials: true,
     authToken: localStorage.getItem('id_token'),
     authTokenPrefix: "JWT"
   };
@@ -90,6 +89,9 @@ export class FrontComponent {
     this._authService.getCurrentUser()
       .subscribe(success => {
         this.user = success;
+
+        // Set correct view for file upload
+        this.options.url = myGlobals.apiUrl + 'users/' + success.id + '/image-upload/';
       }, error => {});
 
     // Sets the base url for static files

@@ -6,6 +6,7 @@ export class Appointment extends ServerResponse {
   job:any;
   status:number;
   time_amount:number;
+  user: any;
 
   constructor() {
 

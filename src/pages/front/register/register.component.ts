@@ -21,7 +21,6 @@ import {SmoothAlert} from "../../../lib/components/smoothAlert/smoothalert.compo
 export class RegisterComponent {
   public newUser:User = <User>{};
   public registerForm:any;
-  public serverErrors:{} = {};
 
   // Show and hide properties
   // --------------------------------------
@@ -64,12 +63,11 @@ export class RegisterComponent {
         // The user is successfully registered
         this._router.navigate(['front', 'complete', success.phone]);
       }, error => {
-        // Something unexpected happened
-        this.serverErrors = error.json();
-        
+
         this.alertOptions = {
           type: 'error',
-          text: 'Din bruker ble ikke registrert. Følgende feil medførte dette: \n' + this.serverErrors,
+          text: 'Din bruker ble ikke registrert. Følgende feil medførte dette:',
+          serverErrors: error.json(),
           showAccept: true,
           acceptText: 'Lukk'
         };

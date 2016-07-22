@@ -27,7 +27,7 @@
               'bg-decline': checkStatus(appointment.status, 2),
               'bg-accept': checkStatus(appointment.status, 3)}">
         <h5>{{appointment.job.title}}</h5>
-        {{ covertDate(appointment.date) | date:'longDate' }}
+        {{ covertDate(appointment.date) | date:'EEE dd MM y hh:mm' }}
       </div>
       <div class="row bg-stable-light">
         <div class="c-l-12 fs-14">
@@ -54,23 +54,23 @@
         </div>
       </div>
     </div>
-    <div *ngIf="checkStatus(appointment.status, 1)" class="row row-center row-center-v p-l-60-20 fs-14">
+    <div *ngIf="checkStatus(appointment.status, 1) && !isOwner" class="row row-center row-center-v p-l-60-20 fs-14">
       <div class="t-center p-l-0-20">
-        <p>Ble avtalen gjennomført? Ikke glem å marker avtalen som gjennomført, slik at {{appointment.user.first_name}}
-          får timene sine.</p>
+        <p>Ble avtalen gjennomført? Ikke glem å marker avtalen som gjennomført, slik at du får timene dine. Ved å trykke på knappen under får du også mulighet til å justere timeantallet.</p>
       </div>
       <button (click)="toggle('payment')" class="btn-lg btn-green rounded-3 m-l-20-0 m-top">Avtalen ble gjennomført
       </button>
     </div>
-    <div *ngIf="messages.length && checkStatus(appointment.status, 0)" class="p-l-20-20 bg-stable-light fs-12">
+    <div *ngIf="messages.length && checkStatus(appointment.status, 0)  && isOwner" class="p-l-20-20 bg-stable-light fs-12">
       <h6>Gi et svar</h6>
       <p class="color-stable-dark">Du har ikke gitt svar til {{appointment.user.first_name}} om denne tiden passer for deg. Dette kan du gjøre ved å trykke på knappene under</p>
       <div class="t-center">
         <button (click)="showAlert(false)" class="btn-md btn-primary btn-round m-l-15-10 m-top">Avslå</button>
         <button (click)="showAlert(true)" class="btn-md btn-green btn-round m-l-15-10 m-top">Godta</button>
+        <button (click)="toggle('changeTime')" class="btn-md btn-blue btn-round m-l-15-10 m-top">Foreslå et nytt tidspubnkt</button>
       </div>
     </div>
-    <div *ngIf="checkStatus(appointment.status, 2)" class="p-l-20-20 bg-stable-light fs-12">
+    <div *ngIf="checkStatus(appointment.status, 2)  && isOwner" class="p-l-20-20 bg-stable-light fs-12">
       <h6>Endret mening?</h6>
       <p class="color-stable-dark">Hvis du har endret mening angående denne avtalen kan du godkjenne den ved å trykke på knappen under.</p>
       <div class="t-center">
@@ -80,15 +80,16 @@
   </div>
   <div class="chat-room view-height fs-14">
     <div class="messages" #chatScroll>
-      <div *ngIf="checkStatus(appointment.status, 0) && !messages.length" class="row row-center row-center-v h-100-p p-l-40-20 t-center">
+      <div *ngIf="checkStatus(appointment.status, 0) && !messages.length  && isOwner" class="row row-center row-center-v h-100-p p-l-40-20 t-center">
         <div class="w-600">
           <h3>Gi et svar</h3>
           <p class="fs-14 color-stable-dark">Du har ikke gitt svar til {{appointment.user.first_name}} om denne tiden passer for deg. Dette kan du gjøre ved å trykke på knappene under</p>
-          <button (click)="showAlert(false)" class="btn-lg btn-primary btn-round m-l-40-20">Avslå</button>
-          <button (click)="showAlert(true)" class="btn-lg btn-green btn-round m-l-40-20">Godta</button>
+          <button (click)="showAlert(false)" class="btn-lg btn-primary btn-round m-l-20-20">Avslå</button>
+          <button (click)="showAlert(true)" class="btn-lg btn-green btn-round m-l-20-20">Godta</button>
+          <button (click)="toggle('changeTime')" class="btn-lg btn-stable-light btn-round m-l-0-10 m-top">Foreslå et nytt tidspubnkt</button>
         </div>
       </div>
-      <div *ngIf="!checkStatus(appointment.status, 0) && !messages.length"
+      <div *ngIf="(!checkStatus(appointment.status, 0) || !isOwner) && !messages.length"
            class="row row-center row-center-v h-100-p p-l-40-20 t-center">
         <div class="w-600">
           <h4>Ingen meldinger</h4>
@@ -130,11 +131,9 @@
               class="fa fa-caret-down"></span></button>
           </div>
         </div>
-        <p class="color-stable-dark fs-14 m-l-20-0">Du har ingen timer til gode og må derfor kjøpe timene for denne
-          jobben. Det koster 50kr per time.</p>
         <button (click)="toggle('payment')" class="btn-md btn-border-stable-dark btn-round fs-14 m-l-10-10">Tilbake
         </button>
-        <button (click)="finishAppointment()" class="btn-md btn-green btn-round fs-14 m-l-10-10">Gå til betaling</button>
+        <button (click)="finishAppointment()" class="btn-md btn-green btn-round fs-14 m-l-10-10">Send inn</button>
       </div>
     </div>
   </div>
@@ -163,6 +162,11 @@
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="show.changeTime" (click)="toggle('changeTime')"
+     class="dialog-cover row row-center row-center-v cover-6 cover-black">
+  <time-suggestion (onFormSubmit)="suggestNewDate($event)"></time-suggestion>
 </div>
 
 <!--

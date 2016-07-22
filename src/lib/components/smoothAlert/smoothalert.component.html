@@ -14,6 +14,9 @@
     <div class="row row-center p-l-20-40 p-bottom color-dark t-center">
       <h3>{{options.title}}</h3>
       <p class="fs-14 t-300 w-100-p">{{ options.text }}</p>
+      <div *ngIf="options.serverErrors">
+        <p *ngFor="let error of options.serverErrors | mapToIterable" class="color-decline fs-14">{{ error }}</p>
+      </div>
     </div>
     <div class="row row-center p-l-40-20 p-bottom fs-16 color-dark">
       <button *ngIf="options.showDecline" (click)="declineClick()" class="btn-lg btn-primary btn-round m-l-0-10">

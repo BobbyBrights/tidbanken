@@ -2,6 +2,7 @@ import {Component, Input, EventEmitter, ElementRef, Output, OnInit}         from
 import {HTTP_PROVIDERS}                                             from '@angular/http';
 import {CssAnimationBuilder}                                        from "@angular/platform-browser/src/animate/css_animation_builder";
 import {AnimationBuilder}                                           from "@angular/platform-browser/src/animate/animation_builder";
+import {mapToIterablePipe} from "../../pipes/mapToIterable";
 
 @Component({
   selector: 'smooth-alert',
@@ -10,7 +11,8 @@ import {AnimationBuilder}                                           from "@angul
   providers: [
     HTTP_PROVIDERS
   ],
-  styles: [require('css/smoothalert.component.css'), require('css/app.component.css')]
+  styles: [require('css/smoothalert.component.css'), require('css/app.component.css')],
+  pipes: [mapToIterablePipe]
 })
 export class SmoothAlert implements OnInit {
 
@@ -28,7 +30,7 @@ export class SmoothAlert implements OnInit {
   }
 
   public ngOnInit() {
-
+    console.log(this.options);
   }
 
   public checkType(type:string) {

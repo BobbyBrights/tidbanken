@@ -1,20 +1,20 @@
 <div class="row">
-    <div class="c-l-6 bg-blue">
+    <div class="c-l-6 bg-light border-r-1 border-stable">
         <div class="row row-center-v row-center view-height p-l-40-60">
             <form [ngFormModel]="loginForm" (submit)="login()" class="fs-20 w-600">
                 <h4>Logg inn</h4>
 
                 <!-- User name -->
-                <input [(ngModel)]="user.phone" type="phone" class="input input-bottom-blue m-l-20-0"
+                <input [(ngModel)]="user.phone" type="phone" class="input input-bottom-black m-l-20-0"
                        placeholder="Telefon" #username="ngForm">
 
                 <!-- Password -->
-                <input [(ngModel)]="user.password" type="password" class="input input-bottom-blue m-l-20-0"
+                <input [(ngModel)]="user.password" type="password" class="input input-bottom-black m-l-20-0"
                        placeholder="passord" #password="ngForm">
 
                 <!-- Submit button -->
                 <div class="t-right m-l-20-0">
-                    <button class="btn-lg btn-border-light btn-round">Logg inn</button>
+                    <button class="btn-lg btn-border-primary btn-round">Logg inn</button>
                 </div>
             </form>
         </div>

@@ -6,11 +6,12 @@ import {FormBuilder, Validators}    from "@angular/common";
 import {Job}                        from "lib/classes/job";
 import {JobService}                 from "lib/services/jobService";
 import {GoogleplaceDirective}       from "lib/directives/googlePlace";
+import {LoaderComponent} from "../../../lib/components/loader/loader.component";
 
 @Component({
   selector: 'job',
   template: require('pages/front/post/post.component.html'),
-  directives: [GoogleplaceDirective],
+  directives: [GoogleplaceDirective, LoaderComponent],
   providers: [
     HTTP_PROVIDERS,
     JobService
@@ -34,6 +35,7 @@ export class PostComponent {
   public jobForm:any;
   public newJob:Job = <Job>{};
   public hours:number[];
+  public isLoading:boolean;
 
   // Tag related
   // ------------------------
@@ -95,10 +97,22 @@ export class PostComponent {
 
   // Post the job
   public postJob() {
+
+    // Show the loader
+    this.isLoading = true;
+
     this._jobService.create(this.newJob)
       .subscribe(success => {
         // The job was successfully saved to the data base
-        this._router.navigate(['front', 'job', success.id]);
+
+        setTimeout(() => {
+          // Hide the loader
+          this.isLoading = false;
+
+          // Navigate to new view
+          this._router.navigate(['front', 'job', success.id]);
+        }, 500);
+
       }, error => {
       });
   }
@@ -124,9 +138,22 @@ export class PostComponent {
     this.newJob.tags.splice(index, 1);
   }
 
-  public checkPress(event, text) {
+  public checkEnterPress(event, formVars) {
 
-    console.log(event.keyCode);
+    var is_valid = true;
+
+    formVars.forEach(formVar => {
+      if (!formVar.valid)
+        is_valid = false
+    });
+
+    if (event.keyCode == 13 && is_valid) {
+      this.next();
+    }
+  }
+
+  public checkPress(event, text?) {
+
     // Checks if the key code is equal of that of enter
     if (event.keyCode == 32 || event.keyCode == 13) {
 

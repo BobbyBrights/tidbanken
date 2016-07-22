@@ -33,7 +33,7 @@
               <p *ngIf="checkStatus(appointment.status, 3)" class="t-upper fs-12 m-l-10-0 m-top">Ferdig</p>
             </div>
             <div class="c-m-10" [ngClass]="{'color-stable-dark':checkStatus(appointment.status, 3)}">
-              <h4>{{appointment.job.title}} for {{appointment.user.first_name}}</h4>
+              <h4>{{appointment.job.title}}</h4>
               <p class="fs-12">Trykk for å se mer</p>
               <div class="row p-l-20-0 p-top t-center">
                 <div class="c-m-4 fs-14">

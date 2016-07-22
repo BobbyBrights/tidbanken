@@ -3,7 +3,6 @@ import {HTTP_PROVIDERS}                             from '@angular/http';
 import {Router}                                     from "@angular/router";
 import {Appointment}                                from "../../classes/appointment";
 
-
 @Component({
   selector: 'appointment-list',
   template: require('lib/components/appointmentlist/appointmentlist.component.html'),

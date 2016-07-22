@@ -123,4 +123,38 @@ export class JobsComponent {
   public hideObject(key) {
     this.show[key] = false;
   }
+
+  public timeSince(d:string) {
+
+    var date = new Date(d);
+
+    var seconds = Math.floor((new Date() - date) / 1000);
+
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval > 1) {
+      return interval + " år";
+    }
+
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+      return interval + " måneder";
+    }
+
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+      return interval + " dager";
+    }
+
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+      return interval + " timer";
+    }
+
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+      return interval + " minutter";
+    }
+    return Math.floor(seconds) + " sekunder";
+  }
 }

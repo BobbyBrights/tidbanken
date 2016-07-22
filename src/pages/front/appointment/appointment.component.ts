@@ -15,11 +15,12 @@ import {Observable}                                       from "rxjs/Rx";
 import {UserInfo}                                         from "lib/components/userInfo/userinfo.component";
 
 import myGlobals = require('globals');
+import {TimeSuggestion} from "../../../lib/components/timesuggestion/timesuggestion.component";
 
 @Component({
   selector: 'appointment',
   template: require('pages/front/appointment/appointment.component.html'),
-  directives: [SmoothAlert, UserInfo],
+  directives: [SmoothAlert, UserInfo, TimeSuggestion],
   providers: [
     HTTP_PROVIDERS,
     JobService,
@@ -32,12 +33,15 @@ export class AppointmentComponent {
 
   @ViewChild('chatScroll') private myScrollContainer:ElementRef;
 
-  public appointment:Appointment;
-  public user:User = <User>{};
-
   public baseUrl:string;
 
   public socket:any;
+
+  // Appointment related
+  // -----------------------
+  public appointment:Appointment;
+  public user:User = <User>{};
+  public isOwner:boolean;
 
   // Show and hide
   // -------------------
@@ -80,6 +84,8 @@ export class AppointmentComponent {
     this._jobService.getAppointment(appointment_id)
       .subscribe(success => {
         this.appointment = success;
+
+        this.isOwner = (this.appointment.job.user_id == this.user.id);
 
         this._jobService.getRoom(success.job.id, success.user.id)
           .subscribe(success => {
@@ -337,6 +343,12 @@ export class AppointmentComponent {
             this.appointment = success;
           }, error => {});
       }, error => {});
+  }
+
+  public suggestNewDate(data:any) {
+    var message = "Denne tiden passer ikke for meg. Er det mulig å flytte avtalen til " + data.newHour + ":" + data.newMin + " den " + data.newDate.toLocaleDateString() + "?";
+    this.toggle('changeTime');
+    this.sendMessage(message);
   }
 
   // Other

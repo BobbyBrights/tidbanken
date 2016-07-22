@@ -1,8 +1,10 @@
 <div class="row view-height">
   <div class="c-m-4 bg-light border-r-1 border-stable center-shadow">
     <div class="row view-height">
-      <div class="p-l-20-20">
-        <div class="row p-l-10-10 bg-blue">Den kommende uken</div>
+      <div class="c-l-12">
+        <div class="row row-center row-center-v h-100 border-b-1 border-stable bg-stable-light">
+          <h4>Vurderinger</h4>
+        </div>
       </div>
       <datepicker class="color-dark appointments-calendar w-100-p" [date]="soknadsfrist"
                   (valueChange)="addDate($event)" [height]="350"></datepicker>

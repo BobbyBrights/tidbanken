@@ -24,7 +24,6 @@ import {SmoothAlert} from "../../../lib/components/smoothAlert/smoothalert.compo
 
 export class LoginComponent {
   public user:User = <User>{};
-  public serverErrors:{};
   public loginForm:any;
   public show:{};
 
@@ -38,7 +37,6 @@ export class LoginComponent {
       'username': ['', Validators.compose([Validators.required, ValidationService.emailValidator])],
       'password': ['', Validators.required]
     });
-    this.serverErrors = {};
     this.show = {
       login: true,
       forgot: false,
@@ -55,12 +53,11 @@ export class LoginComponent {
         this._router.navigate(['front']);
 
       }, error => {
-        // Revieles the error to the user
-        this.serverErrors = error.json();
 
         this.alertOptions = {
           type: 'error',
-          text: 'Obs, noe gikk galt. Følgende feilmelding er sendt fra server: ' + this.serverErrors,
+          text: 'Obs, noe gikk galt. Følgende feilmelding er sendt fra server:',
+          serverErrors: error.json(),
           showAccept: true,
           acceptText: 'Lukk'
         };

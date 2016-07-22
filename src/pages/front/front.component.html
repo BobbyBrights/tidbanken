@@ -1,10 +1,14 @@
 <div class="profile-section">
   <div *ngIf="!user" class="row row-center-v">
-    <button (click)="navigate('login')" class=" btn-md btn-border-light rounded-3 fs-12 t-upper m-l-10-0">Logg inn</button>
+    <button (click)="navigate('login')" class=" btn-md btn-border-light rounded-3 fs-12 t-upper m-l-10-5">Logg inn</button>
+    <button (click)="navigate('register')" class=" btn-md btn-border-light rounded-3 fs-12 t-upper m-l-10-5">Registrer bruker</button>
   </div>
   <div *ngIf="user" class="row row-center-v">
     <button (click)="navigate('myjobs')" class=" btn-md btn-border-light rounded-3 fs-12 t-upper">Mine jobber</button>
-    <div (click)="toggle('userProfile')" class="profile-picture m-l-0-20"
+    <button (click)="navigate('appointments')" class=" btn-md btn-border-light rounded-3 fs-12 t-upper m-l-0-10">
+      <span class="fa fa-calendar fs-12"></span>
+    </button>
+    <div (click)="toggle('userProfile')" class="profile-picture m-l-0-10 m-right"
          [ngStyle]="{'background-image': 'url(' + baseUrl + user.profile_picture + ')'}"></div>
     <div *ngIf="show.userProfile" (click)="toggle('userProfile')" class="notefication-cover">
       <div (click)="$event.stopPropagation()" class="notefication-dropdown p-l-20-20">

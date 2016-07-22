@@ -1,0 +1,41 @@
+<!-- Request appointment -->
+<div (click)="$event.stopPropagation()" class="popup-dialog w-800 bg-light p-l-20-20 rounded-5 overflow-scroll">
+  <div class="row row-center p-l-20-20 p-top">
+    <div class="c-l-12">
+      <h3>Sett en som passer for deg</h3>
+      <p class="fs-14">Gi en indikasjon på når det passer for deg å gjøre denne jobben.</p>
+    </div>
+    <form class="w-600" [ngFormModel]="timeForm" (ngSubmit)="submitForm()">
+      <div class="row row-center p-l-20-0 p-top">
+        <div class="c-l-12">
+          <h4>Klokkeslett</h4>
+        </div>
+      </div>
+      <div class="row row-center-v row-center">
+        <div class="c-l-4 color-light p-l-10-10 fs-12">
+          <input [(ngModel)]="data.newHour" ngControl="hour" max="23" min="0" type="text"
+                 class="w-100-p h-60 input-b-stable rounded-3 fs-20 t-center" placeholder="tt" #hour="ngForm">
+        </div>
+        <div class="c-l-1 t-center">
+          <h3 class="color-stable-dark">:</h3>
+        </div>
+        <div class="c-l-4 color-light p-l-10-10 fs-12">
+          <input [(ngModel)]="data.newMin" ngControl="minute" type="text"
+                 class="w-100-p h-60 input-b-stable rounded-3 fs-20 t-center" placeholder="mm" #minute="ngForm">
+        </div>
+      </div>
+      <div class="row p-l-5-0">
+        <div class="c-l-12">
+          <h4>Dato</h4>
+        </div>
+      </div>
+      <datepicker class="color-dark h-400" [date]="''"
+                  (valueChange)="dateChanged($event)" [height]="350"></datepicker>
+      <div class="row row-center p-l-40-0 p-top">
+        <div class="c-l-6 fs-14">
+          <button [disabled]="!validateForm(timeForm)" type="submit" class="btn-lg btn-green rounded-5 w-100-p">Foreslå tid</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

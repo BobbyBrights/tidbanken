@@ -16,11 +16,12 @@ import {MapComponent}                       from "lib/components/map/map.compone
 
 import myGlobals = require('globals');
 import {SmoothAlert} from "../../../lib/components/smoothAlert/smoothalert.component";
+import {TimeSuggestion} from "../../../lib/components/timesuggestion/timesuggestion.component";
 
 @Component({
   selector: 'job',
   template: require('pages/front/job/job.component.html'),
-  directives: [Datepicker, UPLOAD_DIRECTIVES, SmoothAlert, UserInfo, MapComponent],
+  directives: [TimeSuggestion, UPLOAD_DIRECTIVES, SmoothAlert, UserInfo, MapComponent],
   providers: [
     HTTP_PROVIDERS,
     JobService
@@ -44,13 +45,6 @@ export class JobComponent {
   // Appointment related
   // --------------------------
   public appointment:Appointment = <Appointment>{};
-  public newDate:Date;
-  public newHour:number;
-  public newMin:number;
-  public hours:number[];
-  public quarters:number[];
-  public timeForm:any;
-  public soknadsfrist = "";
 
   // User related
   // ---------------------------
@@ -103,16 +97,6 @@ export class JobComponent {
     this.zone = new NgZone({enableLongStackTrace: false});
 
     this.baseUrl = myGlobals.baseURL;
-    this.hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
-    this.quarters = [0, 15, 30, 45];
-
-    this.newHour = -1;
-    this.newMin = -1;
-
-    this.timeForm = this._formBuilder.group({
-      'hour': ['', Validators.compose([Validators.required, ValidationService.positiveNumberValidator])],
-      'minute': ['', Validators.compose([Validators.required, ValidationService.positiveNumberValidator])],
-    });
 
     let job_id = this._routeSegment.getParam('id');
 
@@ -160,13 +144,6 @@ export class JobComponent {
 
   public toggle(key) {
     this.show[key] = !this.show[key];
-  }
-
-  public dateChanged(event) {
-
-    this.newDate = event.value;
-
-    this.newDate.setHours(12, 0, 0);
   }
 
   // Job related
@@ -229,18 +206,28 @@ export class JobComponent {
   // Appointment related
   // ------------------------
 
-  public createAppointment() {
+  public createAppointment(data:any) {
 
-    this.newDate.setHours(this.newHour, this.newMin, 0);
-    this.newDate.setTime(this.newDate.getTime() - this.newDate.getTimezoneOffset() * 60 * 1000);
+    data.newDate.setHours(data.newHour, data.newMin, 0);
+    data.newDate.setTime(data.newDate.getTime() - data.newDate.getTimezoneOffset() * 60 * 1000);
 
-    this.appointment.date = this.newDate.toISOString();
+    this.appointment.date = data.newDate.toISOString();
     this.appointment.job = this.job.id;
     this.appointment.time_amount = this.job.duration;
 
     this._jobService.createAppointment(this.appointment)
       .subscribe(success => {
+        this.toggle('appointment');
 
+        this.alertOptions = {
+          title: 'Interesse meldt',
+          showAccept: true,
+          acceptText: 'Lukk',
+          type: 'success',
+          text: 'Du har nå meldt interesse for denne jobben. Dine avtaler kan du finne under Mine avtaler'
+        };
+
+        this.toggle('alert');
       }, error => {
       });
   }
@@ -251,7 +238,7 @@ export class JobComponent {
   public handleDropUpload(data) {
     if (data && data.response) {
       this.toggle('edit');
-      this.job = JSON.parse(data.response);
+      this.job.picture = JSON.parse(data.response).picture;
 
       this.alertOptions = {
         title: 'Oppdatert',
