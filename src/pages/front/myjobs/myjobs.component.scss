@@ -2,3 +2,14 @@
   flex: 1;
 }
 
+.appointments-container {
+  position: absolute;
+  top: 100px; left: 500px; right: 0; bottom: 0;
+}
+
+.job-header {
+  position: absolute;
+  top: 0;
+  left: 500px;
+  right: 0;
+}

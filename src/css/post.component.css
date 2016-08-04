@@ -54,4 +54,16 @@
   .prog-list .active ~ li::before {
     background: #898b8f; }
 
+.error-shaker {
+  border: 2px solid #fc797c;
+  animation: shake 100ms 3 linear; }
+
+@keyframes shake {
+  0% {
+    margin-left: 0px; }
+  50% {
+    margin-left: 10px; }
+  100% {
+    margin-left: 0px; } }
+
 /*# sourceMappingURL=post.component.css.map */

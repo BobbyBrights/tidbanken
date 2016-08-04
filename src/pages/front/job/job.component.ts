@@ -187,6 +187,22 @@ export class JobComponent {
       });
   }
 
+  public strictNavigate() {
+    if (this.user.has_completed_profile)
+      this.toggle('appointment');
+    else {
+      this.alertOptions = {
+        type: 'warning',
+        title: 'Fyll ut din profil',
+        text: 'Før du får lov til å gå videre trenger vi at du fyller ut litt mer informasjon på din profil',
+        showAccept: true,
+        acceptText: 'Fyll ut profil'
+      };
+
+      this.toggle('alert');
+    }
+  }
+
   public checkOwner() {
 
     /*
@@ -230,6 +246,13 @@ export class JobComponent {
         this.toggle('alert');
       }, error => {
       });
+  }
+
+  // Share button
+  // ---------------------
+
+  public getShareUrl() {
+    return window.location.protocol + '//' + window.location.host + this._router.serializeUrl(this._router.urlTree);
   }
 
   // File Upload

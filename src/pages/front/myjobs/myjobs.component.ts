@@ -1,10 +1,15 @@
 import {Component}                  from '@angular/core';
 import {HTTP_PROVIDERS}             from '@angular/http';
+import {Router}                     from "@angular/router";
+
 import {SmoothAlert}                from "lib/components/smoothAlert/smoothalert.component";
-import {Appointment}                from "lib/classes/appointment";
 import {AppointmentList}            from "lib/components/appointmentlist/appointmentlist.component";
+
 import {JobService}                 from "lib/services/jobService";
+
 import {Job}                        from "lib/classes/job";
+import {Appointment}                from "lib/classes/appointment";
+
 import myGlobals = require('globals');
 
 @Component({
@@ -19,15 +24,17 @@ import myGlobals = require('globals');
 })
 
 export class MyJobsComponent {
-  public show: {};
-  public jobs: Job[] = [];
-  public selectedJob: Job;
+  public show:{};
+  public jobs:Job[] = [];
+  public selectedJob:Job;
 
   public baseUrl:string;
 
-  public appointments: Appointment[] = [];
+  public appointments:Appointment[] = [];
 
-  constructor(private _jobService:JobService) {
+  constructor(private _jobService:JobService,
+              private _router:Router) {
+
     this.show = {
       alert: false
     };
@@ -66,6 +73,10 @@ export class MyJobsComponent {
 
   public toggle(key) {
     this.show[key] = !this.show[key];
+  }
+
+  public navigate(path) {
+    this._router.navigate(path);
   }
 
   public timeSince(d:string) {

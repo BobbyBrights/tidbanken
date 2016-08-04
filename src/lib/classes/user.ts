@@ -7,6 +7,8 @@ export class User extends ServerResponse {
   profile_picture:string;
   token:string;
 
+  has_completed_profile:boolean;
+
   // Fields for creation of user
   auth_method:string;
 }

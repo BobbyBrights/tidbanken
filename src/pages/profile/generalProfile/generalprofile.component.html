@@ -1,16 +1,50 @@
-<div class="row row-center row-center-v h-full has-nav-side-lg">
-    <div class="w-800 p-l-20-20">
-        <h2>Generell informasjon</h2>
-        <form *ngIf="user" class="fs-16" (ngSubmit)="update()">
-            <input [(ngModel)]="user.first_name" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Fornavn">
-            <input [(ngModel)]="user.last_name" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Etternavn">
-            <input [(ngModel)]="user.phone" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Telefon">
-            <input [(ngModel)]="user.first_name" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Skriv inn ditt navn">
-            <input [(ngModel)]="user.first_name" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Skriv inn ditt navn">
-            <input [(ngModel)]="user.first_name" type="text" class="input input-bottom-dark m-l-20-0" placeholder="Skriv inn ditt navn">
-            <div class="t-right">
-                <button type="submit" class="btn-lg btn-green">Send inn</button>
-            </div>
-        </form>
-    </div>
+<div class="row row-center row-center-v h-full bg-stable-light has-nav-side-lg">
+  <div class="w-800 p-l-20-20">
+    <h2>Generell informasjon</h2>
+    <form *ngIf="user" class="fs-16" [ngFormModel]="userForm" (ngSubmit)="update()">
+
+      <!-- Name of logged in user-->
+      <div class="row">
+        <div class="c-m-6 p-l-20-20 p-s-0-0 p-right">
+          <label for="first_name">Fornavn</label>
+          <input ngControl="first_name" [(ngModel)]="user.first_name" id="first_name" type="text"
+                 class="input right-shadow h-60 m-l-10-0" placeholder="Skriv inn fornavn" #first_name="ngForm">
+        </div>
+        <div class="c-m-6 p-l-20-20 p-s-0-0 p-left">
+          <label for="last_name">Etternavn</label>
+          <input ngControl="last_name" [(ngModel)]="user.last_name" id="last_name" type="text"
+                 class="input right-shadow h-60 m-l-10-0" placeholder="Skriv inn etternavn" #last_name="ngForm">
+        </div>
+      </div>
+
+      <!-- Short text about the user -->
+      <label for="about">Om deg</label>
+      <textarea ngControl="about" [(ngModel)]="user.about" class="textarea right-shadow h-200 m-l-10-0" id="about"
+                placeholder="Skriv litt om deg selv" #about="ngForm"></textarea>
+
+      <!-- More information regarding the user -->
+      <div class="row">
+        <div class="c-m-6 p-l-20-20 p-s-0-0 p-right">
+          <label for="phone">Telefon</label>
+          <input ngControl="phone" [(ngModel)]="user.phone" id="phone" type="text"
+                 class="input right-shadow h-60 m-l-10-0" placeholder="Skriv inn ditt telefonnummer" #phone="ngForm">
+        </div>
+        <div class="c-m-6 p-l-20-20 p-s-0-0 p-left">
+          <label for="age">Alder</label>
+          <input ngControl="age" [(ngModel)]="user.age" id="age" type="number" class="input right-shadow h-60 m-l-10-0"
+                 placeholder="Skriv inn din alder" #age="ngForm">
+        </div>
+      </div>
+      <div class="t-right">
+        <button [disabled]="!userForm.valid" type="submit" class="btn-lg btn-green">Oppdater profil</button>
+      </div>
+    </form>
+  </div>
 </div>
+
+<!-- SMOOTH ALERT -->
+<smooth-alert [collapse]="show.alert"
+              [options]="alertOptions"
+              [alertText]="alertText"
+              (onButtonClick)="toggle('alert')">
+</smooth-alert>

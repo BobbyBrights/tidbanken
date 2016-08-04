@@ -79,7 +79,7 @@
     </div>
   </div>
   <div class="chat-room view-height fs-14">
-    <div class="messages" #chatScroll>
+    <div class="messages" (scroll)="checkScrollTop()" #chatScroll>
       <div *ngIf="checkStatus(appointment.status, 0) && !messages.length  && isOwner" class="row row-center row-center-v h-100-p p-l-40-20 t-center">
         <div class="w-600">
           <h3>Gi et svar</h3>
@@ -95,6 +95,9 @@
           <h4>Ingen meldinger</h4>
           <p class="fs-14 color-stable-dark">Du og {{appointment.user.first_name}} har ingen meldinger sammen enda. For å skrive en melding vennligst benytt feltet under.</p>
         </div>
+      </div>
+      <div *ngIf="show.loading" class="row row-center p-l-20-0">
+        <div class="loading"></div>
       </div>
       <div *ngFor="let msg of messages" class="message row row-center-v"
            [ngClass]="{'row-end': checkOwner(msg.user_id)}">

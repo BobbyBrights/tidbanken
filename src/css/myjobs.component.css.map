@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,UAAW;EACT,IAAI,EAAE,CAAC",
+"mappings": "AAAA,UAAW;EACT,IAAI,EAAE,CAAC;;AAGT,uBAAwB;EACtB,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,KAAK;EAAE,IAAI,EAAE,KAAK;EAAE,KAAK,EAAE,CAAC;EAAE,MAAM,EAAE,CAAC;;AAG9C,WAAY;EACV,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,CAAC;EACN,IAAI,EAAE,KAAK;EACX,KAAK,EAAE,CAAC",
 "sources": ["../pages/front/myjobs/myjobs.component.scss"],
 "names": [],
 "file": "myjobs.component.css"

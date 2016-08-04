@@ -1,40 +1,29 @@
 <div class="profile-section">
   <div *ngIf="!user" class="row row-center-v">
-    <button (click)="navigate('login')" class=" btn-md btn-border-light rounded-3 fs-12 t-upper m-l-10-5">Logg inn</button>
-    <button (click)="navigate('register')" class=" btn-md btn-border-light rounded-3 fs-12 t-upper m-l-10-5">Registrer bruker</button>
+    <button (click)="navigate(['front', 'login'])" class=" btn-md btn-border-light rounded-3 fs-12 t-upper m-l-10-5">Logg inn</button>
+    <button (click)="navigate(['front', 'register'])" class=" btn-md btn-border-light rounded-3 fs-12 t-upper m-l-10-5">Registrer bruker</button>
   </div>
   <div *ngIf="user" class="row row-center-v">
-    <button (click)="navigate('myjobs')" class=" btn-md btn-border-light rounded-3 fs-12 t-upper">Mine jobber</button>
-    <button (click)="navigate('appointments')" class=" btn-md btn-border-light rounded-3 fs-12 t-upper m-l-0-10">
+    <button (click)="navigate(['front', 'myjobs'])" class=" btn-md btn-border-light rounded-3 fs-12 t-upper">Mine jobber</button>
+    <button (click)="navigate(['front', 'appointments'])" class=" btn-md btn-border-light rounded-3 fs-12 t-upper m-l-0-10">
       <span class="fa fa-calendar fs-12"></span>
     </button>
-    <div (click)="toggle('userProfile')" class="profile-picture m-l-0-10 m-right"
+    <div (click)="navigate(['profile'])" class="profile-picture m-l-0-10 m-right"
          [ngStyle]="{'background-image': 'url(' + baseUrl + user.profile_picture + ')'}"></div>
-    <div *ngIf="show.userProfile" (click)="toggle('userProfile')" class="notefication-cover">
-      <div (click)="$event.stopPropagation()" class="notefication-dropdown p-l-20-20">
-        <div class="row row-center">
-          <div class="picture picture-lg m-l-10-0"
-               [ngStyle]="{'background-image': 'url(' + baseUrl + user.profile_picture + ')'}">
-            <div class="edit-filter fs-14 t-upper t-thin t-center" [ng-file-drop]="options">
-              <span>Endre bilde</span>
-              <input class="file-input" type="file" [ng-file-select]="options" (onUpload)="handleDropUpload($event)">
-            </div>
-          </div>
-        </div>
-        <div class="layout-row layout-center">
-          <h4>{{user.first_name}} {{ user.last_name }}</h4>
-          <button (click)="navigate('appointments')" class="btn-md btn-primary w-100-p m-l-5-0">Mine avtaler</button>
-          <button (click)="logout()" class="btn-md btn-blue w-100-p m-l-5-0">Logg ut</button>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 <nav class="nav-md nav-fixed nav-center nav-center-v nav-blue center-shadow">
-  <div class="nav-logo"><img (click)="navigate('')" src="/img/logo/tidbanken_logo.png"
+  <div class="nav-logo"><img (click)="navigate(['front', ''])" src="/img/logo/tidbanken_logo.png"
                              alt=""></div>
-  <button (click)="navigate('post')" class="btn-md btn-border-light rounded-3 fs-12 m-l-0-10">Legg ut jobb</button>
-  <button (click)="navigate('jobs')" class="btn-md btn-border-light rounded-3 fs-12 m-l-0-10">Finn en jobb</button>
+  <button (click)="strictNavigate(['front', 'post'])" class="btn-md btn-border-light rounded-3 fs-12 m-l-0-10">Legg ut jobb</button>
+  <button (click)="navigate(['front', 'jobs'])" class="btn-md btn-border-light rounded-3 fs-12 m-l-0-10">Finn en jobb</button>
 </nav>
 <div class="has-nav-md"></div>
 <router-outlet></router-outlet>
+
+
+<!-- SMOOTH ALERT -->
+<smooth-alert [collapse]="show.alert"
+              [options]="alertOptions"
+              (onButtonClick)="navigate(['profile'])">
+</smooth-alert>

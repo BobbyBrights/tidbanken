@@ -26,6 +26,10 @@ export class JobService {
 
   public update(job:Job) {
 
+    var key = 'allJobs';
+
+    this._requestService.invalidate(key);
+
     // Has to delete imge url for server to accept
     var copy = Object.assign({}, job);
     delete copy.picture;
@@ -35,7 +39,10 @@ export class JobService {
   }
 
   public getJobs() {
-    return this._requestService.request('GET', this._apiEndpoint, 'allJobs')
+
+    var key = 'allJobs';
+
+    return this._requestService.request('GET', this._apiEndpoint, key)
       .map(res => <Job[]> res.json().results);
   }
 
@@ -88,8 +95,19 @@ export class JobService {
       .map(res => <Room[]> res.json());
   }
 
-  public getMessages(room_id:number) {
-    return this._requestService.request('GET', myGlobals.apiUrl + 'chat/rooms/' + room_id + '/messages/')
+  public getMessages(room_id:number, force:boolean) {
+
+    var key = 'messages';
+
+    var url = this._requestService.getPaginationPath(key);
+
+    if (force || url == null)
+      url = myGlobals.apiUrl + 'chat/rooms/' + room_id + '/messages/';
+
+    return this._requestService.request('GET', url)
+      .do(res => {
+        this._requestService.setPaginationPath(key, res.json().next);
+      })
       .map(res => <Message[]> res.json().results);
   }
 }

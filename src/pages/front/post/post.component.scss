@@ -75,3 +75,14 @@ $borderWidth: 0.1em;
     background: $stable-dark;
   }
 }
+
+.error-shaker {
+  border: 2px solid $primary;
+  animation: shake 100ms 3 linear;
+}
+
+@keyframes shake {
+  0% { margin-left: 0px; }
+  50% { margin-left: 10px; }
+  100% { margin-left: 0px; }
+}

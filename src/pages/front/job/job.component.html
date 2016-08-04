@@ -35,14 +35,16 @@
       </div>
       <div class="content p-l-40-60 fs-16 t-center">
         <p class="color-stable-dark">Interessert?</p>
-        <button (click)="toggle('appointment')" class="btn-md btn-green rounded-5 w-100-p m-l-10-0">Meld
+        <button (click)="strictNavigate()" class="btn-md btn-green rounded-5 w-100-p m-l-10-0">Meld
           interesse
         </button>
         <p class="color-stable-dark">eller</p>
-        <button class="btn-md btn-blue rounded-5 w-100-p m-l-10-0">
-          <span class="fa fa-share-alt m-l-0-10"></span>
-          <span>Del jobben</span>
-        </button>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{getShareUrl()}}" onclick='window.open(this.href,"popupwindow", "width=800,height=500,left=200,top=5,scrollbars,toolbar=0,resizable"); return false;' target="social">
+          <button class="btn-md btn-blue rounded-5 w-100-p m-l-10-0">
+            <span class="fa fa-share-alt m-l-0-10"></span>
+            <span>Del jobben</span>
+          </button>
+        </a>
       </div>
     </div>
   </div>

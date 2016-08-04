@@ -22,10 +22,10 @@ export var apiUrl: string;
  */
 
 if ('development' === ENV) {
-  baseURL = 'http://localhost:8000';
+  baseURL = '52.50.237.236';
   apiUrl = baseURL + '/';
 
 } else {
-  baseURL = 'https://beta.mojob.io';
+  baseURL = '52.50.237.236';
   apiUrl = baseURL + '/';
 }

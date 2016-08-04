@@ -2,7 +2,8 @@
   <form [ngFormModel]="jobForm" (ngSubmit)="postJob()">
     <div *ngIf="checkStep(0)" class="w-700">
       <h4>Hva trenger du hjelp med?</h4>
-      <input (keypress)="checkEnterPress($event, [title])" ngControl="title" [(ngModel)]="newJob.title" type="text" class="input h-60"
+      <input (keypress)="checkEnterPress($event, [title])" ngControl="title" [(ngModel)]="newJob.title" type="text"
+             class="input h-60" [ngClass]="{'error-shaker': !(title.valid || title.pristine)}"
              placeholder="Skriv inn en passende tittel" #title="ngForm">
       <div class="m-l-10-0 t-right">
         <button (click)="next()" [disabled]="!title.valid" type="button" class="btn-lg btn-primary">Neste</button>
@@ -10,7 +11,8 @@
     </div>
     <div *ngIf="checkStep(1)" class="w-700">
       <h4>Beskriv jobben litt nærmere</h4>
-            <textarea (keypress)="checkEnterPress($event, [description])" ngControl="description" [(ngModel)]="newJob.description" class="textarea h-300"
+            <textarea (keypress)="checkEnterPress($event, [description])" ngControl="description"
+                      [(ngModel)]="newJob.description" class="textarea h-300"
                       placeholder="Skriv en kort beskrivelse" #description="ngForm"></textarea>
       <div class="m-l-10-0 t-right">
         <button (click)="next()" [disabled]="!description.valid" type="button" class="btn-lg btn-primary">Neste</button>
@@ -28,7 +30,8 @@
         </div>
         <div class="p-l-10-10 w-200 t-center m-l-10-10">
           <p class="m-l-10-0">Omtrent</p>
-          <input (keypress)="checkEnterPress($event, [duration])" ngControl="duration" [(ngModel)]="newJob.duration" type="number" class="input h-50 t-center"
+          <input (keypress)="checkEnterPress($event, [duration])" ngControl="duration" [(ngModel)]="newJob.duration"
+                 type="number" class="input h-50 t-center"
                  #duration="ngForm">
           <p class="m-l-10-0">timer</p>
         </div>
@@ -50,11 +53,13 @@
           <input ngControl="city" [(ngModel)]="newJob.city" class="input h-60" placeholder="By" #city="ngForm">
         </div>
         <div class="c-m-3">
-          <input (keypress)="checkEnterPress($event, [street_address, city, postal_code])" ngControl="postal_code" [(ngModel)]="newJob.postal_code" class="input h-60" placeholder="Postnr." #postal_code="ngForm">
+          <input (keypress)="checkEnterPress($event, [street_address, city, postal_code])" ngControl="postal_code"
+                 [(ngModel)]="newJob.postal_code" class="input h-60" placeholder="Postnr." #postal_code="ngForm">
         </div>
       </div>
       <div class="m-l-10-0 t-right">
-        <button (click)="next()" [disabled]="!street_address.valid || !city.valid || !postal_code.valid" type="button" class="btn-lg btn-primary">Neste
+        <button (click)="next()" [disabled]="!street_address.valid || !city.valid || !postal_code.valid" type="button"
+                class="btn-lg btn-primary">Neste
         </button>
       </div>
     </div>

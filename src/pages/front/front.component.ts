@@ -18,12 +18,14 @@ import {MyJobsComponent}                        from "./myjobs/myjobs.component"
 import myGlobals = require('globals');
 import {AppointmentComponent} from "./appointment/appointment.component";
 import {UserComponent} from "./user/user.component";
+import {SmoothAlert} from "../../lib/components/smoothAlert/smoothalert.component";
+import {RequestService} from "../../lib/services/requestService";
 
 @Component({
   selector: 'front',
   template: require('pages/front/front.component.html'),
   styles: [require('css/front.component.css')],
-  directives: [ROUTER_DIRECTIVES, UPLOAD_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, UPLOAD_DIRECTIVES, SmoothAlert],
   providers: [AuthService]
 })
 
@@ -61,6 +63,8 @@ export class FrontComponent {
   // Base url
   public baseUrl:string;
 
+  // Smooth alert
+  public alertOptions:{};
 
   // File upload
   zone:NgZone;
@@ -78,12 +82,15 @@ export class FrontComponent {
 
   constructor(
     private _router:Router,
-    private _authService:AuthService) {
+    private _authService:AuthService,
+    private _requestService:RequestService) {
 
     // Hide/show properties
     this.show = {
       userProfile:false
     };
+
+    this._requestService.registerWatcher(this);
 
     // Get current user
     this._authService.getCurrentUser()
@@ -104,8 +111,24 @@ export class FrontComponent {
 
   ngOnInit() {}
 
+  public strictNavigate(path) {
+    if (this.user.has_completed_profile)
+      this._router.navigate(path);
+    else {
+      this.alertOptions = {
+        type: 'warning',
+        title: 'Fyll ut din profil',
+        text: 'Før du får lov til å gå videre trenger vi at du fyller ut litt mer informasjon på din profil',
+        showAccept: true,
+        acceptText: 'Fyll ut profil'
+      };
+
+      this.toggle('alert');
+    }
+  }
+
   public navigate(path) {
-    this._router.navigate(['front', path]);
+    this._router.navigate(path);
   }
 
   // User related
@@ -124,5 +147,16 @@ export class FrontComponent {
       this.user = JSON.parse(data.response);
       this.toggle('userProfile');
     }
+  }
+
+  public alertUpdate() {
+    // Get current user
+    this._authService.getCurrentUser()
+      .subscribe(success => {
+        this.user = success;
+
+        // Set correct view for file upload
+        this.options.url = myGlobals.apiUrl + 'users/' + success.id + '/image-upload/';
+      }, error => {});
   }
 }

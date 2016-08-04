@@ -6,7 +6,7 @@ import {Injectable}     from '@angular/core';
 import {Headers, Http} from "@angular/http";
 
 // Angular JWT libary used for authentication
-import {AuthHttp} from 'angular2-jwt/angular2-jwt';
+import { AuthHttp } from 'angular2-jwt/angular2-jwt';
 
 @Injectable()
 export class RequestService {
@@ -40,11 +40,17 @@ export class RequestService {
    *
    */
 
+  // Information watchers
+  private _watchers:any[];
+
   // Dictionary that stores all the data related to jobs
-  private cachedData:{};
+  private _cachedData:{};
 
   // Variable to hold default headers
-  private header:Headers;
+  private _header:Headers;
+
+  // Pagination paths
+  private _paginationPaths:{};
 
   constructor(
     private http:Http,
@@ -60,16 +66,18 @@ export class RequestService {
      *
      */
 
-    this.header = new Headers();
-    this.header.append('Content-Type', 'application/json');
+    this._header = new Headers();
+    this._header.append('Content-Type', 'application/json');
 
+    this._watchers = [];
+    this._paginationPaths = {};
 
     /*
      * The dict is initialized as a empty dict and later filled when different
      * requests are initiated
      */
 
-    this.cachedData = {};
+    this._cachedData = {};
 
   }
 
@@ -79,7 +87,7 @@ export class RequestService {
    * =======================================================
    */
 
-  public request(method:string, url:string, key?:string, data?:any) {
+  public request(method:string, url:string, key?:string, data?:any):Observable {
 
     /*
      * This method is used to handle all types of requests, and does caching on client
@@ -87,9 +95,9 @@ export class RequestService {
      */
 
     // If cache exist the data is returned as an observable object
-    if (key && this.cachedData[key] && method != 'post') {
+    if (key && this._cachedData[key] && method != 'post') {
       return Observable.create(observer => {
-        observer.next(this.cachedData[key]);
+        observer.next(this._cachedData[key]);
         observer.complete();
       });
     }
@@ -126,11 +134,11 @@ export class RequestService {
     switch (method) {
       case 'POST': // The method is of type post
         var body = JSON.stringify(data);
-        return http.post(url, body, {headers: this.header});
+        return http.post(url, body, {headers: this._header});
 
       case 'PUT': // The method is of type put
         var body = JSON.stringify(data);
-        return http.put(url, body, {headers: this.header});
+        return http.put(url, body, {headers: this._header});
 
       case 'GET': // The method is of type get
         return http.get(url)
@@ -138,7 +146,7 @@ export class RequestService {
 
             // The value is saved in the cache dict if key is provided
             if (key)
-              this.cachedData[key] = res;
+              this._cachedData[key] = res;
           });
     }
   }
@@ -149,7 +157,7 @@ export class RequestService {
    * =======================================================
    */
 
-  public invalidate(key) {
+  public invalidate(key):void {
 
     /*
      *
@@ -158,6 +166,60 @@ export class RequestService {
      *
      */
 
-    delete this.cachedData[key];
+    delete this._cachedData[key];
+  }
+
+  /*
+   * =======================================================
+   *   REGISTER WATCHER
+   * =======================================================
+   */
+
+  public registerWatcher(watcher:any) {
+
+    /*
+     *
+     * Register watchers adds a new watcher to the watchers list
+     *
+     */
+
+    // Pushes a new watcher to the list
+    this._watchers.push(watcher);
+  }
+
+  /*
+   * =======================================================
+   *   ALERT WATCHERS
+   * =======================================================
+   */
+
+  public alertWatchers() {
+
+    /*
+     *
+     * Alert watchers iterates through all the registered wathcers and alerts
+     * them about that something has changed.
+     *
+     */
+
+    this._watchers.forEach((watcher:any) => {
+
+      // Calls update method on each watcher
+      watcher.alertUpdate();
+    });
+  }
+
+  /*
+   * =======================================================
+   *   SET & GET PAGINATION PATH
+   * =======================================================
+   */
+
+  public setPaginationPath(key, path):void {
+    this._paginationPaths[key] = path;
+  }
+
+  public getPaginationPath(key):string {
+    return this._paginationPaths[key];
   }
 }

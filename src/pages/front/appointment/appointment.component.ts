@@ -1,4 +1,4 @@
-import {Component, ViewChild, ElementRef}                 from '@angular/core';
+import {Component, ViewChild, ElementRef, HostListener}                 from '@angular/core';
 import {HTTP_PROVIDERS}                                   from '@angular/http';
 import {Router, RouteSegment}                             from "@angular/router";
 
@@ -15,7 +15,8 @@ import {Observable}                                       from "rxjs/Rx";
 import {UserInfo}                                         from "lib/components/userInfo/userinfo.component";
 
 import myGlobals = require('globals');
-import {TimeSuggestion} from "../../../lib/components/timesuggestion/timesuggestion.component";
+import { TimeSuggestion } from "lib/components/timesuggestion/timesuggestion.component";
+import {RequestService} from "../../../lib/services/requestService";
 
 @Component({
   selector: 'appointment',
@@ -51,7 +52,6 @@ export class AppointmentComponent {
   // -------------------
   public rating:Rating = <Rating>{};
 
-
   // Chat related
   // -------------------
   public room: Room;
@@ -65,10 +65,13 @@ export class AppointmentComponent {
   constructor(private _router:Router,
               private _routeSegment:RouteSegment,
               private _jobService:JobService,
-              private _authService:AuthService) {
+              private _authService:AuthService,
+              private _requestService:RequestService) {
+
     this.show = {
       alert: false,
-      payment: false
+      payment: false,
+      loading: false
     };
 
     this.baseUrl = myGlobals.baseURL;
@@ -87,6 +90,8 @@ export class AppointmentComponent {
 
         this.isOwner = (this.appointment.job.user_id == this.user.id);
 
+        this.show['loading'] = true;
+
         this._jobService.getRoom(success.job.id, success.user.id)
           .subscribe(success => {
             this.room = success;
@@ -97,12 +102,14 @@ export class AppointmentComponent {
             // Connect the web socket
             this.connectWebsocket(this.room.id);
 
-            this._jobService.getMessages(success.id)
+            this._jobService.getMessages(success.id, true)
               .subscribe(success => {
                 this.messages = success.reverse();
 
                 setTimeout(() => {
                   this.scrollToBottom(true);
+
+                  this.show['loading'] = false;
                 }, 200);
 
               }, error => {});
@@ -244,6 +251,30 @@ export class AppointmentComponent {
       }
     } catch (err) {
     }
+  }
+
+  public checkScrollTop(event):boolean {
+
+    if (this.myScrollContainer) {
+      var el = this.myScrollContainer.nativeElement;
+
+      if (el.scrollTop == 0 && this._requestService.getPaginationPath('messages') && !this.show['loading']) {
+
+        this.show['loading'] = true;
+
+        this._jobService.getMessages(this.room.id, false)
+          .subscribe(success => {
+
+            success.forEach(message => {
+              this.messages.unshift(message);
+            });
+
+            this.show['loading'] = false;
+          }, error => {});
+      }
+    }
+
+    return true
   }
 
   public sendMessage(text:string) {

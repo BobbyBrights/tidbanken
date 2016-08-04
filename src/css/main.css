@@ -56,6 +56,8 @@
 
 .btn-sm, .btn-md, .btn-lg {
   cursor: pointer; }
+  .btn-sm:disabled, .btn-md:disabled, .btn-lg:disabled {
+    opacity: 0.5; }
 
 .cover-light:before, .cover-stable-light:before, .cover-stable:before, .cover-stable-dark:before, .cover-primary:before, .cover-green:before, .cover-blue:before, .cover-pink:before, .cover-accept:before, .cover-decline:before, .cover-dark:before, .cover-black:before {
   content: "";

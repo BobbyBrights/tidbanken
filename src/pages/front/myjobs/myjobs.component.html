@@ -1,10 +1,11 @@
 <div class="row view-height">
-  <div class="w-500 view-height bg-light center-shadow border-r-1 border-stable overflow-scroll">
+  <div class="w-500 view-height bg-light border-r-1 border-stable overflow-scroll">
     <div class="row row-center-v row-center h-100 border-b-1 border-stable">
       <h4>Mine jobber</h4>
     </div>
     <div *ngFor="let job of jobs" (click)="setSelectedJob(job)"
-         class="row row-center-v p-l-10-15 border-b-1 border-stable hover-stable-light" [ngClass]="{'bg-stable':checkSelected(job)}">
+         class="row row-center-v p-l-10-15 border-b-1 border-stable hover-stable-light"
+         [ngClass]="{'bg-stable':checkSelected(job)}">
       <div class="picture picture-md" [ngStyle]="{'background-image':'url(' + baseUrl + job.picture + ')'}"></div>
       <div class="p-l-0-15">
         <h5>{{job.title}}</h5>
@@ -12,5 +13,20 @@
       </div>
     </div>
   </div>
-  <appointment-list class="fill-rest" [appointments]="appointments"></appointment-list>
+  <div class="job-header h-100 border-b-1 border-stable">
+    <div class="row row-center-v h-100 p-l-20-20">
+      <div class="c-m-2">
+        <button (click)="navigate(['front', 'job', selectedJob?.id])" class="btn-md btn-border-primary btn-round">Se
+          jobben
+        </button>
+      </div>
+      <div class="c-m-8 t-center">
+        <h5>{{selectedJob?.title}}</h5>
+      </div>
+      <div class="c-m-2"></div>
+    </div>
+  </div>
+  <div class="appointments-container">
+    <appointment-list [appointments]="appointments"></appointment-list>
+  </div>
 </div>

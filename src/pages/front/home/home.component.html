@@ -2,8 +2,8 @@
     <div class="cover-content t-center">
         <h1>Gi tid i dag - få tid i <span class="color-primary">morgen</span></h1>
         <div class="row row-center p-l-40-20 fs-16">
-            <button (click)="toggle('alert')" class="btn-lg btn-primary btn-round m-l-10-15 t-600">Finn hjelp</button>
-            <button class="btn-lg btn-blue btn-round m-l-10-15 t-600">Tilby hjelp</button>
+            <button (click)="strictNavigate(['front', 'post'])" class="btn-lg btn-primary btn-round m-l-10-15 t-600">Finn hjelp</button>
+            <button (click)="navigate(['front', 'jobs'])" class="btn-lg btn-blue btn-round m-l-10-15 t-600">Tilby hjelp</button>
         </div>
     </div>
 </div>
@@ -21,6 +21,7 @@
 <div class="row bg-stable-light border-t-1 h-400 border-stable p-l-20-60">
 
 </div>
+
 <!-- Edit job -->
 <div *ngIf="show.alert" (click)="toggle('alert')"
      class="dialog-cover row row-center row-center-v cover-6 cover-black p-l-20-20">
@@ -32,9 +33,15 @@
       </div>
     </div>
     <div class="row row-center t-center fs-14 p-l-20-0">
-      <button (click)="navigate('login')" class="btn-lg btn-primary rounded-3 w-400">Logg inn</button>
+      <button (click)="navigate(['front', 'login'])" class="btn-lg btn-primary rounded-3 w-400">Logg inn</button>
       <p class="w-100-p p-l-10-0 fs-14 t-300 color-stable-dark">eller</p>
-      <button (click)="navigate('register')" class="btn-lg btn-blue rounded-3 w-400">Registrer deg</button>
+      <button (click)="navigate(['front', 'register'])" class="btn-lg btn-blue rounded-3 w-400">Registrer deg</button>
     </div>
   </div>
 </div>
+
+<!-- SMOOTH ALERT -->
+<smooth-alert [collapse]="show.smoothAlert"
+              [options]="alertOptions"
+              (onButtonClick)="navigate(['profile'])">
+</smooth-alert>
